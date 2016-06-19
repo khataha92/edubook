@@ -190,7 +190,7 @@ public class Login extends AppCompatActivity {
             }
 
         }
-        else if(b.getString("logout") != null && b.getString("logout").length() == 0){
+        else if( b!=null && b.getString("logout") != null && b.getString("logout").length() == 0){
 
             getIntent().putExtra("logout", "");
 

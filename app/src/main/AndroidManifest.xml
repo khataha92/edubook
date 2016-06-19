@@ -43,6 +43,7 @@
             android:windowTranslucentNavigation="true"
             android:windowTranslucentStatus="true" />
 
+
     </application>
 
 </manifest>
