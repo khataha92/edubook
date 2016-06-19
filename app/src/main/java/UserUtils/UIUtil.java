@@ -203,6 +203,8 @@ public class UIUtil {
 
         menuDlg = new Dialog(Application.getCurrentActivity(), android.R.style.Theme_NoTitleBar);
 
+        menuDlg.getWindow().setWindowAnimations(R.style.DialogNoAnimation);
+
         menuDlg.setOnDismissListener(listener);
 
         menuDlg.setOnCancelListener(new DialogInterface.OnCancelListener() {
