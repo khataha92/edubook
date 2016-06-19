@@ -38,13 +38,35 @@ public class FragmentManager {
         currentFragments.remove(index);
     }
 
+    public static void popToHome(){
+
+        if (Application.getCurrentActivity() instanceof Home) {
+
+            Home activity = (Home) Application.getCurrentActivity();
+
+            android.support.v4.app.FragmentManager manager = activity.getSupportFragmentManager();
+
+            if (manager.getBackStackEntryCount() > 1) {
+
+                int rootFragment = manager.getBackStackEntryAt(1).getId();
+
+                manager.popBackStack(rootFragment, android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            }
+
+            for (int i = currentFragments.size() - 1; i > 0; i--) {
+
+                currentFragments.remove(i);
+
+            }
+        }
+    }
+
     public static void showMoreFragment(){
 
         BaseFragment currentFragment = getCurrentVisibleFragment();
 
         if(currentFragment != null && !(currentFragment instanceof HomeFragment)){
-
-            popCurrentVisibleFragment();
 
             MoreFragment moreFragment = new MoreFragment();
 
@@ -60,30 +82,11 @@ public class FragmentManager {
 
     }
 
-    private static boolean isExists(Class<?> object){
-
-        boolean exists = false;
-
-        for(int i = 0; i <currentFragments.size() ; i++){
-
-            if(currentFragments.get(i).getClass() == object){
-
-                return  true;
-
-            }
-
-        }
-
-        return exists;
-    }
-
     public static void showMessagesFragment(){
 
         BaseFragment currentFragment = getCurrentVisibleFragment();
 
         if(currentFragment != null && !(currentFragment instanceof HomeFragment)){
-
-            popCurrentVisibleFragment();
 
             Messages messages = new Messages();
 
@@ -234,8 +237,6 @@ public class FragmentManager {
 
             }
 
-            currentFragments.add(newFragment);
-
             FragmentTransaction tr = activity.getSupportFragmentManager().beginTransaction();
 
             tr.setCustomAnimations(0, 0, 0, 0);
@@ -245,6 +246,8 @@ public class FragmentManager {
             if (enableBack) {
 
                 tr.addToBackStack(null);
+
+                currentFragments.add(newFragment);
 
             }
 
@@ -258,30 +261,6 @@ public class FragmentManager {
 
     }
 
-    public static void popToRoot() {
-
-        if (Application.getCurrentActivity() instanceof Home) {
-
-            Home activity = (Home) Application.getCurrentActivity();
-
-            android.support.v4.app.FragmentManager manager = activity.getSupportFragmentManager();
-
-            if (manager.getBackStackEntryCount() > 0) {
-
-                int rootFragment = manager.getBackStackEntryAt(0).getId();
-
-                manager.popBackStack(rootFragment, android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-            }
-
-            for (int i = currentFragments.size() - 1; i > 0; i--) {
-
-                currentFragments.remove(i);
-
-            }
-        }
-
-    }
 
     public static int getFragmentCount() {
 
