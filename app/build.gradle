@@ -14,7 +14,8 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
-
+ext.vMajor = 1
+ext.vMinor = 2
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
