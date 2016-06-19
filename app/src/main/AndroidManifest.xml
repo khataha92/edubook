@@ -43,6 +43,10 @@
             android:windowTranslucentNavigation="true"
             android:windowTranslucentStatus="true" />
 
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e478115d90a000d130db37dfce88c292b408d277" />
     </application>
 
 </manifest>

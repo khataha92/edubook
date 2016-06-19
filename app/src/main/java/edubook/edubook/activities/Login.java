@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import org.json.JSONObject;
 
 import java.util.Locale;
@@ -170,6 +172,7 @@ public class Login extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 
         Bundle b = getIntent().getExtras();
 
@@ -190,7 +193,7 @@ public class Login extends AppCompatActivity {
             }
 
         }
-        else if(b.getString("logout") != null && b.getString("logout").length() == 0){
+        else if( b!=null && b.getString("logout") != null && b.getString("logout").length() == 0){
 
             getIntent().putExtra("logout", "");
 
