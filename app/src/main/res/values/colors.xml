@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background">#602b93</color>
+    <color name="background_dark">#501a83</color>
+    <color name="background_darker">#623e92</color>
+    <color name="theme_color">#33BBFF</color>
+    <color name="home_bg">#E6E7E9</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="home_box_border">#D3D3D3</color>
+    <color name="time_color">#7A7A7A</color>
+    <color name="likes_color">#7A7A7A</color>
+    <color name="comments_color">#7A7A7A</color>
+    <color name="post_color">#151515</color>
+    <color name="post_container_color">#CACACA</color>
+    <color name="chat_bg">#E6E7E9</color>
+    <color name="new_note_bg">#F1F2F2</color>
+    <color name="transparentColor">#44000000</color>
+    <color name="calender_blue">#1D9AEF</color>
+</resources>
+

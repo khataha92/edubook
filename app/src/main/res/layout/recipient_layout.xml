@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:paddingRight="20dp"
+    android:layout_gravity="center_vertical"
+    style="?android:attr/spinnerItemStyle"
+    android:paddingTop="10dp"
+    android:paddingLeft="5dp"
+    android:paddingBottom="20dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/students"
+        android:layout_marginRight="5dp"
+        android:id="@+id/icon" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Students"
+        android:id="@+id/name"
+        android:textColor="#111111"
+        android:textSize="16sp"
+        />
+</LinearLayout>
