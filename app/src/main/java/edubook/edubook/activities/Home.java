@@ -33,7 +33,7 @@ public class Home extends FragmentActivity
         @Override
         public void onClick(View v) {
 
-            FragmentManager.showHomeFragment();
+            FragmentManager.popToHome();
 
         }
     };
