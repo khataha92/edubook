@@ -137,8 +137,6 @@ public class Login extends AppCompatActivity {
 
     public void signup(View v) {
 
-        //startActivity(new Intent(this, Signup.class));
-
     }
 
     public void setLocale(String lang) {
@@ -175,7 +173,7 @@ public class Login extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
 
-        if (b != null) {
+        if (b != null && b.getString("logout") != null && b.getString("logout").length() > 0 ) {
 
             String logout = b.getString("logout");
 
@@ -190,6 +188,13 @@ public class Login extends AppCompatActivity {
                 setContentView(R.layout.activity_login);
 
             }
+
+        }
+        else if(b.getString("logout") != null && b.getString("logout").length() == 0){
+
+            getIntent().putExtra("logout", "");
+
+            startSplash();
 
         }
 
