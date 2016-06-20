@@ -27,7 +27,9 @@ public class Constants {
 
     public static List<RecieverType> getRecieverTypes() {
 
+
         return recieverTypes;
+        
 
     }
 }
