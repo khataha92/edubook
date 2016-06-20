@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/new_note_bg"
+    android:layout_height="match_parent"
+    tools:context="com.edubook.newpost.NewNote">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/background"
+        android:layout_gravity="left|top"
+        android:id="@+id/relativeLayout5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView7"
+            android:onClick="closeActivity"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/x" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Note"
+            android:id="@+id/textView3"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            style="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Post"
+            android:onClick="post"
+            android:background="@color/background"
+            android:id="@+id/post"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#58595B"
+        android:text="@string/to"
+        android:textSize="18sp"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_alignLeft="@+id/relativeLayout5"
+        android:layout_alignStart="@+id/relativeLayout5" />
+    <Spinner
+        android:layout_width="55dp"
+        android:gravity="center_vertical"
+        android:id="@+id/recipient"
+        android:dropDownWidth="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="-5dp"
+        android:layout_toRightOf="@+id/textView9"
+        android:layout_alignTop="@+id/recipient_input"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout12" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/note_bg"
+        android:id="@+id/relativeLayout6"
+        android:layout_below="@+id/recipient_input"
+        android:layout_alignRight="@+id/recipient_input"
+        android:layout_alignEnd="@+id/recipient_input"
+        android:layout_alignParentBottom="true">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:gravity="top"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:minLines="10"
+        android:ems="10"
+        android:text=""
+        android:background="#ffffff"
+        android:id="@+id/description"
+        android:layout_toRightOf="@+id/profile_image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/profile_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/male_profile_image"
+        app:civ_border_width="1dp"
+        android:layout_alignTop="@+id/description" />
+    </RelativeLayout>
+    <com.edubook.classes.BoundedLinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        app:bounded_width="200dp"
+        android:layout_height="50dp"
+
+        android:id="@+id/linearLayout12"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_toRightOf="@+id/recipient">
+
+
+        <com.edubook.classes.RightAlignedHorizontalScrollView
+            android:layout_width="wrap_content"
+
+            android:minWidth="50dp"
+            android:fadeScrollbars="false"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:minHeight="50dp"
+            android:id="@+id/tags_view"
+
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:fadeScrollbars="false"
+                android:overScrollMode="never"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:id="@+id/tags_container"
+                android:layout_height="match_parent">
+            </LinearLayout>
+        </com.edubook.classes.RightAlignedHorizontalScrollView>
+    </com.edubook.classes.BoundedLinearLayout>
+    <AutoCompleteTextView
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:id="@+id/recipient_input"
+        android:lines="1"
+        android:background="@null"
+        android:minWidth="100dp"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_toRightOf="@+id/linearLayout12"
+        android:layout_alignRight="@+id/relativeLayout5"
+        android:layout_alignEnd="@+id/relativeLayout5" />
+</RelativeLayout>

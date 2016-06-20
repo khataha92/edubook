@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import CustomComponent.CustomTopBar;
+import Interfaces.AbstractCallback;
 import UserUtils.Application;
 import activities.Login;
-import Interfaces.AbstractCallback;
 
 public abstract class BaseFragment extends Fragment {
 

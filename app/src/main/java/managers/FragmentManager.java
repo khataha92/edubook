@@ -8,15 +8,15 @@ import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
 
+import Fragments.BaseFragment;
+import Interfaces.AbstractCallback;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
 import activities.Home;
-import Fragments.BaseFragment;
 import Fragments.HomeFragment;
 import Fragments.Messages;
 import Fragments.MoreFragment;
-import Interfaces.AbstractCallback;
 
 
 public class FragmentManager {
