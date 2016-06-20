@@ -1,25 +1,16 @@
 package ViewHolders;
 
 import android.view.View;
-import android.view.inputmethod.InputMethod;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import CustomComponent.ToggleLike;
-import DataModels.Post;
 import DataModels.PostDataContainer;
-import UserUtils.Application;
-import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
-import managers.SessionManager;
+import Managers.SessionManager;
 
 /**
  * Created by lap on 6/12/16.

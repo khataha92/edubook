@@ -1,4 +1,4 @@
-package managers;
+package Managers;
 
 import android.content.Context;
 import android.support.v4.app.FragmentTransaction;
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
-import edubook.edubook.activities.Home;
-import fragments.BaseFragment;
-import fragments.HomeFragment;
-import fragments.Messages;
-import fragments.MoreFragment;
-import interfaces.AbstractCallback;
+import activities.Home;
+import Fragments.BaseFragment;
+import Fragments.HomeFragment;
+import Fragments.Messages;
+import Fragments.MoreFragment;
+import Interfaces.AbstractCallback;
 
 
 public class FragmentManager {

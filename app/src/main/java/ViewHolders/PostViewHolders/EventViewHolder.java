@@ -1,19 +1,12 @@
-package ViewHolders;
+package ViewHolders.PostViewHolders;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import CustomComponent.ToggleLike;
 import DataModels.Post;
 import DataModels.PostDataContainer;
-import UserUtils.Application;
-import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 
 public class EventViewHolder extends GenericPostViewHolder {

@@ -1,4 +1,4 @@
-package fragments;
+package Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import Adapters.GroupListAdapter;
-import UserUtils.Application;
-import UserUtils.UIUtil;
 import edubook.edubook.R;
-import edubook.edubook.activities.Home;
-import managers.SessionManager;
+import activities.Home;
+import Managers.SessionManager;
 
 public class MoreFragment extends BaseFragment {
 

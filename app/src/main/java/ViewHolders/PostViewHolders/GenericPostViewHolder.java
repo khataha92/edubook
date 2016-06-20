@@ -1,4 +1,4 @@
-package ViewHolders;
+package ViewHolders.PostViewHolders;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
@@ -10,9 +10,10 @@ import UserUtils.Application;
 import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
+import ViewHolders.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
-import interfaces.AbstractCallback;
+import Interfaces.AbstractCallback;
 
 public class GenericPostViewHolder extends GenericViewHolder {
 

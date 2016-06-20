@@ -1,4 +1,4 @@
-package interfaces;
+package Interfaces;
 
 import DataModels.PostDataContainer;
 

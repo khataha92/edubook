@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 
 import DataModels.PostDataContainer;
 import UserUtils.Application;
+import ViewHolders.PostViewHolders.AssignmentViewHolder;
+import ViewHolders.PostViewHolders.EmptyLayoutViewHolder;
+import ViewHolders.PostViewHolders.EventViewHolder;
+import ViewHolders.PostViewHolders.NoteViewHolder;
+import ViewHolders.PostViewHolders.PollViewHolder;
 import edubook.edubook.R;
 
 /**
@@ -16,7 +21,7 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
 
     public View itemView;
 
-    PostDataContainer container;
+    public PostDataContainer container;
 
     public GenericViewHolder(View itemView,PostDataContainer container) {
 

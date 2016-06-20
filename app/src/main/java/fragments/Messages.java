@@ -1,4 +1,4 @@
-package fragments;
+package Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,9 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import UserUtils.UIUtil;
 import edubook.edubook.R;
-import managers.FragmentManager;
+import Managers.FragmentManager;
 
 
 public class Messages extends BaseFragment {

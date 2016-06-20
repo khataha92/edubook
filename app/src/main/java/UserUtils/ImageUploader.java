@@ -1,21 +1,16 @@
 package UserUtils;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 
-import org.json.JSONObject;
-
 import java.io.File;
 
-import interfaces.OnWebserviceFinishListener;
-import managers.SessionManager;
+import Interfaces.OnWebserviceFinishListener;
+import Managers.SessionManager;
 
 
 public class ImageUploader extends AsyncTask<Object,Object,Object> {

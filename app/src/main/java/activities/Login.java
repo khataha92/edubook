@@ -1,4 +1,4 @@
-package edubook.edubook.activities;
+package activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -24,15 +24,14 @@ import org.json.JSONObject;
 import java.util.Locale;
 
 import Enums.ResponseCode;
-import UserUtils.Constants;
 import UserUtils.Application;
-import managers.SessionManager;
+import Managers.SessionManager;
 import UserUtils.UIUtil;
 import UserUtils.WebService;
 import UserUtils.WebserviceRequestUtil;
 import edubook.edubook.R;
-import interfaces.AbstractCallback;
-import interfaces.OnWebserviceFinishListener;
+import Interfaces.AbstractCallback;
+import Interfaces.OnWebserviceFinishListener;
 
 public class Login extends AppCompatActivity {
     String logout = null;

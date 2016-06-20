@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enums.HolderType;
-import interfaces.PostFactory;
+import Interfaces.PostFactory;
 
 public class Post implements PostFactory{
 
