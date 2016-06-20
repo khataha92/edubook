@@ -39,6 +39,12 @@ public class SessionManager {
 
     }
 
+    public List<Group> getUserGroups(){
+
+        return userGroups;
+
+    }
+
     ImageLoader imageLoader = null;
 
     public void saveUserGroups(List<Group> groups){

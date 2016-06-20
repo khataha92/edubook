@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.PostListAdapter;
@@ -23,6 +25,7 @@ import DataModels.StreamBookResponse;
 import DataModels.User;
 import Enums.ResponseCode;
 import UserUtils.Constants;
+import UserUtils.UserDefaultUtil;
 import edubook.edubook.activities.Home;
 import managers.SessionManager;
 import UserUtils.UIUtil;
@@ -171,7 +174,9 @@ public class HomeFragment extends BaseFragment {
 
                 if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
 
-                    List<Group> groups = new Gson().fromJson(webService.getStrResponse().toString(),List.class);
+                    List<LinkedTreeMap> linkedTreeMaps = new Gson().fromJson(webService.getStrResponse().toString(),ArrayList.class);
+
+                    List<Group> groups = UserDefaultUtil.convertLinkedTreeMap(linkedTreeMaps);
 
                     SessionManager.getInstance().saveUserGroups(groups);
 

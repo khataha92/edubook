@@ -2,16 +2,25 @@ package fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import Adapters.GroupListAdapter;
+import UserUtils.Application;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
 import edubook.edubook.activities.Home;
+import managers.SessionManager;
 
 public class MoreFragment extends BaseFragment {
+
+    View rootView;
+
+    RecyclerView groupList;
 
     public MoreFragment() {
 
@@ -24,6 +33,12 @@ public class MoreFragment extends BaseFragment {
 
     }
     private void prepareFragment(){
+
+        groupList = (RecyclerView) rootView.findViewById(R.id.groups);
+
+        groupList.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        groupList.setAdapter(new GroupListAdapter(SessionManager.getInstance().getUserGroups()));
 
     }
 
@@ -57,7 +72,7 @@ public class MoreFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_more, null);
+        return rootView = inflater.inflate(R.layout.fragment_more, null);
     }
 
     @Override

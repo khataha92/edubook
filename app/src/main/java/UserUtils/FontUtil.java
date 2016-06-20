@@ -24,6 +24,8 @@ public class FontUtil {
      * @param language The string language
      * @return Typeface
      */
+
+    private static Typeface font ;
     public static Typeface getFont(final FontsType fontsType, String language) {
 
         if (language != null) {
@@ -54,7 +56,12 @@ public class FontUtil {
      */
     public static Typeface getFont(final FontsType fontsType) {
 
-        return getArabicFont(fontsType);
+        if(font == null){
+
+            font = getArabicFont(fontsType);
+        }
+
+        return font;
 
         /*
 
