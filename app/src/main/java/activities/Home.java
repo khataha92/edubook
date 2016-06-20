@@ -6,10 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import Fragments.BaseFragment;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
-import Fragments.BaseFragment;
 import Fragments.HomeFragment;
 import Fragments.MoreFragment;
 import Managers.FragmentManager;

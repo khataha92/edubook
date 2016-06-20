@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout3">
+        android:id="@+id/bottom_tabs">
         <LinearLayout
             android:layout_width="0dp"
             android:gravity="center"
@@ -116,7 +116,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/relativeLayout3"
+        android:layout_above="@+id/bottom_tabs"
         android:layout_alignParentTop="true">
 
     </FrameLayout>

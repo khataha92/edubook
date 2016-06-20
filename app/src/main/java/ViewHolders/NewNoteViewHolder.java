@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import DataModels.PostDataContainer;
+import Managers.FragmentManager;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -31,6 +32,16 @@ public class NewNoteViewHolder extends GenericViewHolder {
         Picasso.with(imageView.getContext()).load(imageUrl).into(imageView);
 
         ((TextView) itemView.findViewById(R.id.note_content)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.showNewNoteFragment();
+
+            }
+        });
 
     }
 }
