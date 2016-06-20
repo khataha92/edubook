@@ -109,15 +109,15 @@
                 android:textStyle="bold"
                 />
         </LinearLayout>
-        <ListView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/groups"
             android:divider="@null"
             android:dividerHeight="0dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             >
-        </ListView>
+        </android.support.v7.widget.RecyclerView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

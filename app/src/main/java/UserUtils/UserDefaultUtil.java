@@ -5,6 +5,12 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
 
+import com.google.gson.internal.LinkedTreeMap;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import DataModels.Group;
 import managers.SessionManager;
 
 /**
@@ -44,6 +50,31 @@ public class UserDefaultUtil {
     private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Application.getContext());
 
     // Saves string value to shared preference
+
+    public static List<Group> convertLinkedTreeMap(List<LinkedTreeMap> linkedTreeMaps){
+
+        List<Group> groups = new ArrayList<>();
+
+        for(int i = 0 ;i < linkedTreeMaps.size() ; i++){
+
+            Group group = new Group();
+
+            Object desc = linkedTreeMaps.get(i).get("description");
+
+            group.setDescription((String)desc);
+
+            group.setId(""+ linkedTreeMaps.get(i).get("id"));
+
+            group.setName(""+linkedTreeMaps.get(i).get("name"));
+
+            group.setUserId(""+linkedTreeMaps.get(i).get("user_id"));
+
+            groups.add(group);
+
+        }
+
+        return groups;
+    }
     private static void setStringValue(final String value, final String key) {
 
         if ((key == null) || preferences == null) {
