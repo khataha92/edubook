@@ -2,16 +2,10 @@ package Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import Adapters.GroupListAdapter;
-import Managers.SessionManager;
-import activities.Home;
 import edubook.edubook.R;
 
 /**
@@ -60,7 +54,7 @@ public class NewNoteFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return rootView = inflater.inflate(R.layout.fragment_more, null);
+        return rootView = inflater.inflate(R.layout.fragment_new_note, null);
     }
 
     @Override

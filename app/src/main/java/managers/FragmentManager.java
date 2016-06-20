@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager;
 import java.util.ArrayList;
 
 import Fragments.BaseFragment;
+import Fragments.NewNoteFragment;
 import Interfaces.AbstractCallback;
 import UserUtils.Application;
 import UserUtils.UIUtil;
@@ -36,6 +37,14 @@ public class FragmentManager {
         }
 
         currentFragments.remove(index);
+    }
+
+    public static void showNewNoteFragment(){
+
+        NewNoteFragment fragment = new NewNoteFragment();
+
+        replaceFragment(fragment,true);
+
     }
 
     public static void popToHome(){
