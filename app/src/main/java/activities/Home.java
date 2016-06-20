@@ -1,4 +1,4 @@
-package edubook.edubook.activities;
+package activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
-import fragments.BaseFragment;
-import fragments.HomeFragment;
-import fragments.MoreFragment;
-import managers.FragmentManager;
+import Fragments.BaseFragment;
+import Fragments.HomeFragment;
+import Fragments.MoreFragment;
+import Managers.FragmentManager;
 
 public class Home extends FragmentActivity
 {

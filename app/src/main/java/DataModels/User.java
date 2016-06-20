@@ -2,7 +2,7 @@ package DataModels;
 
 import java.io.Serializable;
 
-import managers.SessionManager;
+import Managers.SessionManager;
 
 /**
  * Created by lap on 6/10/16.

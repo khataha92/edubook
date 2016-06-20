@@ -7,8 +7,8 @@ import Enums.ErrorType;
 import Enums.GroupUserStatus;
 import Enums.RecieverType;
 import Enums.RequestServices;
-import interfaces.OnWebserviceFinishListener;
-import managers.SessionManager;
+import Interfaces.OnWebserviceFinishListener;
+import Managers.SessionManager;
 
 public class WebserviceRequestUtil {
 

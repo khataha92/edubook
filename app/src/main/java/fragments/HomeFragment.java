@@ -1,4 +1,4 @@
-package fragments;
+package Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -24,17 +24,16 @@ import DataModels.RecipientsResponse;
 import DataModels.StreamBookResponse;
 import DataModels.User;
 import Enums.ResponseCode;
-import UserUtils.Constants;
 import UserUtils.UserDefaultUtil;
-import edubook.edubook.activities.Home;
-import managers.SessionManager;
+import activities.Home;
+import Managers.SessionManager;
 import UserUtils.UIUtil;
 import UserUtils.WebService;
 import UserUtils.WebserviceRequestUtil;
 import edubook.edubook.R;
-import interfaces.OnWebserviceFinishListener;
-import interfaces.PostFactory;
-import managers.FragmentManager;
+import Interfaces.OnWebserviceFinishListener;
+import Interfaces.PostFactory;
+import Managers.FragmentManager;
 
 
 public class HomeFragment extends BaseFragment {

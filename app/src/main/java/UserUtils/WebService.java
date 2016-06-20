@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import interfaces.OnWebserviceFinishListener;
+import Interfaces.OnWebserviceFinishListener;
 
 public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffer> {
 

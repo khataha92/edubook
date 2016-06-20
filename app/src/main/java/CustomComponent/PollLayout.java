@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import DataModels.Poll;
 import DataModels.PollVote;
 import DataModels.Post;
 import UserUtils.CallBackUtils;
@@ -19,7 +18,7 @@ import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
-import interfaces.AbstractCallback;
+import Interfaces.AbstractCallback;
 
 public class PollLayout extends LinearLayout{
 

@@ -1,4 +1,4 @@
-package managers;
+package Managers;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -13,7 +13,7 @@ import DataModels.Recipient;
 import DataModels.User;
 import UserUtils.Application;
 import UserUtils.ImageLoader;
-import interfaces.PostFactory;
+import Interfaces.PostFactory;
 
 public class SessionManager {
 

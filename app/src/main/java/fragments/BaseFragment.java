@@ -1,4 +1,4 @@
-package fragments;
+package Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.BuildConfig;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 
 import CustomComponent.CustomTopBar;
 import UserUtils.Application;
-import edubook.edubook.activities.Login;
-import interfaces.AbstractCallback;
+import activities.Login;
+import Interfaces.AbstractCallback;
 
 public abstract class BaseFragment extends Fragment {
 

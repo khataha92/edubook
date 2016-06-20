@@ -8,9 +8,9 @@ import CustomComponent.PollLayout;
 import CustomComponent.ToggleLike;
 import DataModels.Post;
 import Enums.ResponseCode;
-import interfaces.AbstractCallback;
-import interfaces.OnWebserviceFinishListener;
-import managers.SessionManager;
+import Interfaces.AbstractCallback;
+import Interfaces.OnWebserviceFinishListener;
+import Managers.SessionManager;
 
 public class CallBackUtils {
 

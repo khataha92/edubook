@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DataModels.Group;
-import managers.SessionManager;
+import Managers.SessionManager;
 
 /**
  * Created by mohammad on 4/19/15.

@@ -8,8 +8,7 @@ import java.util.List;
 import DataModels.PostDataContainer;
 import Enums.HolderType;
 import ViewHolders.GenericViewHolder;
-import ViewHolders.NoteViewHolder;
-import interfaces.PostFactory;
+import Interfaces.PostFactory;
 
 /**
  * Created by lap on 6/12/16.

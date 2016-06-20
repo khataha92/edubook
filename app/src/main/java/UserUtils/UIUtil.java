@@ -41,8 +41,8 @@ import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import edubook.edubook.R;
-import fragments.BaseFragment;
-import interfaces.AbstractCallback;
+import Fragments.BaseFragment;
+import Interfaces.AbstractCallback;
 
 
 public class UIUtil {
@@ -568,7 +568,7 @@ public class UIUtil {
 
                 if(keyCode ==KeyEvent.KEYCODE_BACK){
 
-                    managers.FragmentManager.popCurrentVisibleFragment();
+                    Managers.FragmentManager.popCurrentVisibleFragment();
 
                     loadingDialog.dismiss();
                 }

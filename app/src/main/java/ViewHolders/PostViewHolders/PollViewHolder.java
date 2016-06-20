@@ -1,24 +1,15 @@
-package ViewHolders;
+package ViewHolders.PostViewHolders;
 
-import android.content.DialogInterface;
 import android.view.View;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import Adapters.PostListAdapter;
 import CustomComponent.PollLayout;
-import CustomComponent.ToggleLike;
 import DataModels.PollVote;
 import DataModels.Post;
 import DataModels.PostDataContainer;
-import UserUtils.Application;
-import UserUtils.CallBackUtils;
-import de.hdodenhof.circleimageview.CircleImageView;
+import ViewHolders.PostViewHolders.GenericPostViewHolder;
 import edubook.edubook.R;
-import managers.SessionManager;
 
 
 public class PollViewHolder extends GenericPostViewHolder {
