@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/new_note_bg"
     android:layout_height="match_parent"
-    tools:context="com.edubook.newpost.NewNote">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,9 +21,8 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView7"
-            android:onClick="closeActivity"
-            android:layout_alignParentTop="true"
+            android:id="@+id/close"
+            android:layout_centerInParent="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:src="@drawable/x" />
@@ -42,7 +41,7 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:text="@string/Post"
             android:onClick="post"
             android:background="@color/background"
@@ -116,7 +115,7 @@
         app:civ_border_width="1dp"
         android:layout_alignTop="@+id/description" />
     </RelativeLayout>
-    <com.edubook.classes.BoundedLinearLayout
+    <CustomComponent.BoundedLinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         app:bounded_width="200dp"
@@ -127,7 +126,7 @@
         android:layout_toRightOf="@+id/recipient">
 
 
-        <com.edubook.classes.RightAlignedHorizontalScrollView
+        <CustomComponent.RightAlignedHorizontalScrollView
             android:layout_width="wrap_content"
 
             android:minWidth="50dp"
@@ -148,15 +147,16 @@
                 android:id="@+id/tags_container"
                 android:layout_height="match_parent">
             </LinearLayout>
-        </com.edubook.classes.RightAlignedHorizontalScrollView>
-    </com.edubook.classes.BoundedLinearLayout>
+        </CustomComponent.RightAlignedHorizontalScrollView>
+    </CustomComponent.BoundedLinearLayout>
     <AutoCompleteTextView
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:id="@+id/recipient_input"
         android:lines="1"
         android:background="@null"
-        android:minWidth="100dp"
+        android:dropDownWidth="200dp"
+        android:minWidth="150dp"
         android:inputType="textPersonName"
         android:layout_below="@+id/relativeLayout5"
         android:layout_toRightOf="@+id/linearLayout12"

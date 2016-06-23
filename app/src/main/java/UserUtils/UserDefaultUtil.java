@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DataModels.Group;
+import Enums.RecieverType;
 import Managers.SessionManager;
+import edubook.edubook.R;
 
 /**
  * Created by mohammad on 4/19/15.
@@ -50,6 +52,73 @@ public class UserDefaultUtil {
     private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Application.getContext());
 
     // Saves string value to shared preference
+
+    public static int getRecieverIcon(RecieverType type){
+
+        switch (type){
+
+            case USERS:
+
+                return R.drawable.connections;
+
+            case ONLY_ME:
+
+                return R.drawable.only_me;
+
+            case GROUPS:
+
+                return R.drawable.groups;
+
+            case STUDENTS:
+
+                return R.drawable.students;
+
+            default:
+
+                return R.drawable.connections;
+        }
+    }
+
+    public static String getRecieverLabel(RecieverType type){
+
+        int stringResourceId = -1;
+
+        switch (type){
+
+            case USERS:
+
+                stringResourceId = R.string.users;
+
+                break;
+
+            case ONLY_ME:
+
+                stringResourceId =  R.string.only_me;
+
+                break;
+
+            case GROUPS:
+
+                stringResourceId = R.string.groups;
+
+                break;
+
+            case STUDENTS:
+
+                stringResourceId = R.string.students;
+
+                break;
+
+            default:
+
+                stringResourceId =  R.string.nill;
+
+                break;
+
+        }
+
+        return Application.getContext().getString(stringResourceId);
+    }
 
     public static List<Group> convertLinkedTreeMap(List<LinkedTreeMap> linkedTreeMaps){
 

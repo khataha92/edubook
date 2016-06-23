@@ -1,4 +1,4 @@
-package com.edubook.classes;
+package CustomComponent;
 
 import android.content.Context;
 import android.util.AttributeSet;

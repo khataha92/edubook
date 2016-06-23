@@ -1,4 +1,4 @@
-package com.edubook.classes;
+package CustomComponent;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.edubook.edubook.R;
+import edubook.edubook.R;
 
 /**
  * Created by lap on 2/19/16.
