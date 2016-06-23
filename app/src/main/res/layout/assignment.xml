@@ -28,7 +28,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
-                android:onClick="visitProfile"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content"
                 android:id="@+id/linearLayout4"
@@ -214,7 +213,6 @@
         <CustomComponent.ToggleLike
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:onClick="likeUnlikePost"
             android:orientation="horizontal"
             android:id="@+id/toggleLike"
             android:gravity="center_vertical"
