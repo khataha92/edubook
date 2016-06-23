@@ -39,6 +39,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import DataModels.Recipient;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import edubook.edubook.R;
 import Fragments.BaseFragment;
@@ -227,6 +228,33 @@ public class UIUtil {
 
         menuDlg.show();
 
+    }
+
+    public static void addTagToLayout(final LinearLayout tagsLayout, final Recipient recipient, final AbstractCallback callback){
+
+        final View view = LayoutInflater.from(Application.getContext()).inflate(R.layout.tag_layout,null,false);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        params.setMargins(UIUtil.dpToPx(5),0,0,UIUtil.dpToPx(5));
+
+        view.setLayoutParams(params);
+
+        ((TextView)view.findViewById(R.id.name)).setText(recipient.getName());
+
+        view.findViewById(R.id.x).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                tagsLayout.removeView(view);
+
+                callback.onResult(true,recipient);
+
+            }
+        });
+
+        tagsLayout.addView(view);
     }
 
     public static View.OnClickListener getOnClickListener(View v) {

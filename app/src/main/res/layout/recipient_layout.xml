@@ -5,9 +5,9 @@
     android:paddingRight="20dp"
     android:layout_gravity="center_vertical"
     style="?android:attr/spinnerItemStyle"
-    android:paddingTop="10dp"
+    android:paddingTop="5dp"
     android:paddingLeft="5dp"
-    android:paddingBottom="20dp"
+    android:paddingBottom="5dp"
     android:layout_height="wrap_content">
 
     <ImageView

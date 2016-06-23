@@ -224,5 +224,15 @@
 
     <string name="all_groups">All Groups</string>
 
+    <string name="users">Users</string>
+
+    <string name="groups">Groups</string>
+
+    <string name="only_me">Only me</string>
+
+    <string name="students">Students</string>
+
+    <string name="nill"></string>
+
 
 </resources>

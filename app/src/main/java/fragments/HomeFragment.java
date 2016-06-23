@@ -51,6 +51,14 @@ public class HomeFragment extends BaseFragment {
     }
 
 
+    public void updatePostList(){
+
+        List<PostFactory> posts = SessionManager.getInstance().getPosts();
+
+        setListAdapter(posts);
+
+    }
+
     @Override
     public void onResume() {
 
@@ -59,6 +67,8 @@ public class HomeFragment extends BaseFragment {
         ((ImageView)getActivity().findViewById(R.id.home)).setImageResource(R.drawable.home);
 
         ((Home)getActivity()).replaceIcon();
+
+        getActivity().findViewById(R.id.bottom_tabs).setVisibility(View.VISIBLE);
 
     }
     @Override
@@ -222,13 +232,7 @@ public class HomeFragment extends BaseFragment {
 
         SessionManager.getInstance().setPosts(posts);
 
-        adapter = new PostListAdapter();
-
-        adapter.setPostFactories(posts);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        recyclerView.setAdapter(adapter);
+        setListAdapter(posts);
 
         recyclerView.post(new Runnable() {
 
@@ -240,6 +244,18 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
+
+    }
+
+    private void setListAdapter(List<PostFactory> posts){
+
+        adapter = new PostListAdapter();
+
+        adapter.setPostFactories(posts);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setAdapter(adapter);
 
     }
 

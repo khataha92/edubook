@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import Enums.RecieverType;
+import edubook.edubook.R;
 
 /**
  * Created by lap on 6/9/16.
@@ -29,7 +30,7 @@ public class Constants {
 
 
         return recieverTypes;
-        
+
 
     }
 }
