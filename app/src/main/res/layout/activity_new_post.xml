@@ -13,6 +13,34 @@
         android:layout_above="@+id/button4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/up_right_only"
+            android:orientation="vertical"
+            android:onClick="newNote"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:onClick="newNote"
+                android:src="@drawable/event"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:onClick="newNote"
+                android:background="#ffffff"
+                android:layout_height="wrap_content"
+                android:text="@string/Note"
+                android:layout_margin="1dp"
+                />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:paddingTop="10dp"
@@ -30,69 +58,44 @@
                 android:layout_height="30dp"
                 android:src="@drawable/assignment"
                 />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="newAssignment"
-            android:textSize="13sp"
-            android:layout_margin="1dp"
-            android:background="#ffffff"
-            android:text="@string/Assignment"
-            />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="newAssignment"
+                android:textSize="13sp"
+                android:layout_margin="1dp"
+                android:background="#ffffff"
+                android:text="@string/Assignment"
+                />
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:paddingTop="10dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/up_right_only"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/up_right_only"
 
-        android:onClick="newEvent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_weight="1"
-        >
-        <ImageView
-            android:layout_marginTop="10dp"
             android:onClick="newEvent"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/event"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="newEvent"
-            android:background="#ffffff"
-            android:layout_margin="1dp"
-            android:text="@string/Event"
-            />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:onClick="newEvent"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/event"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="newEvent"
+                android:background="#ffffff"
+                android:layout_margin="1dp"
+                android:text="@string/Event"
+                />
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:paddingTop="10dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/up_right_only"
-        android:orientation="vertical"
-        android:onClick="newNote"
-        android:gravity="center"
-        android:layout_weight="1"
-        >
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:onClick="newNote"
-            android:src="@drawable/event"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:onClick="newNote"
-            android:background="#ffffff"
-            android:layout_height="wrap_content"
-            android:text="@string/Note"
-            android:layout_margin="1dp"
-            />
-        </LinearLayout>
+
     </LinearLayout>
 
     <Button

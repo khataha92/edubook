@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/new_note_bg"
+    tools:context="com.edubook.newpost.NewNote">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="left|top"
+        android:background="@color/background"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:onClick="closeActivity"
+            android:src="@drawable/x" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/Assignment"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="post"
+            android:text="@string/Post"
+            android:padding="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout5"
+        android:layout_alignStart="@+id/relativeLayout5"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/to"
+        android:textColor="#58595B"
+        android:textSize="18sp" />
+<Spinner
+    android:layout_width="55dp"
+    android:gravity="center_vertical"
+    android:id="@+id/recipient"
+    android:dropDownWidth="200dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="-5dp"
+    android:layout_toRightOf="@+id/textView9"
+    android:layout_alignTop="@+id/recipient_input"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/linearLayout12" />
+
+
+    <com.edubook.classes.BoundedLinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_above="@+id/title"
+        android:layout_toEndOf="@+id/recipient"
+        android:fadeScrollbars="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_toRightOf="@+id/textView9"
+        android:background="@null"
+        android:foregroundGravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:bounded_width="200dp"
+        android:layout_alignTop="@+id/recipient_input">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:overScrollMode="never"
+            android:orientation="horizontal"
+            >
+<com.edubook.classes.RightAlignedHorizontalScrollView
+    android:id="@+id/tags_view"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="50dp"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:fillViewport="false">
+    <LinearLayout
+        android:id="@+id/tags_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:orientation="horizontal">
+    </LinearLayout>
+</com.edubook.classes.RightAlignedHorizontalScrollView>
+        </LinearLayout>
+    </com.edubook.classes.BoundedLinearLayout>
+    <AutoCompleteTextView
+        android:id="@+id/recipient_input"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_toEndOf="@+id/linearLayout12"
+        android:layout_toRightOf="@+id/linearLayout12"
+
+        android:background="@color/new_note_bg"
+        android:lines="1"
+        android:minWidth="100dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/recipient_input"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/recipient_input"
+        android:layout_below="@+id/recipient_input"
+        android:background="@drawable/note_bg"
+        android:ems="10"
+        android:hint="@string/AssignmentTitle"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:id="@+id/due_date"
+            android:onClick="showDueDate"
+            android:scaleType="fitCenter"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/calendar_grey"
+            />
+        <ImageButton
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:id="@+id/library"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="getFileFromLibrary"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/folder_grey"
+            />
+        <ImageButton
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:onClick="showOptions"
+            android:layout_width="30dp"
+            android:id="@+id/options"
+            android:layout_height="30dp"
+            android:src="@drawable/options_grey"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/title"
+        android:background="@drawable/note_bg"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#ffffff"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/AssignmentDesc"
+            android:inputType="textMultiLine"
+            android:minLines="10"
+            android:padding="10dp" />
+
+    </RelativeLayout>
+</RelativeLayout>
