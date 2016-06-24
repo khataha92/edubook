@@ -30,12 +30,7 @@ import UserUtils.UIUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 
-/**
- * Created by mac on 6/20/16.
- */
 public class PostFragment extends BaseFragment {
-
-    View rootView;
 
     public Spinner recipient;
 
@@ -205,7 +200,7 @@ public class PostFragment extends BaseFragment {
 
     public void prepareFragment(){
 
-        getActivity().findViewById(R.id.bottom_tabs).setVisibility(View.GONE);
+        UIUtil.hideTabsView();
 
         recipient = (Spinner)rootView.findViewById(R.id.recipient);
 

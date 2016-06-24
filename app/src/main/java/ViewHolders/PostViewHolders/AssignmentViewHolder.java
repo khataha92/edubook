@@ -11,6 +11,7 @@ import DataModels.Post;
 import DataModels.PostDataContainer;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
+import UserUtils.UIUtil;
 import edubook.edubook.R;
 
 /**
@@ -56,7 +57,7 @@ public class AssignmentViewHolder extends GenericPostViewHolder {
 
             ((TextView) itemView.findViewById(R.id.attachment_type)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
 
-            int attachmentResourceId = getTypeResourceId(type);
+            int attachmentResourceId = UIUtil.getTypeResourceId(type);
 
             ((ImageView) itemView.findViewById(R.id.attachment_icon)).setImageResource(attachmentResourceId);
 
@@ -72,32 +73,5 @@ public class AssignmentViewHolder extends GenericPostViewHolder {
 
 
 
-    private int getTypeResourceId(String type){
 
-        int attachmentResourceId = R.drawable.folder;
-
-        Map<String,Integer> icons = new HashMap<>();
-
-        icons.put("doc",R.drawable.docx);
-
-        icons.put("docx",R.drawable.docx);
-
-        icons.put("pdf",R.drawable.pdf);
-
-        icons.put("xls",R.drawable.xlsx);
-
-        icons.put("xlsx",R.drawable.xlsx);
-
-        icons.put("ppt",R.drawable.pptx);
-
-        icons.put("pptx",R.drawable.pptx);
-
-        if(icons.containsKey(type)){
-
-            attachmentResourceId = icons.get(type);
-        }
-
-        return attachmentResourceId;
-
-    }
 }

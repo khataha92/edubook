@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/new_note_bg"
     android:layout_height="match_parent"
+    android:clickable="true"
     >
 
     <RelativeLayout

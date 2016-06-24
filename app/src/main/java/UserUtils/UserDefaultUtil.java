@@ -120,6 +120,18 @@ public class UserDefaultUtil {
         return Application.getContext().getString(stringResourceId);
     }
 
+    public static String getStringWithMaxLength(String string, int length){
+
+        if(string.length() < length){
+
+            return string;
+
+        }
+
+        return string.substring(0,length) + " ...";
+
+    }
+
     public static List<Group> convertLinkedTreeMap(List<LinkedTreeMap> linkedTreeMaps){
 
         List<Group> groups = new ArrayList<>();

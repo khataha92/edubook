@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
 import Fragments.BaseFragment;
+import Fragments.LibraryFragment;
+import Fragments.NewAssignmentFragment;
 import Fragments.NewNoteFragment;
 import Interfaces.AbstractCallback;
 import UserUtils.Application;
@@ -38,6 +40,24 @@ public class FragmentManager {
         }
 
         currentFragments.remove(index);
+    }
+
+    public static void showNewAssignmentFragment(){
+
+        NewAssignmentFragment fragment = new NewAssignmentFragment();
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showLibraryFragment(AbstractCallback callback){
+
+        LibraryFragment fragment = new LibraryFragment();
+
+        fragment.setOnFileSelectListener(callback);
+
+        addFragment(fragment,true);
+
     }
 
     public static void showNewNoteFragment(){

@@ -245,7 +245,7 @@ public class WebserviceRequestUtil {
 
         webService.addParams("assignment[description]",description);
 
-        webService.addParams("assignment[dudate]",dudate);
+        webService.addParams("assignment[duedate]",dudate);
 
         webService.addParams("assignment[lock]",""+(lockAfterDueDate?1:0));
 

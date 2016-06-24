@@ -11,6 +11,7 @@ import Managers.FragmentManager;
 import UserUtils.Application;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
+import UserUtils.UIUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 import Managers.SessionManager;
@@ -41,9 +42,7 @@ public class NewNoteViewHolder extends GenericViewHolder {
 
         String imageUrl = SessionManager.getInstance().getCurrentUser().getThumb();
 
-        Drawable drawable = Application.getContext().getResources().getDrawable(R.drawable.male_profile_image);
-
-        Picasso.with(imageView.getContext()).load(imageUrl).error(drawable).into(imageView);
+        UIUtil.loadImageFromUrl(imageView,imageUrl);
 
         ((TextView) itemView.findViewById(R.id.note_content)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
 
