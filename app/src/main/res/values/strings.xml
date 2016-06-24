@@ -234,5 +234,13 @@
 
     <string name="nill"></string>
 
+    <string name="old_password_equals_new">old password is the same as new password</string>
+
+    <string name="new_password_not_equal_confirmation">new password doesn\'t match the new password confirmation</string>
+
+    <string name="password_length">password length must be more that 6 letters</string>
+
+    <string name="wrong_current_password">current password is wrong!</string>
+
 
 </resources>

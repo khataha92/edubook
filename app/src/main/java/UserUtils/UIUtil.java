@@ -35,6 +35,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -48,6 +49,10 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import DataModels.Recipient;
+import Enums.ErrorType;
+import Enums.Lang;
+import Enums.ResponseCode;
+import Interfaces.OnWebserviceFinishListener;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -376,6 +381,18 @@ public class UIUtil {
             public void onClick(View view) {
 
                 Managers.FragmentManager.showNewAssignmentFragment();
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        newPostDialog.findViewById(R.id.newEvent).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Managers.FragmentManager.showNewEventFragment();
 
                 newPostDialog.dismiss();
 
@@ -735,6 +752,205 @@ public class UIUtil {
             window.setStatusBarColor(activity.getResources().getColor(R.color.background_dark));
 
         }
+    }
+
+    public static void showEditEmailDialog(final AbstractCallback callback){
+
+        final Dialog dialog = new Dialog(Application.getContext(),R.style.AppTheme_NoActionBar);
+
+        dialog.setContentView(R.layout.change_email);
+
+        View.OnClickListener dismiss = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+            }
+        };
+
+        dialog.findViewById(R.id.close).setOnClickListener(dismiss);
+
+        dialog.findViewById(R.id.cancel).setOnClickListener(dismiss);
+
+        dialog.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                TextView emailAddress = (TextView)dialog.findViewById(R.id.currentEmail);
+
+                final String email = emailAddress.getText().toString();
+
+                showSweetLoadingView();
+
+                WebserviceRequestUtil.changeUserEmail(email, new OnWebserviceFinishListener() {
+
+                    @Override
+                    public void onFinish(WebService webService) {
+
+                        hideSweetLoadingView();
+
+                        if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
+
+                            callback.onResult(true,email);
+
+                        }
+
+                        else{
+
+                            showErrorDialog();
+
+                        }
+
+                    }
+                });
+
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    public static void showEditPassDialog(final AbstractCallback callback){
+
+        final Dialog dialog = new Dialog(Application.getContext(),R.style.AppTheme_NoActionBar);
+
+        dialog.setContentView(R.layout.change_pass);
+
+        View.OnClickListener dismiss = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+            }
+        };
+
+        dialog.findViewById(R.id.close).setOnClickListener(dismiss);
+
+        dialog.findViewById(R.id.cancel).setOnClickListener(dismiss);
+
+        dialog.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                String currentPass = ((TextView) dialog.findViewById(R.id.current_password)).getText().toString();
+
+                final String newPassword = ((TextView) dialog.findViewById(R.id.new_password)).getText().toString();
+
+                String confirmPassword = ((TextView) dialog.findViewById(R.id.confirm_password)).getText().toString();
+
+                ErrorType validation = UserDefaultUtil.validatePassword(currentPass, newPassword,confirmPassword);
+
+                if(validation == ErrorType.VALID){
+
+                    showSweetLoadingView();
+
+                    WebserviceRequestUtil.changeUserPassword(currentPass, newPassword, new OnWebserviceFinishListener() {
+
+                        @Override
+                        public void onFinish(WebService webService) {
+
+                            hideSweetLoadingView();
+
+                            if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
+
+                                if(callback != null) {
+
+                                    callback.onResult(true, newPassword);
+
+                                }
+
+                                dialog.dismiss();
+
+                            }
+                            else{
+
+                                if(callback != null) {
+
+                                    callback.onResult(false, newPassword);
+
+                                }
+
+                            }
+
+                        }
+                    });
+
+                }
+                else{
+
+                    showErrorDialog(validation.getValue());
+
+                }
+
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    public static void showLanguageDialog(final AbstractCallback callback){
+
+        final Dialog dialog = new Dialog(Application.getContext(),R.style.AppTheme_NoActionBar);
+
+        dialog.setContentView(R.layout.change_language);
+
+        final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
+
+        dialog.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Lang lang = null;
+
+                int radioButtonID = radioGroup.getCheckedRadioButtonId();
+
+                if(radioButtonID == R.id.ar){
+
+                    lang = Lang.Arabic;
+                }
+                else{
+
+                    lang = Lang.English;
+                }
+
+                callback.onResult(true,lang);
+
+                dialog.dismiss();
+
+            }
+        });
+
+        dialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+            }
+        });
+
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+
+
+
+            }
+        });
+
+        dialog.show();
+
     }
 
     public static void showLoadingView( View view ){

@@ -9,9 +9,11 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
+import Fragments.AccountSettingsFragment;
 import Fragments.BaseFragment;
 import Fragments.LibraryFragment;
 import Fragments.NewAssignmentFragment;
+import Fragments.NewEventFragment;
 import Fragments.NewNoteFragment;
 import Interfaces.AbstractCallback;
 import UserUtils.Application;
@@ -309,6 +311,14 @@ public class FragmentManager {
 
     }
 
+    public static void showNewEventFragment(){
+
+        NewEventFragment fragment = new NewEventFragment();
+
+        addFragment(fragment,true);
+
+    }
+
 
     private static void addFragment(final BaseFragment newFragment, boolean enableBack) {
 
@@ -329,7 +339,7 @@ public class FragmentManager {
 
             FragmentTransaction tr = activity.getSupportFragmentManager().beginTransaction();
 
-            tr.setCustomAnimations(0, 0, 0, 0);
+            tr.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right, R.anim.exit_to_right);
 
             tr.add(R.id.content_frame, newFragment, newFragment.getCustomTag());
 
@@ -348,6 +358,14 @@ public class FragmentManager {
             }
 
         }
+
+    }
+
+    public static void showAccountSettingsFragment(){
+
+        AccountSettingsFragment fragment = new AccountSettingsFragment();
+
+        addFragment(fragment,true);
 
     }
 

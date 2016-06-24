@@ -15,6 +15,7 @@ import DataModels.User;
 import UserUtils.Application;
 import UserUtils.ImageLoader;
 import Interfaces.PostFactory;
+import edubook.edubook.R;
 
 public class SessionManager {
 
@@ -45,6 +46,12 @@ public class SessionManager {
     public void setPosts(List<PostFactory> posts) {
 
         this.posts = posts;
+
+    }
+
+    public String getUserLanguage(){
+
+        return getString("lang").length() > 0 ? getString("lang"):Application.getContext().getString(R.string.English);
 
     }
 

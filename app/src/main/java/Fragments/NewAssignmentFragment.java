@@ -18,6 +18,7 @@ import DataModels.Post;
 import DataModels.RecieversModel;
 import Enums.ResponseCode;
 import Interfaces.AbstractCallback;
+import Interfaces.OnDateSelectedListener;
 import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
 import Managers.SessionManager;
@@ -86,17 +87,12 @@ public class NewAssignmentFragment extends PostFragment {
             @Override
             public void onClick(final View view) {
 
-                UIUtil.showDatePickerDialog(new DatePickerDialog.OnDateSetListener() {
+                UIUtil.showDatePickerDialog(new OnDateSelectedListener() {
 
-                    public void onDateSet(DatePicker view1, int selectedYear, int selectedMonth, int selectedDay) {
+                    @Override
+                    public void onDateSelected(String selectedDate) {
 
-                        String year = String.valueOf(selectedYear);
-
-                        String month = String.valueOf(selectedMonth + 1);
-
-                        String day = String.valueOf(selectedDay);
-
-                        dueDate = year+"-"+month+"-"+day;
+                        dueDate = selectedDate;
 
                         ((ImageView)view).setImageResource(R.drawable.calendar);
 
