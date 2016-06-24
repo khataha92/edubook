@@ -223,7 +223,6 @@
         <CustomComponent.ToggleLike
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:onClick="likeUnlikePost"
             android:orientation="horizontal"
             android:paddingLeft="20dp"
             android:gravity="center_vertical"

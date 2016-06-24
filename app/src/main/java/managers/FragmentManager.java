@@ -5,10 +5,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
 import Fragments.BaseFragment;
+import Fragments.LibraryFragment;
+import Fragments.NewAssignmentFragment;
 import Fragments.NewNoteFragment;
 import Interfaces.AbstractCallback;
 import UserUtils.Application;
@@ -39,11 +42,29 @@ public class FragmentManager {
         currentFragments.remove(index);
     }
 
+    public static void showNewAssignmentFragment(){
+
+        NewAssignmentFragment fragment = new NewAssignmentFragment();
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showLibraryFragment(AbstractCallback callback){
+
+        LibraryFragment fragment = new LibraryFragment();
+
+        fragment.setOnFileSelectListener(callback);
+
+        addFragment(fragment,true);
+
+    }
+
     public static void showNewNoteFragment(){
 
         NewNoteFragment fragment = new NewNoteFragment();
 
-        replaceFragment(fragment,true);
+        addFragment(fragment,true);
 
     }
 
@@ -73,42 +94,66 @@ public class FragmentManager {
 
     public static void showMoreFragment(){
 
-        BaseFragment currentFragment = getCurrentVisibleFragment();
+        if(getFragmentPosition(MoreFragment.class) != -1){
 
-        if(currentFragment != null && !(currentFragment instanceof HomeFragment)){
+            android.support.v4.app.FragmentManager manager = ((Home)Application.getCurrentActivity()).getSupportFragmentManager();
 
-            MoreFragment moreFragment = new MoreFragment();
+            FragmentTransaction trans = manager.beginTransaction();
 
-            replaceFragment(moreFragment,true);
+            trans.remove(currentFragments.get(getFragmentPosition(MoreFragment.class)));
 
-            return;
+            trans.commit();
+
+            manager.popBackStack();
+
+            currentFragments.remove(getFragmentPosition(MoreFragment.class));
 
         }
 
+
         MoreFragment moreFragment = new MoreFragment();
 
-        replaceFragment(moreFragment,true);
+        addFragment(moreFragment,true);
 
     }
 
     public static void showMessagesFragment(){
 
-        BaseFragment currentFragment = getCurrentVisibleFragment();
+        if(getFragmentPosition(Messages.class) != -1){
 
-        if(currentFragment != null && !(currentFragment instanceof HomeFragment)){
+            android.support.v4.app.FragmentManager manager = ((Home)Application.getCurrentActivity()).getSupportFragmentManager();
 
-            Messages messages = new Messages();
+            FragmentTransaction trans = manager.beginTransaction();
 
-            replaceFragment(messages,true);
+            trans.remove(currentFragments.get(getFragmentPosition(Messages.class)));
 
-            return;
+            trans.commit();
+
+            manager.popBackStack();
+
+            currentFragments.remove(getFragmentPosition(Messages.class));
 
         }
 
         Messages messages = new Messages();
 
-        replaceFragment(messages,true);
+        addFragment(messages,true);
 
+    }
+
+    private static int getFragmentPosition(Class clazz){
+
+        for(int i = 0 ; i < currentFragments.size() ; i++){
+
+            if(currentFragments.get(i).getClass() == clazz){
+
+                return i;
+
+            }
+
+        }
+
+        return -1;
     }
 
     public static void showHomeFragment(){
@@ -125,7 +170,7 @@ public class FragmentManager {
 
         HomeFragment fragment = new HomeFragment();
 
-        replaceFragment(fragment,true);
+        addFragment(fragment,true);
     }
 
     public static BaseFragment getBeforeCurrentVisibleFragment() {
@@ -158,7 +203,7 @@ public class FragmentManager {
 
         int index = currentFragments.size() - 1;
 
-        if (index < 1) {
+        if (index < 1 || currentFragments.get(index) instanceof HomeFragment || getCurrentVisibleFragment().getClass() != currentFragments.get(index).getClass()) {
 
             Application.getCurrentActivity().finish();
 
@@ -168,6 +213,8 @@ public class FragmentManager {
 
 
         currentFragments.remove(index);
+
+        currentFragments.get(currentFragments.size()-1).onResume();
 
         UIUtil.hideSoftKeyboard();
 
@@ -230,6 +277,40 @@ public class FragmentManager {
 
     }
     private static void replaceFragment(final BaseFragment newFragment, boolean enableBack) {
+
+        if (Application.getCurrentActivity() instanceof Home) {
+
+            // Hide soft keyboard if it is visible
+            InputMethodManager inputManager = (InputMethodManager) Application.getCurrentActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            Home activity = (Home) Application.getCurrentActivity();
+
+            View v = activity.getCurrentFocus();
+
+            if (v != null) {
+
+                inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+            }
+
+            FragmentTransaction tr = activity.getSupportFragmentManager().beginTransaction();
+
+            tr.replace(R.id.content_frame, newFragment);
+
+            tr.addToBackStack(newFragment.getCustomTag());
+
+            if (!activity.isFinishing()) {
+
+                tr.commitAllowingStateLoss();
+
+            }
+
+        }
+
+    }
+
+
+    private static void addFragment(final BaseFragment newFragment, boolean enableBack) {
 
         if (Application.getCurrentActivity() instanceof Home) {
 

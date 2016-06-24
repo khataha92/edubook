@@ -1,12 +1,17 @@
 package Fragments;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -40,8 +45,6 @@ public class HomeFragment extends BaseFragment {
 
     PostListAdapter adapter;
 
-    private View rootView;
-
     RecyclerView recyclerView ;
 
     private String TAG = getClass().getSimpleName();
@@ -50,15 +53,28 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+    public void updatePostList(){
+
+        List<PostFactory> posts = SessionManager.getInstance().getPosts();
+
+        setListAdapter(posts);
+
+    }
 
     @Override
     public void onResume() {
 
         super.onResume();
 
-        ((ImageView)getActivity().findViewById(R.id.home)).setImageResource(R.drawable.home);
+        if(getActivity() != null) {
 
-        ((Home)getActivity()).replaceIcon();
+            ((ImageView) getActivity().findViewById(R.id.home)).setImageResource(R.drawable.home);
+
+            ((Home) getActivity()).replaceIcon();
+
+            UIUtil.showTabsView();
+
+        }
 
     }
     @Override
@@ -85,6 +101,16 @@ public class HomeFragment extends BaseFragment {
             public void onClick(View v) {
 
                 FragmentManager.showMessagesFragment();
+
+            }
+        });
+
+        rootView.findViewById(R.id.addPost).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                UIUtil.showNewPostDialog();
 
             }
         });
@@ -222,13 +248,7 @@ public class HomeFragment extends BaseFragment {
 
         SessionManager.getInstance().setPosts(posts);
 
-        adapter = new PostListAdapter();
-
-        adapter.setPostFactories(posts);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        recyclerView.setAdapter(adapter);
+        setListAdapter(posts);
 
         recyclerView.post(new Runnable() {
 
@@ -240,6 +260,26 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
+
+    }
+
+    private void setListAdapter(List<PostFactory> posts){
+
+        adapter = new PostListAdapter();
+
+        for(int i = 0 ; i <posts.size() ; i ++){
+
+            Post post = (Post)posts.get(i);
+
+            post.setRecyclerView(recyclerView);
+
+        }
+
+        adapter.setPostFactories(posts);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setAdapter(adapter);
 
     }
 

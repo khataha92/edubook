@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,6 +13,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -35,11 +37,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 
+import DataModels.Recipient;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 import Fragments.BaseFragment;
 import Interfaces.AbstractCallback;
@@ -69,6 +79,40 @@ public class UIUtil {
 
     }
 
+    public static void hideTabsView(){
+
+        Application.getCurrentActivity().findViewById(R.id.bottom_tabs).setVisibility(View.GONE);
+
+    }
+
+    public static void showDatePickerDialog(DatePickerDialog.OnDateSetListener datePickerListener){
+
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+
+        DatePickerDialog datePicker = new DatePickerDialog(Application.getCurrentActivity(),
+
+                R.style.AppTheme_PopupOverlay,
+
+                datePickerListener,
+
+                cal.get(Calendar.YEAR),
+
+                cal.get(Calendar.MONTH),
+
+                cal.get(Calendar.DAY_OF_MONTH));
+
+        datePicker.setCancelable(false);
+
+        datePicker.show();
+
+    }
+
+    public static void showTabsView(){
+
+        Application.getCurrentActivity().findViewById(R.id.bottom_tabs).setVisibility(View.VISIBLE);
+
+    }
+
     public static void hideInternetConnectionErrorDialog(){
 
         if(noInternetConnectionDialog == null || !noInternetConnectionDialog.isShowing()){
@@ -80,6 +124,55 @@ public class UIUtil {
         isInternetDialogShowing = false;
 
         noInternetConnectionDialog.dismiss();
+
+    }
+
+    public static Drawable getDefaultProfileImage(){
+
+        Drawable drawable = Application.getContext().getResources().getDrawable(R.drawable.male_profile_image);
+
+        return drawable;
+
+    }
+
+    public static void loadImageFromUrl(CircleImageView imageView, String thumb){
+
+        Picasso.with(Application.getContext()).load(thumb).error(getDefaultProfileImage()).into(imageView);
+
+    }
+
+    public static int getTypeResourceId(String type){
+
+        int attachmentResourceId = R.drawable.doc;
+
+        Map<String,Integer> icons = new HashMap<>();
+
+        icons.put("doc",R.drawable.docx);
+
+        icons.put("docx",R.drawable.docx);
+
+        icons.put("pdf",R.drawable.pdf);
+
+        icons.put("xls",R.drawable.xlsx);
+
+        icons.put("xlsx",R.drawable.xlsx);
+
+        icons.put("ppt",R.drawable.pptx);
+
+        icons.put("pptx",R.drawable.pptx);
+
+        icons.put("png",R.drawable.image_icon);
+
+        icons.put("jpg",R.drawable.image_icon);
+
+        icons.put("jpeg",R.drawable.image_icon);
+
+        if(icons.containsKey(type)){
+
+            attachmentResourceId = icons.get(type);
+        }
+
+        return attachmentResourceId;
 
     }
 
@@ -226,6 +319,94 @@ public class UIUtil {
         menuDlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#99ffffff")));
 
         menuDlg.show();
+
+    }
+
+    public static void addTagToLayout(final LinearLayout tagsLayout, final Recipient recipient, final AbstractCallback callback){
+
+        final View view = LayoutInflater.from(Application.getContext()).inflate(R.layout.tag_layout,null,false);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        params.setMargins(UIUtil.dpToPx(5),0,0,UIUtil.dpToPx(5));
+
+        view.setLayoutParams(params);
+
+        ((TextView)view.findViewById(R.id.name)).setText(recipient.getName());
+
+        view.findViewById(R.id.x).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                tagsLayout.removeView(view);
+
+                callback.onResult(true,recipient);
+
+            }
+        });
+
+        tagsLayout.addView(view);
+    }
+
+
+    public static void showNewPostDialog(){
+
+        final Dialog newPostDialog = new Dialog(Application.getCurrentActivity());
+
+        newPostDialog.requestWindowFeature(Window.FEATURE_NO_TITLE|Window.FEATURE_SWIPE_TO_DISMISS);
+
+        newPostDialog.setContentView(R.layout.dialog_new_post);
+
+        newPostDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        newPostDialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Managers.FragmentManager.showNewAssignmentFragment();
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        newPostDialog.findViewById(R.id.new_note).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Managers.FragmentManager.showNewNoteFragment();
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+
+        Window window = newPostDialog.getWindow();
+
+        lp.copyFrom(window.getAttributes());
+
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        window.setAttributes(lp);
+
+        newPostDialog.show();
 
     }
 

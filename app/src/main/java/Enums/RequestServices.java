@@ -23,7 +23,7 @@ public enum RequestServices {
     UNLIKE_POST("post/%s/like"),
     VOTE("post/%s/vote"),
     ADD_COMMENT("post/%s/comment"),
-    GET_LIBRARY("users/library"),
+    GET_LIBRARY("user/library"),
     LIKE_POST("post/%s/like"),
     GET_USER_INFO("authenticate/user"),
     GET_USER_GROUPS("group"),

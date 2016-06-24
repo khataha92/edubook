@@ -16,6 +16,8 @@ public abstract class BaseFragment extends Fragment {
 
     private static final String TAG = BaseFragment.class.getSimpleName();
 
+    public View rootView;
+
     private AbstractCallback permissionsCallback;
 
     private String customTag = "";
@@ -24,6 +26,13 @@ public abstract class BaseFragment extends Fragment {
      *
      * @return return true to pop this fragment
      */
+
+    @Override
+    public View getView(){
+
+        return rootView;
+    }
+
     public boolean onBackPressed() {
 
 

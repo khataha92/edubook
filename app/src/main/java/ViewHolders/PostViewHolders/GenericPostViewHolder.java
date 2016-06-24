@@ -10,6 +10,7 @@ import UserUtils.Application;
 import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
+import UserUtils.UIUtil;
 import ViewHolders.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -51,9 +52,7 @@ public class GenericPostViewHolder extends GenericViewHolder {
 
         CircleImageView imageView = (CircleImageView) itemView.findViewById(R.id.profile_image);
 
-        Drawable defaultImage = itemView.getContext().getResources().getDrawable(R.drawable.male_profile_image);
-
-        Picasso.with(Application.getContext()).load(post.getCreator().getThumb()).error(defaultImage).into(imageView);
+        UIUtil.loadImageFromUrl(imageView,post.getCreator().getThumb());
 
         final ToggleLike toggleLike = (ToggleLike) itemView.findViewById(R.id.toggleLike);
 

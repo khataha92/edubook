@@ -130,7 +130,11 @@ public class CallBackUtils {
 
                 if(position>=0) {
 
+                    SessionManager.getInstance().getPosts().remove(position-1);
+
                     ((PostListAdapter)post.getRecyclerView().getAdapter()).notifyItemRemoved(position);
+
+                    // FIXME: 6/23/16 System cannot delete two sequence posts
 
                 }
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DataModels.Group;
+import DataModels.LibraryFile;
 import DataModels.Recipient;
 import DataModels.User;
 import UserUtils.Application;
@@ -24,6 +25,20 @@ public class SessionManager {
     List<Recipient> recipients = new ArrayList();
 
     List<Group> userGroups ;
+
+    List<LibraryFile> libraryFiles = new ArrayList<>();
+
+    public List<LibraryFile> getLibraryFiles() {
+
+        return libraryFiles;
+
+    }
+
+    public void setLibraryFiles(List<LibraryFile> libraryFiles) {
+
+        this.libraryFiles = libraryFiles;
+
+    }
 
     public List<PostFactory> posts;
 

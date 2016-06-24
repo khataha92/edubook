@@ -1,36 +1,42 @@
 package Fragments;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
-import DataModels.Note;
+import DataModels.LibraryFile;
 import DataModels.Post;
 import DataModels.RecieversModel;
 import Enums.ResponseCode;
+import Interfaces.AbstractCallback;
 import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
 import Managers.SessionManager;
 import UserUtils.Application;
-import UserUtils.Constants;
 import UserUtils.UIUtil;
-import UserUtils.UserDefaultUtil;
 import UserUtils.WebService;
 import UserUtils.WebserviceRequestUtil;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
-public class NewNoteFragment extends PostFragment {
+
+public class NewAssignmentFragment extends PostFragment {
 
 
-    public NewNoteFragment() {
+    String dueDate = "";
+
+    boolean lockAfterDueDate = true;
+
+    String fileId = "";
+
+    public NewAssignmentFragment() {
 
 
     }
@@ -47,7 +53,58 @@ public class NewNoteFragment extends PostFragment {
 
         super.prepareFragment();
 
-        loadImage();
+        rootView.findViewById(R.id.library).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View view) {
+
+                AbstractCallback callback = new AbstractCallback() {
+
+                    @Override
+                    public void onResult(boolean isSuccess, Object result) {
+
+                        if(isSuccess){
+
+                            fileId = ((LibraryFile)result).getId();
+
+                            FragmentManager.popCurrentVisibleFragment();
+
+                            ((ImageView)view).setImageResource(R.drawable.library);
+
+                        }
+
+                    }
+                };
+
+                FragmentManager.showLibraryFragment(callback);
+
+            }
+        });
+
+        rootView.findViewById(R.id.due_date).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View view) {
+
+                UIUtil.showDatePickerDialog(new DatePickerDialog.OnDateSetListener() {
+
+                    public void onDateSet(DatePicker view1, int selectedYear, int selectedMonth, int selectedDay) {
+
+                        String year = String.valueOf(selectedYear);
+
+                        String month = String.valueOf(selectedMonth + 1);
+
+                        String day = String.valueOf(selectedDay);
+
+                        dueDate = year+"-"+month+"-"+day;
+
+                        ((ImageView)view).setImageResource(R.drawable.calendar);
+
+                    }
+                });
+
+            }
+        });
 
     }
 
@@ -55,6 +112,8 @@ public class NewNoteFragment extends PostFragment {
     public void addPost() {
 
         String description = ((TextView)rootView.findViewById(R.id.description)).getText().toString();
+
+        String title = ((TextView)rootView.findViewById(R.id.title)).getText().toString();
 
         RecieversModel model = new RecieversModel();
 
@@ -64,7 +123,7 @@ public class NewNoteFragment extends PostFragment {
 
         UIUtil.showSweetLoadingView();
 
-        WebserviceRequestUtil.addNote(null, description, model, new OnWebserviceFinishListener() {
+        WebserviceRequestUtil.addAssignment(title, description,dueDate,lockAfterDueDate, model, new OnWebserviceFinishListener() {
 
             @Override
             public void onFinish(WebService webService) {
@@ -73,9 +132,9 @@ public class NewNoteFragment extends PostFragment {
 
                 if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
 
-                    Post note = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
+                    Post assignment = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
 
-                    SessionManager.getInstance().getPosts().add(0,note);
+                    SessionManager.getInstance().getPosts().add(0,assignment);
 
                     ((HomeFragment)FragmentManager.getBeforeCurrentVisibleFragment()).updatePostList();
 
@@ -116,7 +175,7 @@ public class NewNoteFragment extends PostFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return rootView = inflater.inflate(R.layout.fragment_new_note, null);
+        return rootView = inflater.inflate(R.layout.fragment_new_assignment, null);
     }
 
     @Override

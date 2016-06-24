@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import DataModels.Post;
 import DataModels.PostDataContainer;
 import Enums.HolderType;
 import ViewHolders.GenericViewHolder;
