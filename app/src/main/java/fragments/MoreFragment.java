@@ -33,6 +33,16 @@ public class MoreFragment extends BaseFragment {
 
     private void prepareFragment(){
 
+        rootView.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.showAccountSettingsFragment();
+
+            }
+        });
+
         groupList = (RecyclerView) rootView.findViewById(R.id.groups);
 
         groupList.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));

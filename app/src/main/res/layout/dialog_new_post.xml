@@ -27,12 +27,14 @@
             <ImageView
                 android:layout_marginTop="10dp"
                 android:layout_width="30dp"
+                android:clickable="false"
                 android:layout_height="30dp"
                 android:src="@drawable/event"
                 />
             <Button
                 android:layout_width="match_parent"
                 android:background="#ffffff"
+                android:clickable="false"
                 android:layout_height="wrap_content"
                 android:text="@string/Note"
                 android:layout_margin="1dp"
@@ -52,8 +54,8 @@
             <ImageView
                 android:layout_marginTop="10dp"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
                 android:clickable="false"
+                android:layout_height="30dp"
                 android:src="@drawable/assignment"
                 />
             <Button
@@ -73,11 +75,13 @@
             android:background="@drawable/up_right_only"
             android:orientation="vertical"
             android:gravity="center"
+            android:id="@+id/newEvent"
             android:layout_weight="1"
             >
             <ImageView
                 android:layout_marginTop="10dp"
                 android:layout_width="30dp"
+                android:clickable="false"
                 android:layout_height="30dp"
                 android:src="@drawable/event"
                 />
@@ -85,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
+                android:clickable="false"
                 android:layout_margin="1dp"
                 android:text="@string/Event"
                 />

@@ -93,7 +93,7 @@ public class WebserviceRequestUtil {
 
         webService.setService(RequestServices.CHANGE_USER_PASSWORD.getValue());
 
-        webService.addParams("oldm_password",oldPass);
+        webService.addParams("old_password",oldPass);
 
         webService.addParams("password",newPass);
 
@@ -118,6 +118,20 @@ public class WebserviceRequestUtil {
         webService.addParams("event[end_date]",endDate);
 
         addRecievers(webService,model);
+
+        webService.start();
+
+    }
+
+    public static void changeUserEmail(String email, OnWebserviceFinishListener listener){
+
+        WebService webService = postWebService(listener);
+
+        String userId = SessionManager.getInstance().getCurrentUser().getId();
+
+        webService.setService(String.format(RequestServices.CHANGE_USER_EMAIL.getValue(),userId));
+
+        webService.addParams("email",email);
 
         webService.start();
 

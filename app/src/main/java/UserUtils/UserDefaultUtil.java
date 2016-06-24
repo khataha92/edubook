@@ -7,10 +7,13 @@ import android.preference.PreferenceManager;
 
 import com.google.gson.internal.LinkedTreeMap;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 import DataModels.Group;
+import Enums.ErrorType;
 import Enums.RecieverType;
 import Managers.SessionManager;
 import edubook.edubook.R;
@@ -156,6 +159,66 @@ public class UserDefaultUtil {
 
         return groups;
     }
+
+    public static ErrorType validatePassword(String currentPassword, String newPassword, String confirmation){
+
+        ErrorType errorType = ErrorType.VALID;
+
+        String validCurrentPassword = SessionManager.getInstance().getPassword();
+
+        if(!md5(validCurrentPassword).equalsIgnoreCase(md5(currentPassword))){
+
+            errorType = ErrorType.WRONG_CURRENT_PASSWORD;
+
+            return errorType;
+
+        }
+
+        if(md5(currentPassword).equalsIgnoreCase(md5(newPassword))){
+
+            errorType = ErrorType.OLD_PASS_EQUALS_NEW;
+
+        }
+        else{
+
+            if(!md5(newPassword).equalsIgnoreCase(md5(confirmation))){
+
+                errorType = ErrorType.NEW_PASS_NOT_EQUAL_CONFIRMATION;
+
+            }
+            else if(newPassword.length() < 6){
+
+                errorType = ErrorType.NEW_PASSWORD_LENGHT;
+
+            }
+
+        }
+
+
+        return errorType;
+
+    }
+
+    public static String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+
     private static void setStringValue(final String value, final String key) {
 
         if ((key == null) || preferences == null) {
