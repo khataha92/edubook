@@ -1,4 +1,5 @@
 package ViewHolders.PostViewHolders;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
@@ -74,7 +75,15 @@ public class GenericPostViewHolder extends GenericViewHolder {
             @Override
             public void onClick(View v) {
 
-                CallBackUtils.processDeleteMenu(post);
+                CallBackUtils.processDeleteMenu(post, 1, new DialogInterface.OnDismissListener() {
+
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+
+
+
+                    }
+                });
 
             }
 

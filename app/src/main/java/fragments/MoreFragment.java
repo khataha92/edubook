@@ -85,6 +85,8 @@ public class MoreFragment extends BaseFragment {
 
         SessionManager.getInstance().clearData();
 
+        FragmentManager.clear();
+
         startActivity( new Intent(getContext(), Login.class ));
 
         getActivity().finish();

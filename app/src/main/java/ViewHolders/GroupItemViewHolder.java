@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import DataModels.Group;
+import Managers.FragmentManager;
 import UserUtils.Application;
 import edubook.edubook.R;
 
@@ -45,6 +46,16 @@ public class GroupItemViewHolder extends RecyclerView.ViewHolder {
         }
 
         ((TextView) itemView.findViewById(R.id.group_name)).setText(label);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.showGroupStream(group.getId());
+
+            }
+        });
 
     }
 }
