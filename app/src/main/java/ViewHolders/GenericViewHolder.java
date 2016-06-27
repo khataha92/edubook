@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import DataModels.PostDataContainer;
 import UserUtils.Application;
+import ViewHolders.GroupViewHolders.GroupHeaderViewHolder;
+import ViewHolders.GroupViewHolders.GroupStickyViewHolder;
 import ViewHolders.PostViewHolders.AssignmentViewHolder;
 import ViewHolders.PostViewHolders.EmptyLayoutViewHolder;
 import ViewHolders.PostViewHolders.EventViewHolder;
@@ -40,6 +42,18 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
         View view;
 
         switch (container.getType()){
+
+            case GROUP_HEADER:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.group_header,parent,false);
+
+                return new GroupHeaderViewHolder(view,container);
+
+            case GROUP_STICKY:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.group_sticky_header,parent,false);
+
+                return new GroupStickyViewHolder(view,container);
 
             case NOTE:
 

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/home_box_bg"
-    android:paddingLeft="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp"
+    android:background="@color/sweet_dialog_bg_color"
     android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/home_box_bg"
+        android:paddingLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -40,4 +45,6 @@
         android:layout_alignBottom="@+id/profile_image"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
 </RelativeLayout>

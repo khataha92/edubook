@@ -31,6 +31,16 @@ public class AccountSettingsFragment extends BaseFragment {
 
     private void prepareFragment(){
 
+        rootView.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.popCurrentVisibleFragment();
+
+            }
+        });
+
         final TextView language = (TextView) rootView.findViewById(R.id.lang);
 
         final String lang = SessionManager.getInstance().getUserLanguage();

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import Fragments.AccountSettingsFragment;
 import Fragments.BaseFragment;
+import Fragments.GroupFragment;
 import Fragments.LibraryFragment;
 import Fragments.NewAssignmentFragment;
 import Fragments.NewEventFragment;
@@ -44,6 +45,11 @@ public class FragmentManager {
         currentFragments.remove(index);
     }
 
+    public static void clear(){
+
+        currentFragments.clear();
+    }
+
     public static void showNewAssignmentFragment(){
 
         NewAssignmentFragment fragment = new NewAssignmentFragment();
@@ -59,6 +65,16 @@ public class FragmentManager {
         fragment.setOnFileSelectListener(callback);
 
         addFragment(fragment,true);
+
+    }
+
+    public static void showGroupStream(String groupId){
+
+        GroupFragment groupFragment = new GroupFragment();
+
+        groupFragment.setGroupId(groupId);
+
+        addFragment(groupFragment,true);
 
     }
 

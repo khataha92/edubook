@@ -53,6 +53,7 @@ import Enums.ErrorType;
 import Enums.Lang;
 import Enums.ResponseCode;
 import Interfaces.OnWebserviceFinishListener;
+import Managers.SessionManager;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -760,6 +761,12 @@ public class UIUtil {
 
         dialog.setContentView(R.layout.change_email);
 
+        String email = SessionManager.getInstance().getCurrentUser().getEmail();
+
+        final TextView emailAddress = (TextView)dialog.findViewById(R.id.currentEmail);
+
+        emailAddress.setText(email);
+
         View.OnClickListener dismiss = new View.OnClickListener() {
 
             @Override
@@ -778,8 +785,6 @@ public class UIUtil {
 
             @Override
             public void onClick(View view) {
-
-                TextView emailAddress = (TextView)dialog.findViewById(R.id.currentEmail);
 
                 final String email = emailAddress.getText().toString();
 
@@ -901,6 +906,16 @@ public class UIUtil {
         final Dialog dialog = new Dialog(Application.getContext(),R.style.AppTheme_NoActionBar);
 
         dialog.setContentView(R.layout.change_language);
+
+        dialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+            }
+        });
 
         final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
 

@@ -119,27 +119,9 @@ public class CallBackUtils {
 
     }
 
-    public static void processDeleteMenu(final Post post){
+    public static void processDeleteMenu(final Post post, final int offset, DialogInterface.OnDismissListener listener){
 
-        final int position = SessionManager.getInstance().getPosts().indexOf(post)+1;
-
-        CallBackUtils.showDeletePostMenu(post,new DialogInterface.OnDismissListener(){
-
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-
-                if(position>=0) {
-
-                    SessionManager.getInstance().getPosts().remove(position-1);
-
-                    ((PostListAdapter)post.getRecyclerView().getAdapter()).notifyItemRemoved(position);
-
-                    // FIXME: 6/23/16 System cannot delete two sequence posts
-
-                }
-
-            }
-        });
+        CallBackUtils.showDeletePostMenu(post,listener);
 
     }
 
