@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,17 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import DataModels.LibraryFile;
 import DataModels.Post;
 import DataModels.RecieversModel;
 import Enums.ResponseCode;
 import Interfaces.AbstractCallback;
+import Interfaces.FunctionCaller;
 import Interfaces.OnDateSelectedListener;
 import Interfaces.OnWebserviceFinishListener;
+import Interfaces.PostFactory;
 import Managers.FragmentManager;
 import Managers.SessionManager;
 import UserUtils.Application;
@@ -36,6 +41,30 @@ public class NewAssignmentFragment extends PostFragment {
     boolean lockAfterDueDate = true;
 
     String fileId = "";
+
+    RecyclerView recyclerView;
+
+    List<PostFactory> postList;
+
+    OnWebserviceFinishListener webserviceFinishListener;
+
+    public void setWebserviceFinishListener(OnWebserviceFinishListener webserviceFinishListener) {
+
+        this.webserviceFinishListener = webserviceFinishListener;
+
+    }
+
+    public void setPostList(List<PostFactory> postList) {
+
+        this.postList = postList;
+
+    }
+
+    public void setRecyclerView(RecyclerView recyclerView) {
+
+        this.recyclerView = recyclerView;
+
+    }
 
     public NewAssignmentFragment() {
 
@@ -77,7 +106,17 @@ public class NewAssignmentFragment extends PostFragment {
                     }
                 };
 
-                FragmentManager.showLibraryFragment(callback);
+                FragmentManager.showLibraryFragment(callback, new FunctionCaller() {
+
+                    @Override
+                    public void callFunction(Object object) {
+
+                        OnWebserviceFinishListener listener = (OnWebserviceFinishListener)object;
+
+                        WebserviceRequestUtil.getLibrary(listener);
+
+                    }
+                });
 
             }
         });
@@ -119,36 +158,7 @@ public class NewAssignmentFragment extends PostFragment {
 
         UIUtil.showSweetLoadingView();
 
-        WebserviceRequestUtil.addAssignment(title, description,dueDate,lockAfterDueDate, model, new OnWebserviceFinishListener() {
-
-            @Override
-            public void onFinish(WebService webService) {
-
-                UIUtil.hideSweetLoadingView();
-
-                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
-
-                    Post assignment = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
-
-                    SessionManager.getInstance().getPosts().add(0,assignment);
-
-                    ((HomeFragment)FragmentManager.getBeforeCurrentVisibleFragment()).updatePostList();
-
-                    FragmentManager.popCurrentVisibleFragment();
-
-                    Activity activity = Application.getCurrentActivity();
-
-                    activity.findViewById(R.id.bottom_tabs).setVisibility(View.VISIBLE);
-
-                }
-                else{
-
-                    UIUtil.showErrorDialog();
-
-                }
-
-            }
-        });
+        WebserviceRequestUtil.addAssignment(title, description,dueDate,lockAfterDueDate, model, webserviceFinishListener);
 
     }
 

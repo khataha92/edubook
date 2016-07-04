@@ -32,6 +32,22 @@ import edubook.edubook.R;
 
 public class PostFragment extends BaseFragment {
 
+    String groupId;
+
+    String groupName;
+
+    public void setGroupId(String groupId) {
+
+        this.groupId = groupId;
+
+    }
+
+    public void setGroupName(String groupName) {
+
+        this.groupName = groupName;
+
+    }
+
     public Spinner recipient;
 
     public RecieverType type;
@@ -283,6 +299,40 @@ public class PostFragment extends BaseFragment {
     public void onDetach() {
 
         super.onDetach();
+
+    }
+
+    public void processGroupStaff(){
+
+        type = RecieverType.GROUPS;
+
+        tagsContainer.removeAllViews();
+
+        targetRecipients.clear();
+
+        List<RecieverType> recieverTypes = Constants.getRecieverTypes();
+
+        int groupIndex = recieverTypes.indexOf(RecieverType.GROUPS);
+
+        recipient.setOnItemSelectedListener(null);
+
+        recipient.setSelection(groupIndex);
+
+        recipient.setEnabled(false);
+
+        recipient.setFocusable(false);
+
+        recipientList.setEnabled(false);
+
+        recipientList.setFocusable(false);
+
+        final Recipient reciever = new Recipient(Recipient.RecipientType.GROUP,groupId,groupName);
+
+        reciever.setRemovableFromTags(false);
+
+        UIUtil.addTagToLayout(tagsContainer, reciever,null);
+
+        targetRecipients.add(reciever);
 
     }
 

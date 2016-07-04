@@ -29,7 +29,8 @@ public enum RequestServices {
     GET_USER_GROUPS("group"),
     GET_USER_RECIPIENTS("recipients"),
     GET_STREAM_BOOK("post"),
-    CHANGE_USER_EMAIL("auth/%s")
+    CHANGE_USER_EMAIL("auth/%s"),
+    GET_GROUP_LIBRARY("group/%s/library")
     ;
 
     private String value;

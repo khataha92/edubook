@@ -52,7 +52,7 @@ public class GroupItemViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
 
-                FragmentManager.showGroupStream(group.getId());
+                FragmentManager.showGroupStream(group.getId(),group.getName());
 
             }
         });

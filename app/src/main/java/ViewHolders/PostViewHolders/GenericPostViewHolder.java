@@ -4,14 +4,20 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 import CustomComponent.ToggleLike;
 import DataModels.Post;
 import DataModels.PostDataContainer;
+import Interfaces.PostFactory;
+import Managers.FragmentManager;
 import UserUtils.Application;
 import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
+import UserUtils.UserDefaultUtil;
 import ViewHolders.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -19,6 +25,15 @@ import Interfaces.AbstractCallback;
 
 public class GenericPostViewHolder extends GenericViewHolder {
 
+    Post post;
+
+    int indexInList = -1;
+
+    public void setIndexInList(int indexInList) {
+
+        this.indexInList = indexInList;
+
+    }
 
     public GenericPostViewHolder(View itemView, PostDataContainer container) {
 
@@ -29,7 +44,27 @@ public class GenericPostViewHolder extends GenericViewHolder {
     @Override
     public void initializeView() {
 
-        final Post post = (Post) container.getValue();
+        if(post == null) {
+
+            post = (Post) container.getValue();
+
+        }
+
+        initComponents();
+
+    }
+
+    private void setLikeCount(Post post){
+
+        String likes = Application.getContext().getString(R.string.likes);
+
+        ((TextView) itemView.findViewById(R.id.likes)).setText(post.getLikeCount() + " " + likes);
+
+        ((TextView) itemView.findViewById(R.id.likes)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
+
+    }
+
+    private void initComponents(){
 
         ((TextView) itemView.findViewById(R.id.name)).setText(post.getCreator().getName());
 
@@ -70,23 +105,56 @@ public class GenericPostViewHolder extends GenericViewHolder {
 
         }
 
-        itemView.findViewById(R.id.postMenu).setOnClickListener(new View.OnClickListener() {
+        itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
-                CallBackUtils.processDeleteMenu(post, 1, new DialogInterface.OnDismissListener() {
+                FragmentManager.showPostViewFragment(String.valueOf(post.getId()), new AbstractCallback() {
 
                     @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
+                    public void onResult(boolean isSuccess, Object result) {
 
+                        if(isSuccess){
 
+                            int postIndex = getPostIndex(post);
+
+                            Post tempPost = (Post) result;
+
+                            tempPost.setPostList(post.getPostList());
+
+                            tempPost.setRecyclerView(post.getRecyclerView());
+
+                            post.getPostList().set(postIndex,tempPost);
+
+                            post = tempPost;
+
+                            initComponents();
+
+                            if(GenericPostViewHolder.this instanceof PollViewHolder){
+
+                                String optionId = post.getPoll().getVoted().getId();
+
+                                ((PollViewHolder)GenericPostViewHolder.this).getPollLayout().refreshVotes(optionId);
+
+                            }
+
+                        }
 
                     }
                 });
 
             }
+        });
 
+        itemView.findViewById(R.id.postMenu).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                CallBackUtils.processDeleteMenu(post,1);
+
+            }
         });
 
         toggleLike.setOnClickListener(new View.OnClickListener() {
@@ -134,13 +202,25 @@ public class GenericPostViewHolder extends GenericViewHolder {
         });
     }
 
-    private void setLikeCount(Post post){
+    private int getPostIndex(Post post){
 
-        String likes = Application.getContext().getString(R.string.likes);
+        List<PostFactory> postList = post.getPostList();
 
-        ((TextView) itemView.findViewById(R.id.likes)).setText(post.getLikeCount() + " " + likes);
+        if(postList == null) return  -1;
 
-        ((TextView) itemView.findViewById(R.id.likes)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
+        int index = -1;
+
+        for(int i = 0 ; i < postList.size() ; i ++){
+
+            if(((Post)postList.get(i)).getId() == post.getId()){
+
+                return i;
+
+            }
+
+        }
+
+        return index;
 
     }
 }

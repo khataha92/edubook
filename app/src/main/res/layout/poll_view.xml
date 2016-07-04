@@ -6,10 +6,19 @@
     android:paddingRight="10dp"
     android:background="@color/sweet_dialog_bg_color"
     android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/topShadow"
+        android:background="@drawable/shadow_top"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
+        android:layout_below="@+id/topShadow"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         android:background="@drawable/home_box_bg"
@@ -174,5 +183,12 @@
                 />
         </LinearLayout>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/linearLayout6"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shadow_bottom"
+        />
 
 </RelativeLayout>

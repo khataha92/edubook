@@ -43,6 +43,12 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
 
         switch (container.getType()){
 
+            case COMMENT:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.comment_layout,parent,false);
+
+                return new CommentViewHolder(view,container);
+
             case GROUP_HEADER:
 
                 view = LayoutInflater.from(Application.getContext()).inflate(R.layout.group_header,parent,false);

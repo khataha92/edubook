@@ -19,5 +19,7 @@
     <color name="new_note_bg">#F1F2F2</color>
     <color name="transparentColor">#44000000</color>
     <color name="calender_blue">#1D9AEF</color>
+    <color name="ACCENT_COLOR_DARK_NAVY">#363D56</color>
+    <color name="ACCENT_COLOR_BLUE">#1D9AEF</color>
 </resources>
 

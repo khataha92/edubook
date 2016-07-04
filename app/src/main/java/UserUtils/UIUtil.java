@@ -38,9 +38,11 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Field;
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -48,11 +50,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
+import DataModels.Post;
 import DataModels.Recipient;
 import Enums.ErrorType;
 import Enums.Lang;
 import Enums.ResponseCode;
+import Fragments.GroupFragment;
+import Fragments.HomeFragment;
 import Interfaces.OnWebserviceFinishListener;
+import Interfaces.PostFactory;
+import Interfaces.YesNoDialogListener;
 import Managers.SessionManager;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -298,20 +305,18 @@ public class UIUtil {
 
     }
 
-    public static void showDeleteDialog(View.OnClickListener cancelListener, View.OnClickListener deleteListener, final DialogInterface.OnDismissListener listener){
+    public static void showDeleteDialog(View.OnClickListener cancelListener, View.OnClickListener deleteListener, final YesNoDialogListener listener){
 
         menuDlg = new Dialog(Application.getCurrentActivity(), android.R.style.Theme_NoTitleBar);
 
         menuDlg.getWindow().setWindowAnimations(R.style.DialogNoAnimation);
-
-        menuDlg.setOnDismissListener(listener);
 
         menuDlg.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
             @Override
             public void onCancel(DialogInterface dialog) {
 
-                listener.onDismiss(dialog);
+                listener.no();
 
             }
         });
@@ -340,25 +345,47 @@ public class UIUtil {
 
         ((TextView)view.findViewById(R.id.name)).setText(recipient.getName());
 
-        view.findViewById(R.id.x).setOnClickListener(new View.OnClickListener() {
+        if(recipient.isRemovableFromTags()) {
 
-            @Override
-            public void onClick(View v) {
+            view.findViewById(R.id.x).setOnClickListener(new View.OnClickListener() {
 
-                tagsLayout.removeView(view);
+                @Override
+                public void onClick(View v) {
 
-                callback.onResult(true,recipient);
+                    tagsLayout.removeView(view);
 
-            }
-        });
+                    callback.onResult(true, recipient);
+
+                }
+            });
+
+        }
 
         tagsLayout.addView(view);
     }
 
-
-    public static void showNewPostDialog(){
+    public static void showNewGroupPostDialog(final BaseFragment fragment,final String groupId, final String groupName){
 
         final Dialog newPostDialog = new Dialog(Application.getCurrentActivity());
+
+        List<PostFactory> posts = null;
+
+        RecyclerView recycler = null;
+
+        if(fragment instanceof HomeFragment){
+
+            posts = ((HomeFragment)fragment).getPosts();
+
+            recycler = ((HomeFragment)fragment).getRecyclerView();
+
+        }
+        else if(fragment instanceof GroupFragment){
+
+            posts = ((GroupFragment)fragment).getPosts();
+
+            recycler = ((GroupFragment)fragment).getRecyclerView();
+
+        }
 
         newPostDialog.requestWindowFeature(Window.FEATURE_NO_TITLE|Window.FEATURE_SWIPE_TO_DISMISS);
 
@@ -376,12 +403,47 @@ public class UIUtil {
             }
         });
 
+        final RecyclerView recyclerView = recycler;
+
+        final List<PostFactory> postList = posts;
+
+        final OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
+
+            @Override
+            public void onFinish(WebService webService) {
+
+                UIUtil.hideSweetLoadingView();
+
+                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
+
+                    Post note = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
+
+                    note.setPostList(postList);
+
+                    note.setRecyclerView(recyclerView);
+
+                    postList.add(0,note);
+
+                    recyclerView.setAdapter(recyclerView.getAdapter());
+
+                    Managers.FragmentManager.popCurrentVisibleFragment();
+
+                }
+                else{
+
+                    UIUtil.showErrorDialog();
+
+                }
+
+            }
+        };
+
         newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                Managers.FragmentManager.showNewAssignmentFragment();
+                Managers.FragmentManager.showNewGroupAssignment(groupId,groupName,listener);
 
                 newPostDialog.dismiss();
 
@@ -393,7 +455,7 @@ public class UIUtil {
             @Override
             public void onClick(View view) {
 
-                Managers.FragmentManager.showNewEventFragment();
+                Managers.FragmentManager.showNewGroupEvent(groupId,groupName,listener);
 
                 newPostDialog.dismiss();
 
@@ -405,7 +467,143 @@ public class UIUtil {
             @Override
             public void onClick(View view) {
 
-                Managers.FragmentManager.showNewNoteFragment();
+                Managers.FragmentManager.showNewGroupNote(groupId,groupName,listener);
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+
+        Window window = newPostDialog.getWindow();
+
+        lp.copyFrom(window.getAttributes());
+
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        window.setAttributes(lp);
+
+        newPostDialog.show();
+
+    }
+
+    public static void showNewPostDialog(final BaseFragment fragment){
+
+        final Dialog newPostDialog = new Dialog(Application.getCurrentActivity());
+
+        List<PostFactory> posts = null;
+
+        RecyclerView recycler = null;
+
+        int offset = 1;
+
+        if(fragment instanceof HomeFragment){
+
+            posts = ((HomeFragment)fragment).getPosts();
+
+            recycler = ((HomeFragment)fragment).getRecyclerView();
+
+            offset = 1;
+
+        }
+        else if(fragment instanceof GroupFragment){
+
+            posts = ((GroupFragment)fragment).getPosts();
+
+            recycler = ((GroupFragment)fragment).getRecyclerView();
+
+            offset = 2;
+
+        }
+
+        newPostDialog.requestWindowFeature(Window.FEATURE_NO_TITLE|Window.FEATURE_SWIPE_TO_DISMISS);
+
+        newPostDialog.setContentView(R.layout.dialog_new_post);
+
+        newPostDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        newPostDialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        final RecyclerView recyclerView = recycler;
+
+        final List<PostFactory> postList = posts;
+
+        final  int finalOffset = offset;
+
+        final OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
+
+            @Override
+            public void onFinish(WebService webService) {
+
+                UIUtil.hideSweetLoadingView();
+
+                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
+
+                    Post post = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
+
+                    post.setPostList(postList);
+
+                    post.setRecyclerView(recyclerView);
+
+                    postList.add(0,post);
+
+                    post.getRecyclerView().setAdapter(post.getRecyclerView().getAdapter());
+
+                    Managers.FragmentManager.popCurrentVisibleFragment();
+
+                    UIUtil.showTabsView();
+
+                }
+                else{
+
+                    UIUtil.showErrorDialog();
+
+                }
+
+            }
+        };
+
+        newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Managers.FragmentManager.showNewAssignmentFragment(listener);
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        newPostDialog.findViewById(R.id.newEvent).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Managers.FragmentManager.showNewEventFragment(listener);
+
+                newPostDialog.dismiss();
+
+            }
+        });
+
+        newPostDialog.findViewById(R.id.new_note).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Managers.FragmentManager.showNewNoteFragment(listener);
 
                 newPostDialog.dismiss();
 

@@ -9,12 +9,21 @@
     android:background="@color/sweet_dialog_bg_color"
     android:layout_height="wrap_content"
     >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/topShadow"
+        android:background="@drawable/shadow_top"
+        />
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
         android:orientation="vertical"
+        android:layout_below="@+id/topShadow"
         android:id="@+id/post_details"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -25,6 +34,7 @@
             android:paddingLeft="20dp"
             android:orientation="vertical"
             android:paddingBottom="10dp"
+
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:layout_height="wrap_content"
@@ -80,7 +90,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <CustomComponent.FlexibleTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -188,5 +198,10 @@
                     />
             </LinearLayout>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/shadow_bottom"
+            />
     </LinearLayout>
 </RelativeLayout>

@@ -4,8 +4,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import DataModels.AddNewPostDataModel;
 import DataModels.Post;
 import DataModels.PostDataContainer;
+import Fragments.GroupFragment;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
@@ -28,7 +30,23 @@ public class GroupHeaderViewHolder extends GenericViewHolder {
 
         super.initializeView();
 
+        itemView.findViewById(R.id.controller).setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+
+                AddNewPostDataModel dataModel = (AddNewPostDataModel)container.getValue();
+
+                GroupFragment fragment = (GroupFragment)dataModel.getFragment();
+
+                String groupId = fragment.getGroupId();
+
+                String groupName = fragment.getGroupName();
+
+                UIUtil.showNewGroupPostDialog(fragment,groupId,groupName);
+
+            }
+        });
     }
 
 

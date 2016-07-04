@@ -28,6 +28,14 @@ public class PollLayout extends LinearLayout{
 
     Post post;
 
+    AbstractCallback voteChangeListener;
+
+    public void setVoteChangeListener(AbstractCallback voteChangeListener) {
+
+        this.voteChangeListener = voteChangeListener;
+
+    }
+
     public void setPost(Post post) {
 
         this.post = post;
@@ -175,7 +183,11 @@ public class PollLayout extends LinearLayout{
 
                             if(isSuccess){
 
-                                revotePoll(pollItem);
+                                if(voteChangeListener != null){
+
+                                    voteChangeListener.onResult(true,pollItem.getOptionId());
+
+                                }
 
                             }
 
@@ -194,13 +206,45 @@ public class PollLayout extends LinearLayout{
         }
     }
 
-    private void revotePoll(PollItem pollItem){
+    public void refreshVotes(String voteId){
+
+        PollItem pollItem = getPollById(voteId);
+
+        revotePoll(pollItem);
+
+    }
+
+    public PollItem getPollById(String id){
+
+        PollItem pollItem = null;
+
+        for(int i = 0 ; i < pollItems.size() ; i++){
+
+            if(pollItems.get(i).getOptionId().equalsIgnoreCase(id)){
+
+                pollItem = pollItems.get(i);
+
+            }
+
+        }
+        return pollItem;
+
+    }
+
+
+
+    public void revotePoll(PollItem pollItem){
 
         setClickable(true);
 
         if(selectedPollItem == null){
 
             total += 1;
+
+        }
+        else{
+
+            selectedPollItem.setSelected(false);
 
         }
 

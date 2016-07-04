@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by mohammad on 4/19/15.
@@ -24,6 +26,8 @@ public class FontUtil {
      * @param language The string language
      * @return Typeface
      */
+
+    private static Map<FontsType , Typeface> fonts = new HashMap<>();
 
     private static Typeface font ;
     public static Typeface getFont(final FontsType fontsType, String language) {
@@ -56,24 +60,15 @@ public class FontUtil {
      */
     public static Typeface getFont(final FontsType fontsType) {
 
-        if(font == null){
+        if(fonts.get(fontsType) == null){
 
-            font = getArabicFont(fontsType);
-        }
+            Typeface typeface = getArabicFont(fontsType);
 
-        return font;
-
-        /*
-
-        if (UserDefaultUtil.deviceLanguageIsArabic()) {
-
-            return getArabicFont(fontsType);
+            fonts.put(fontsType,typeface);
 
         }
 
-        return getEnglishFont(fontsType);
-
-        */
+        return fonts.get(fontsType);
 
     }
 

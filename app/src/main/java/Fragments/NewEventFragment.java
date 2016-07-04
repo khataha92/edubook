@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import DataModels.LibraryFile;
 import DataModels.Post;
 import DataModels.RecieversModel;
@@ -22,6 +25,7 @@ import Enums.ResponseCode;
 import Interfaces.AbstractCallback;
 import Interfaces.OnDateSelectedListener;
 import Interfaces.OnWebserviceFinishListener;
+import Interfaces.PostFactory;
 import Managers.FragmentManager;
 import Managers.SessionManager;
 import UserUtils.Application;
@@ -33,6 +37,14 @@ import edubook.edubook.R;
 public class NewEventFragment extends PostFragment {
 
     String startDate="",endDate="";
+
+    OnWebserviceFinishListener webserviceFinishListener;
+
+    public void setWebserviceFinishListener(OnWebserviceFinishListener webserviceFinishListener) {
+
+        this.webserviceFinishListener = webserviceFinishListener;
+
+    }
 
     public NewEventFragment() {
 
@@ -153,35 +165,7 @@ public class NewEventFragment extends PostFragment {
 
         UIUtil.showSweetLoadingView();
 
-        WebserviceRequestUtil.addEvent(title, description, startDate, endDate, model, new OnWebserviceFinishListener() {
-
-            @Override
-            public void onFinish(WebService webService) {
-
-                UIUtil.hideSweetLoadingView();
-
-                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
-
-                    Post event = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
-
-                    SessionManager.getInstance().getPosts().add(0,event);
-
-                    ((HomeFragment)FragmentManager.getBeforeCurrentVisibleFragment()).updatePostList();
-
-                    FragmentManager.popCurrentVisibleFragment();
-
-                    UIUtil.showTabsView();
-
-                }
-                else{
-
-                    UIUtil.showErrorDialog();
-
-                }
-
-            }
-
-        });
+        WebserviceRequestUtil.addEvent(title, description, startDate, endDate, model, webserviceFinishListener);
 
     }
 

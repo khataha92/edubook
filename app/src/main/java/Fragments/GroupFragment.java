@@ -1,12 +1,15 @@
 package Fragments;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
@@ -17,12 +20,18 @@ import java.util.List;
 import Adapters.GroupStreamListAdapter;
 import DataModels.Post;
 import DataModels.StreamBookResponse;
+import Interfaces.FunctionCaller;
 import Interfaces.OnWebserviceFinishListener;
 import Interfaces.PostFactory;
+import Interfaces.StickyRecyclerHeadersTouchListener;
+import Managers.FragmentManager;
+import UserUtils.Application;
 import UserUtils.UIUtil;
+import UserUtils.UserDefaultUtil;
 import UserUtils.WebService;
 import UserUtils.WebserviceRequestUtil;
 import edubook.edubook.R;
+import jp.wasabeef.recyclerview.animators.SlideInRightAnimator;
 
 
 public class GroupFragment extends BaseFragment {
@@ -31,11 +40,39 @@ public class GroupFragment extends BaseFragment {
 
     String groupId;
 
+    String groupName;
+
+    public void setGroupName(String groupName) {
+
+        this.groupName = groupName;
+
+    }
+
+    public String getGroupName() {
+
+        return groupName;
+
+    }
+
+    List<PostFactory> posts;
+
     StickyRecyclerHeadersDecoration headersDecor;
 
     private String TAG = getClass().getSimpleName();
 
     public GroupFragment() {
+
+    }
+
+    public RecyclerView getRecyclerView() {
+
+        return recyclerView;
+
+    }
+
+    public List<PostFactory> getPosts() {
+
+        return posts;
 
     }
 
@@ -75,6 +112,8 @@ public class GroupFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.groupItemsList);
 
+        recyclerView.setItemAnimator(new SlideInRightAnimator());
+
         getGroupStream();
     }
 
@@ -111,7 +150,7 @@ public class GroupFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
 
-        List<PostFactory> posts = streamBookResponse.getPostFactory();
+        posts = streamBookResponse.getPostFactory();
 
         for(PostFactory post:posts){
 
@@ -163,6 +202,18 @@ public class GroupFragment extends BaseFragment {
 
         GroupStreamListAdapter adapter = new GroupStreamListAdapter();
 
+        adapter.setRecyclerView(recyclerView);
+
+        adapter.setFragment(GroupFragment.this);
+
+        for(int i=0; i<posts.size(); i++){
+
+            Post post = (Post) posts.get(i);
+
+            post.setPostList(this.posts);
+
+        }
+
         headersDecor = new StickyRecyclerHeadersDecoration(adapter);
 
         recyclerView.addItemDecoration(headersDecor);
@@ -179,6 +230,42 @@ public class GroupFragment extends BaseFragment {
         adapter.setPosts(posts);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        final StickyRecyclerHeadersTouchListener touchListener = new StickyRecyclerHeadersTouchListener(recyclerView, headersDecor);
+
+        touchListener.setOnHeaderClickListener(new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
+
+            @Override
+            public void onHeaderClick(MotionEvent event,final View header, int position, long headerId) {
+
+                int screenWidth = UIUtil.getScreenSize().x;
+
+                if(event.getX() < screenWidth/2){
+
+                    FragmentManager.showLibraryFragment(null, new FunctionCaller() {
+
+                        @Override
+                        public void callFunction(Object object) {
+
+                            OnWebserviceFinishListener listener = (OnWebserviceFinishListener)object;
+
+                            WebserviceRequestUtil.getGroupLibrary(groupId,listener);
+
+                        }
+                    });
+
+                }
+
+                else{
+
+
+
+                }
+
+            }
+        });
+
+        recyclerView.addOnItemTouchListener(touchListener);
 
         recyclerView.setAdapter(adapter);
 

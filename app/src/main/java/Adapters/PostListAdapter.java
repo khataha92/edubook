@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import DataModels.AddNewPostDataModel;
 import DataModels.Post;
 import DataModels.PostDataContainer;
 import Enums.HolderType;
@@ -17,6 +18,16 @@ import Interfaces.PostFactory;
 public class PostListAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
     List<PostFactory> postFactories;
+
+    RecyclerView recyclerView;
+
+    boolean shouldReload = true;
+
+    public void setRecyclerView(RecyclerView recyclerView) {
+
+        this.recyclerView = recyclerView;
+
+    }
 
     public void setPostFactories(List<PostFactory> postFactories) {
 
@@ -35,7 +46,13 @@ public class PostListAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
                 container.setType(HolderType.NEW_NOTE);
 
-                container.setValue(null);
+                AddNewPostDataModel dataModel = new AddNewPostDataModel();
+
+                dataModel.setRecyclerView(recyclerView);
+
+                dataModel.setPostList(postFactories);
+
+                container.setValue(dataModel);
 
                 break;
 
@@ -55,8 +72,15 @@ public class PostListAdapter extends RecyclerView.Adapter<GenericViewHolder> {
         return GenericViewHolder.getViewHolder(parent,container);
     }
 
+    public void setShouldReload(boolean shouldReload) {
+
+        this.shouldReload = shouldReload;
+
+    }
+
     @Override
     public void onBindViewHolder(GenericViewHolder holder, int position) {
+
 
     }
 

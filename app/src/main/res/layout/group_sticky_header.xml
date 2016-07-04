@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:clickable="true"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -12,8 +13,10 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/getGroupLibrary"
             android:layout_weight="1"
             android:background="@drawable/cancel_btn"
+            android:clickable="true"
             android:text="@string/Library"
             android:textColor="@color/background"
             />
@@ -21,6 +24,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:id="@+id/getGroupMembers"
             android:background="@drawable/cancel_btn"
             android:text="@string/Members"
             android:textColor="@color/background"

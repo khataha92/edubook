@@ -53,7 +53,7 @@ public class Poll {
 
     }
 
-    public class Voted{
+    public static class Voted{
 
         private String id="";
 
@@ -63,9 +63,11 @@ public class Poll {
 
         }
 
-        public void setId(String id) {
+        public Voted setId(String id) {
 
             this.id = id;
+
+            return this;
 
         }
     }

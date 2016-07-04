@@ -4,17 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by lap on 6/9/16.
  */
 public class Application {
 
-    private static Activity currentActivity;
+    private static FragmentActivity currentActivity;
 
     private static Context context;
 
-    public static void setCurrentActivity(Activity currentActivity) {
+    public static void setCurrentActivity(FragmentActivity currentActivity) {
 
         Application.currentActivity = currentActivity;
 
@@ -38,7 +40,7 @@ public class Application {
 
     }
 
-    public static Activity getCurrentActivity() {
+    public static FragmentActivity getCurrentActivity() {
 
         return currentActivity;
 

@@ -27,6 +27,7 @@ import Adapters.LibraryAdapter;
 import DataModels.LibraryFile;
 import Enums.ResponseCode;
 import Interfaces.AbstractCallback;
+import Interfaces.FunctionCaller;
 import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
 import Managers.SessionManager;
@@ -41,6 +42,14 @@ public class LibraryFragment extends BaseFragment {
     List<LibraryFile> libraryFolders;
 
     ListView filesList;
+
+    FunctionCaller caller;
+
+    public void setCaller(FunctionCaller caller) {
+
+        this.caller = caller;
+
+    }
 
     AbstractCallback onFileSelectListener;
 
@@ -71,7 +80,7 @@ public class LibraryFragment extends BaseFragment {
         }
     };
 
-    OnWebserviceFinishListener getLibraryFilesListener = new OnWebserviceFinishListener() {
+    public OnWebserviceFinishListener getLibraryFilesListener = new OnWebserviceFinishListener() {
 
         @Override
         public void onFinish(WebService webService) {
@@ -142,7 +151,7 @@ public class LibraryFragment extends BaseFragment {
 
             UIUtil.showLoadingView(rootView);
 
-            WebserviceRequestUtil.getLibrary(getLibraryFilesListener);
+            caller.callFunction(getLibraryFilesListener);
 
         }
         else{
@@ -183,7 +192,7 @@ public class LibraryFragment extends BaseFragment {
         });
     }
 
-    private void parseLibraryFiles(WebService webService){
+    public void parseLibraryFiles(WebService webService){
 
         Type libraryFileType = new TypeToken<List<LibraryFile>>() {}.getType();
 

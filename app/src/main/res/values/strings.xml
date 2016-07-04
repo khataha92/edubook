@@ -242,5 +242,8 @@
 
     <string name="wrong_current_password">current password is wrong!</string>
 
+    <string name="SHOW_MORE">Show More</string>
+
+    <string name="SHOW_LESS">Show Less</string>
 
 </resources>

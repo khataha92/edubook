@@ -234,7 +234,7 @@ public class WebserviceRequestUtil {
 
                 for(int i=0; i < model.getRecipientList().size() ; i++){
 
-                    webService.addParams("receivers["+type.getValue()+"]",model.getRecipientList().get(i).getId());
+                    webService.addParams("receivers["+type.getValue()+"][]",model.getRecipientList().get(i).getId());
 
                 }
 
@@ -323,6 +323,16 @@ public class WebserviceRequestUtil {
         WebService webService = getWebService(listener);
 
         webService.setService(RequestServices.GET_LIBRARY.getValue());
+
+        webService.start();
+
+    }
+
+    public static void getGroupLibrary(String groupId,OnWebserviceFinishListener listener){
+
+        WebService webService = getWebService(listener);
+
+        webService.setService(String.format(RequestServices.GET_GROUP_LIBRARY.getValue(),groupId));
 
         webService.start();
 
