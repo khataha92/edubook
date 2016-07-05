@@ -246,4 +246,6 @@
 
     <string name="SHOW_LESS">Show Less</string>
 
+    <string name="saved_successfully">Saved Successfully</string>
+
 </resources>

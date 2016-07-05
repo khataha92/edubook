@@ -2,6 +2,7 @@ package Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
@@ -12,8 +13,10 @@ import DataModels.Post;
 import DataModels.PostDataContainer;
 import Enums.HolderType;
 import Fragments.BaseFragment;
+import Fragments.GroupFragment;
 import Interfaces.PostFactory;
 import ViewHolders.GenericViewHolder;
+import edubook.edubook.R;
 
 /**
  * Created by lap on 6/12/16.
@@ -95,6 +98,11 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
     @Override
     public void onBindViewHolder(GenericViewHolder holder, int position) {
 
+        if(position == 0){
+
+            ((TextView)holder.itemView.findViewById(R.id.group_desc)).setText(((GroupFragment)fragment).getGroup().getDescription());
+
+        }
 
     }
 

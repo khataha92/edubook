@@ -2,6 +2,8 @@ package UserUtils;
 
 import android.util.Log;
 import org.json.JSONObject;
+
+import DataModels.Group;
 import DataModels.RecieversModel;
 import Enums.ErrorType;
 import Enums.GroupUserStatus;
@@ -19,6 +21,24 @@ public class WebserviceRequestUtil {
         final WebService ws = getLoginWebService(name,password,listener);
 
         ws.start();
+
+    }
+
+    public static void changeGroupDescription(Group group, String description,OnWebserviceFinishListener listener){
+
+        WebService webService = postWebService(listener);
+
+        webService.addParams("_method","put");
+
+        webService.addParams("name",group.getName());
+
+        webService.setService(String.format(RequestServices.EDIT_GROUP_DESCRIPTION.getValue(),group.getId()));
+
+        webService.addParams("description",description);
+
+        webService.addParams("institute_id",group.getInstitute());
+
+        webService.start();
 
     }
 

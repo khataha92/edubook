@@ -9,9 +9,11 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
+import DataModels.Group;
 import Fragments.AccountSettingsFragment;
 import Fragments.BaseFragment;
 import Fragments.GroupFragment;
+import Fragments.GroupSettingsFragment;
 import Fragments.LibraryFragment;
 import Fragments.NewAssignmentFragment;
 import Fragments.NewEventFragment;
@@ -148,13 +150,21 @@ public class FragmentManager {
 
     }
 
-    public static void showGroupStream(String groupId,String groupName){
+    public static void showGroupSettingsFragment(Group group){
+
+        GroupSettingsFragment fragment = new GroupSettingsFragment();
+
+        fragment.setGroup(group);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupStream(Group group){
 
         GroupFragment groupFragment = new GroupFragment();
 
-        groupFragment.setGroupId(groupId);
-
-        groupFragment.setGroupName(groupName);
+        groupFragment.setGroup(group);
 
         addFragment(groupFragment,true);
 

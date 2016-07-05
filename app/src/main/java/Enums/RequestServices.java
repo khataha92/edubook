@@ -30,7 +30,8 @@ public enum RequestServices {
     GET_USER_RECIPIENTS("recipients"),
     GET_STREAM_BOOK("post"),
     CHANGE_USER_EMAIL("auth/%s"),
-    GET_GROUP_LIBRARY("group/%s/library")
+    GET_GROUP_LIBRARY("group/%s/library"),
+    EDIT_GROUP_DESCRIPTION("group/%s")
     ;
 
     private String value;

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.GroupStreamListAdapter;
+import DataModels.Group;
 import DataModels.Post;
 import DataModels.StreamBookResponse;
 import Interfaces.FunctionCaller;
@@ -38,19 +39,17 @@ public class GroupFragment extends BaseFragment {
 
     RecyclerView recyclerView ;
 
-    String groupId;
+    Group group;
 
-    String groupName;
+    public void setGroup(Group group) {
 
-    public void setGroupName(String groupName) {
-
-        this.groupName = groupName;
+        this.group = group;
 
     }
 
-    public String getGroupName() {
+    public Group getGroup() {
 
-        return groupName;
+        return group;
 
     }
 
@@ -76,24 +75,18 @@ public class GroupFragment extends BaseFragment {
 
     }
 
-    public void setGroupId(String groupId) {
-
-        this.groupId = groupId;
-
-    }
-
-    public String getGroupId() {
-
-        return groupId;
-
-    }
-
     @Override
     public void onResume() {
 
         super.onResume();
 
         UIUtil.hideTabsView();
+
+        if(recyclerView != null && recyclerView.getAdapter() != null){
+
+            recyclerView.getAdapter().notifyDataSetChanged();
+
+        }
 
     }
     @Override
@@ -141,7 +134,7 @@ public class GroupFragment extends BaseFragment {
             }
         };
 
-        WebserviceRequestUtil.getGroupStream(groupId,listener);
+        WebserviceRequestUtil.getGroupStream(group.getId(),listener);
 
     }
 
@@ -249,7 +242,7 @@ public class GroupFragment extends BaseFragment {
 
                             OnWebserviceFinishListener listener = (OnWebserviceFinishListener)object;
 
-                            WebserviceRequestUtil.getGroupLibrary(groupId,listener);
+                            WebserviceRequestUtil.getGroupLibrary(group.getId(),listener);
 
                         }
                     });
