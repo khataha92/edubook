@@ -42,6 +42,16 @@ public class WebserviceRequestUtil {
 
     }
 
+    public static void getGroupMembers(String groupId,OnWebserviceFinishListener listener){
+
+        WebService webService = getWebService(listener);
+
+        webService.setService(String.format(RequestServices.GET_GROUP_MEMBERS.getValue(),groupId));
+
+        webService.start();
+
+    }
+
     public static void changeUserProfile(String imagePath, OnWebserviceFinishListener listener){
 
         String service = RequestServices.CHANGE_USER_PROFILE.getValue();
@@ -95,6 +105,16 @@ public class WebserviceRequestUtil {
         webService.setService(String.format(RequestServices.GET_PARENT_ACCESS_KEY.getValue(),userId));
 
         webService.start();
+    }
+
+    public static void removeUserFromGroup(String userId, String groupId, OnWebserviceFinishListener listener){
+
+        WebService webService = deleteWebService(listener);
+
+        webService.setService(String.format(RequestServices.REMOVE_USER_FROM_GROUP.getValue(),groupId,userId));
+
+        webService.start();
+
     }
 
     public static void removeProfileImage(String userId,OnWebserviceFinishListener listener){
@@ -208,7 +228,7 @@ public class WebserviceRequestUtil {
 
         WebService webService = getWebService(listener);
 
-        String service = String.format(RequestServices.CHANGE_GROUP_MEMBER_STATUS.getValue(),groupId,status.getStatus());
+        String service = String.format(RequestServices.CHANGE_GROUP_MEMBER_STATUS.getValue(),groupId,status.getStatus()-2);
 
         webService.setService(service);
 

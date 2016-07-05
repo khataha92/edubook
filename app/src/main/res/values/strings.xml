@@ -248,4 +248,8 @@
 
     <string name="saved_successfully">Saved Successfully</string>
 
+    <string name="copied_to_clipboard">Copied to clip board</string>
+
+    <string name="removed_successfully">Removed Successfully!</string>
+
 </resources>

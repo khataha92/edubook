@@ -251,7 +251,7 @@ public class GroupFragment extends BaseFragment {
 
                 else{
 
-
+                    FragmentManager.showGroupMembersFragment(group);
 
                 }
 

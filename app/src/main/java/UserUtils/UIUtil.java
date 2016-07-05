@@ -280,6 +280,32 @@ public class UIUtil {
 
     }
 
+    public static void showSweetResultView(final String result, final AbstractCallback callback){
+
+        pDialog = new SweetAlertDialog(Application.getContext(),SweetAlertDialog.NORMAL_TYPE);
+
+        pDialog.setTitleText(Application.getContext().getString(R.string.ParentCode));
+
+        pDialog.setCancelable(false);
+
+        pDialog.setConfirmText(result);
+
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
+                callback.onResult(true,result);
+
+            }
+        });
+
+        //pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+
+        pDialog.show();
+
+    }
+
     public static void showSweetLoadingView(){
 
         pDialog = new SweetAlertDialog(Application.getContext(),SweetAlertDialog.PROGRESS_TYPE);

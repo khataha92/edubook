@@ -8,11 +8,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import DataModels.Group;
+import DataModels.User;
 import Fragments.AccountSettingsFragment;
 import Fragments.BaseFragment;
 import Fragments.GroupFragment;
+import Fragments.GroupMemberSettingsFragment;
+import Fragments.GroupMembersAccessFragment;
+import Fragments.GroupMembersFragment;
 import Fragments.GroupSettingsFragment;
 import Fragments.LibraryFragment;
 import Fragments.NewAssignmentFragment;
@@ -167,6 +172,42 @@ public class FragmentManager {
         groupFragment.setGroup(group);
 
         addFragment(groupFragment,true);
+
+    }
+
+    public static void showGroupMembersAccessFragment(Group group,List<User> groupMembers){
+
+        GroupMembersAccessFragment fragment = new GroupMembersAccessFragment();
+
+        fragment.setGroup(group);
+
+        fragment.setGroupMembers(groupMembers);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupMemberSettingsFragment(User user,Group group,List<User> groupMembers){
+
+        GroupMemberSettingsFragment fragment = new GroupMemberSettingsFragment();
+
+        fragment.setGroupMembers(groupMembers);
+
+        fragment.setUser(user);
+
+        fragment.setGroup(group);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupMembersFragment(Group group){
+
+        GroupMembersFragment fragment = new GroupMembersFragment();
+
+        fragment.setGroup(group);
+
+        addFragment(fragment,true);
 
     }
 
