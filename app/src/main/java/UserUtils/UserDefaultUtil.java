@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DataModels.Group;
+import DataModels.Post;
 import Enums.ErrorType;
+import Enums.HolderType;
 import Enums.RecieverType;
 import Managers.SessionManager;
 import edubook.edubook.R;
@@ -80,6 +82,27 @@ public class UserDefaultUtil {
 
                 return R.drawable.connections;
         }
+    }
+
+    public static HolderType getPostType(Post post){
+
+        if(post.getAssignment() != null){
+
+            return HolderType.ASSIGNMENT;
+        }
+
+        if(post.getNote() != null){
+
+            return HolderType.NOTE;
+        }
+
+        if(post.getEvent() != null){
+
+            return HolderType.EVENT;
+        }
+
+        return HolderType.POLL;
+
     }
 
     public static String getRecieverLabel(RecieverType type){

@@ -1,17 +1,27 @@
 package ViewHolders;
 
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
+import DataModels.AddNewPostDataModel;
+import DataModels.Post;
 import DataModels.PostDataContainer;
+import Enums.ResponseCode;
+import Interfaces.OnWebserviceFinishListener;
+import Interfaces.PostFactory;
 import Managers.FragmentManager;
 import UserUtils.Application;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
+import UserUtils.WebService;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 import Managers.SessionManager;
@@ -21,12 +31,49 @@ import Managers.SessionManager;
  */
 public class NewNoteViewHolder extends GenericViewHolder {
 
-    private View.OnClickListener newNoteListener = new View.OnClickListener() {
+    RecyclerView recyclerView;
+
+    List<PostFactory> postList;
+
+    public void setPostList(List<PostFactory> postList) {
+
+        this.postList = postList;
+
+    }
+
+    public void setRecyclerView(RecyclerView recyclerView) {
+
+        this.recyclerView = recyclerView;
+
+    }
+
+    private OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
 
         @Override
-        public void onClick(View view) {
+        public void onFinish(WebService webService) {
 
-            FragmentManager.showNewNoteFragment();
+            UIUtil.hideSweetLoadingView();
+
+            if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
+
+                Post note = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
+
+                note.setPostList(postList);
+
+                note.setRecyclerView(recyclerView);
+
+                postList.add(0,note);
+
+                note.getRecyclerView().setAdapter(note.getRecyclerView().getAdapter());
+
+                Managers.FragmentManager.popCurrentVisibleFragment();
+
+            }
+            else{
+
+                UIUtil.showErrorDialog();
+
+            }
 
         }
     };
@@ -37,6 +84,12 @@ public class NewNoteViewHolder extends GenericViewHolder {
     }
 
     public void initializeView(){
+
+        AddNewPostDataModel dataModel = (AddNewPostDataModel) container.getValue();
+
+        setRecyclerView(dataModel.getRecyclerView());
+
+        setPostList(dataModel.getPostList());
 
         CircleImageView imageView = (CircleImageView)itemView.findViewById(R.id.profile_image);
 
@@ -51,7 +104,7 @@ public class NewNoteViewHolder extends GenericViewHolder {
             @Override
             public void onClick(View view) {
 
-                FragmentManager.showNewNoteFragment();
+                FragmentManager.showNewNoteFragment(listener);
 
             }
         });
@@ -61,7 +114,7 @@ public class NewNoteViewHolder extends GenericViewHolder {
             @Override
             public void onClick(View view) {
 
-                FragmentManager.showNewNoteFragment();
+                FragmentManager.showNewNoteFragment(listener);
 
             }
         });

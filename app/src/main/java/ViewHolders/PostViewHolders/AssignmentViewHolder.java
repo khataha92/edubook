@@ -7,6 +7,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Map;
 
+import CustomComponent.FlexibleTextView;
 import DataModels.Post;
 import DataModels.PostDataContainer;
 import UserUtils.FontUtil;
@@ -35,9 +36,7 @@ public class AssignmentViewHolder extends GenericPostViewHolder {
 
         ((TextView) itemView.findViewById(R.id.title)).setTypeface(FontUtil.getFont(FontsType.REGULAR));
 
-        ((TextView) itemView.findViewById(R.id.description)).setText(assignment.getAssignment().getDescription());
-
-        ((TextView) itemView.findViewById(R.id.description)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
+        ((FlexibleTextView) itemView.findViewById(R.id.description)).setText(assignment.getAssignment().getDescription());
 
         ((TextView) itemView.findViewById(R.id.due_date)).setText(assignment.getAssignment().getDuedate());
 

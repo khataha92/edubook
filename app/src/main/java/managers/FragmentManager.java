@@ -8,15 +8,28 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import DataModels.Group;
+import DataModels.User;
 import Fragments.AccountSettingsFragment;
 import Fragments.BaseFragment;
 import Fragments.GroupFragment;
+import Fragments.GroupMemberSettingsFragment;
+import Fragments.GroupMembersAccessFragment;
+import Fragments.GroupMembersFragment;
+import Fragments.GroupSettingsFragment;
 import Fragments.LibraryFragment;
 import Fragments.NewAssignmentFragment;
 import Fragments.NewEventFragment;
+import Fragments.NewGroupAssignmentFragment;
+import Fragments.NewGroupEventFragment;
+import Fragments.NewGroupNoteFragment;
 import Fragments.NewNoteFragment;
+import Fragments.PostViewFragment;
 import Interfaces.AbstractCallback;
+import Interfaces.FunctionCaller;
+import Interfaces.OnWebserviceFinishListener;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import edubook.edubook.R;
@@ -50,17 +63,21 @@ public class FragmentManager {
         currentFragments.clear();
     }
 
-    public static void showNewAssignmentFragment(){
+    public static void showNewAssignmentFragment(OnWebserviceFinishListener listener){
 
         NewAssignmentFragment fragment = new NewAssignmentFragment();
+
+        fragment.setWebserviceFinishListener(listener);
 
         addFragment(fragment,true);
 
     }
 
-    public static void showLibraryFragment(AbstractCallback callback){
+    public static void showLibraryFragment(AbstractCallback callback, FunctionCaller caller){
 
         LibraryFragment fragment = new LibraryFragment();
+
+        fragment.setCaller(caller);
 
         fragment.setOnFileSelectListener(callback);
 
@@ -68,19 +85,137 @@ public class FragmentManager {
 
     }
 
-    public static void showGroupStream(String groupId){
+    public static void showNewGroupAssignment(String groupId,String groupName,OnWebserviceFinishListener listener){
+
+        NewGroupAssignmentFragment fragment = new NewGroupAssignmentFragment();
+
+        fragment.setWebserviceFinishListener(listener);
+
+        fragment.setGroupId(groupId);
+
+        fragment.setGroupName(groupName);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void reloadCurrentFragment(){
+
+        BaseFragment fragment = currentFragments.get(currentFragments.size()-1);
+
+        final FragmentTransaction ft = Application.getCurrentActivity().getSupportFragmentManager().beginTransaction();
+
+        ft.detach(fragment);
+
+        ft.attach(fragment);
+
+        ft.commit();
+
+    }
+
+    public static void showPostViewFragment(String postId,AbstractCallback callback){
+
+        if(getCurrentVisibleFragment() instanceof PostViewFragment) return;
+
+        PostViewFragment fragment = new PostViewFragment();
+
+        fragment.setPostListener(callback);
+
+        fragment.setPostId(postId);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showNewGroupEvent(String groupId,String groupName,OnWebserviceFinishListener listener){
+
+        NewGroupEventFragment fragment = new NewGroupEventFragment();
+
+        fragment.setWebserviceFinishListener(listener);
+
+        fragment.setGroupId(groupId);
+
+        fragment.setGroupName(groupName);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showNewGroupNote(String groupId,String groupName,OnWebserviceFinishListener listener){
+
+        NewGroupNoteFragment fragment = new NewGroupNoteFragment();
+
+        fragment.setWebserviceFinishListener(listener);
+
+        fragment.setGroupId(groupId);
+
+        fragment.setGroupName(groupName);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupSettingsFragment(Group group){
+
+        GroupSettingsFragment fragment = new GroupSettingsFragment();
+
+        fragment.setGroup(group);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupStream(Group group){
 
         GroupFragment groupFragment = new GroupFragment();
 
-        groupFragment.setGroupId(groupId);
+        groupFragment.setGroup(group);
 
         addFragment(groupFragment,true);
 
     }
 
-    public static void showNewNoteFragment(){
+    public static void showGroupMembersAccessFragment(Group group,List<User> groupMembers){
+
+        GroupMembersAccessFragment fragment = new GroupMembersAccessFragment();
+
+        fragment.setGroup(group);
+
+        fragment.setGroupMembers(groupMembers);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupMemberSettingsFragment(User user,Group group,List<User> groupMembers){
+
+        GroupMemberSettingsFragment fragment = new GroupMemberSettingsFragment();
+
+        fragment.setGroupMembers(groupMembers);
+
+        fragment.setUser(user);
+
+        fragment.setGroup(group);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showGroupMembersFragment(Group group){
+
+        GroupMembersFragment fragment = new GroupMembersFragment();
+
+        fragment.setGroup(group);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showNewNoteFragment(OnWebserviceFinishListener listener){
 
         NewNoteFragment fragment = new NewNoteFragment();
+
+        fragment.setWebserviceFinishListener(listener);
 
         addFragment(fragment,true);
 
@@ -107,6 +242,10 @@ public class FragmentManager {
                 currentFragments.remove(i);
 
             }
+
+            currentFragments.get(currentFragments.size()-1).onResume();
+
+            UIUtil.showTabsView();
         }
     }
 
@@ -327,9 +466,11 @@ public class FragmentManager {
 
     }
 
-    public static void showNewEventFragment(){
+    public static void showNewEventFragment(OnWebserviceFinishListener listener){
 
         NewEventFragment fragment = new NewEventFragment();
+
+        fragment.setWebserviceFinishListener(listener);
 
         addFragment(fragment,true);
 

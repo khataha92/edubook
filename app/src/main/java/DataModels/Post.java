@@ -23,9 +23,31 @@ public class Post implements PostFactory{
     @SerializedName("comments_count")
     int commentCount;
 
+    List<Comment> comments;
+
     int liked;
 
+    private transient List<PostFactory> postList;
+
     private transient RecyclerView recyclerView;
+
+    public void setPostList(List<PostFactory> postList) {
+
+        this.postList = postList;
+
+    }
+
+    public List<PostFactory> getPostList() {
+
+        return postList;
+
+    }
+
+    public List<Comment> getComments() {
+
+        return comments;
+
+    }
 
     public void setRecyclerView(RecyclerView recyclerView) {
 

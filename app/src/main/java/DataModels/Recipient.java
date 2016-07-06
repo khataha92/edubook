@@ -63,6 +63,12 @@ public class Recipient {
 
     public String getId() {
 
+        if(id.indexOf(".") != -1){
+
+            id = id.substring(0,id.indexOf("."));
+
+        }
+
         return id;
 
     }

@@ -30,6 +30,14 @@ import edubook.edubook.R;
 public class NewNoteFragment extends PostFragment {
 
 
+    OnWebserviceFinishListener webserviceFinishListener;
+
+    public void setWebserviceFinishListener(OnWebserviceFinishListener webserviceFinishListener) {
+
+        this.webserviceFinishListener = webserviceFinishListener;
+
+    }
+
     public NewNoteFragment() {
 
 
@@ -64,36 +72,7 @@ public class NewNoteFragment extends PostFragment {
 
         UIUtil.showSweetLoadingView();
 
-        WebserviceRequestUtil.addNote(null, description, model, new OnWebserviceFinishListener() {
-
-            @Override
-            public void onFinish(WebService webService) {
-
-                UIUtil.hideSweetLoadingView();
-
-                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
-
-                    Post note = new Gson().fromJson(webService.getStrResponse().toString(),Post.class);
-
-                    SessionManager.getInstance().getPosts().add(0,note);
-
-                    ((HomeFragment)FragmentManager.getBeforeCurrentVisibleFragment()).updatePostList();
-
-                    FragmentManager.popCurrentVisibleFragment();
-
-                    Activity activity = Application.getCurrentActivity();
-
-                    activity.findViewById(R.id.bottom_tabs).setVisibility(View.VISIBLE);
-
-                }
-                else{
-
-                    UIUtil.showErrorDialog();
-
-                }
-
-            }
-        });
+        WebserviceRequestUtil.addNote(null, description, model, webserviceFinishListener);
 
     }
 

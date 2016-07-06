@@ -19,7 +19,7 @@ public enum RequestServices {
     POST_DETAILS("post/%s"),
     GET_PERMISSIONS("role/simple/%s"),
     CHANGE_GROUP_MEMBER_STATUS("group/%s/readonly/%s"),
-    CHANGE_USER_STATUS("member/%S/readonly/%s"),
+    CHANGE_USER_STATUS("member/%s/readonly/%s"),
     UNLIKE_POST("post/%s/like"),
     VOTE("post/%s/vote"),
     ADD_COMMENT("post/%s/comment"),
@@ -29,7 +29,11 @@ public enum RequestServices {
     GET_USER_GROUPS("group"),
     GET_USER_RECIPIENTS("recipients"),
     GET_STREAM_BOOK("post"),
-    CHANGE_USER_EMAIL("auth/%s")
+    CHANGE_USER_EMAIL("auth/%s"),
+    GET_GROUP_LIBRARY("group/%s/library"),
+    EDIT_GROUP_DESCRIPTION("group/%s"),
+    GET_GROUP_MEMBERS("group/%s/member"),
+    REMOVE_USER_FROM_GROUP("group/%s/member/%s")
     ;
 
     private String value;

@@ -13,6 +13,20 @@ public class User implements Serializable{
 
     UserType type;
 
+    Role role;
+
+    public void setRole(Role role) {
+
+        this.role = role;
+
+    }
+
+    public Role getRole() {
+
+        return role;
+
+    }
+
     public String getId() {
 
         return id;

@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView13"
+            android:id="@+id/back"
             android:layout_centerVertical="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -39,7 +39,7 @@
             android:layout_width="35dp"
             android:focusable="true"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView15"
+            android:id="@+id/settings"
             android:layout_marginRight="10dp"
             android:src="@drawable/settings_white"
             android:layout_alignTop="@+id/controller"

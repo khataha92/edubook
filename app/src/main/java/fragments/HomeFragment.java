@@ -39,6 +39,14 @@ import edubook.edubook.R;
 import Interfaces.OnWebserviceFinishListener;
 import Interfaces.PostFactory;
 import Managers.FragmentManager;
+import jp.wasabeef.recyclerview.animators.FadeInUpAnimator;
+import jp.wasabeef.recyclerview.animators.FlipInBottomXAnimator;
+import jp.wasabeef.recyclerview.animators.LandingAnimator;
+import jp.wasabeef.recyclerview.animators.ScaleInRightAnimator;
+import jp.wasabeef.recyclerview.animators.ScaleInTopAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInRightAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 
 public class HomeFragment extends BaseFragment {
@@ -46,6 +54,20 @@ public class HomeFragment extends BaseFragment {
     PostListAdapter adapter;
 
     RecyclerView recyclerView ;
+
+    List<PostFactory> posts;
+
+    public List<PostFactory> getPosts() {
+
+        return posts;
+
+    }
+
+    public RecyclerView getRecyclerView() {
+
+        return recyclerView;
+
+    }
 
     private String TAG = getClass().getSimpleName();
 
@@ -55,9 +77,9 @@ public class HomeFragment extends BaseFragment {
 
     public void updatePostList(){
 
-        List<PostFactory> posts = SessionManager.getInstance().getPosts();
+        posts = SessionManager.getInstance().getPosts();
 
-        setListAdapter(posts);
+        //setListAdapter();
 
     }
 
@@ -73,6 +95,12 @@ public class HomeFragment extends BaseFragment {
             ((Home) getActivity()).replaceIcon();
 
             UIUtil.showTabsView();
+
+        }
+
+        if(posts != null && recyclerView != null){
+
+            updatePostList();
 
         }
 
@@ -93,6 +121,8 @@ public class HomeFragment extends BaseFragment {
 
     private void initializeComponents(){
 
+        rootView.findViewById(R.id.bottomShadow).bringToFront();
+
         RelativeLayout messagesLayout = (RelativeLayout) getActivity().findViewById(R.id.messages_container);
 
         messagesLayout.setOnClickListener(new View.OnClickListener() {
@@ -110,12 +140,14 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
 
-                UIUtil.showNewPostDialog();
+                UIUtil.showNewPostDialog(HomeFragment.this);
 
             }
         });
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.post_list);
+
+        recyclerView.setItemAnimator(new LandingAnimator());
     }
 
     @Override
@@ -238,17 +270,21 @@ public class HomeFragment extends BaseFragment {
 
     private void initializeRecyclerView(StreamBookResponse streamBookResponse){
 
-        List<PostFactory> posts = streamBookResponse.getPostFactory();
+        posts = streamBookResponse.getPostFactory();
 
-        for(PostFactory post:posts){
+        for(int i = 0 ; i < posts.size() ; i++){
+
+            PostFactory post = posts.get(i);
 
             ((Post)post).setRecyclerView(recyclerView);
+
+            ((Post)post).setPostList(posts);
 
         }
 
         SessionManager.getInstance().setPosts(posts);
 
-        setListAdapter(posts);
+        setListAdapter();
 
         recyclerView.post(new Runnable() {
 
@@ -263,17 +299,11 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-    private void setListAdapter(List<PostFactory> posts){
+    private void setListAdapter(){
 
         adapter = new PostListAdapter();
 
-        for(int i = 0 ; i <posts.size() ; i ++){
-
-            Post post = (Post)posts.get(i);
-
-            post.setRecyclerView(recyclerView);
-
-        }
+        adapter.setRecyclerView(recyclerView);
 
         adapter.setPostFactories(posts);
 

@@ -1,8 +1,14 @@
 package UserUtils;
 
 import android.content.DialogInterface;
+import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
+import java.util.List;
+import java.util.Objects;
+
+import Adapters.GroupStreamListAdapter;
 import Adapters.PostListAdapter;
 import CustomComponent.PollLayout;
 import CustomComponent.ToggleLike;
@@ -10,6 +16,9 @@ import DataModels.Post;
 import Enums.ResponseCode;
 import Interfaces.AbstractCallback;
 import Interfaces.OnWebserviceFinishListener;
+import Interfaces.PostFactory;
+import Interfaces.YesNoDialogListener;
+import Managers.FragmentManager;
 import Managers.SessionManager;
 
 public class CallBackUtils {
@@ -72,7 +81,7 @@ public class CallBackUtils {
 
     }
 
-    public static void showDeletePostMenu(final Post post, DialogInterface.OnDismissListener listener){
+    public static void showDeletePostMenu(final Post post, final YesNoDialogListener listener){
 
         UIUtil.showDeleteDialog( new View.OnClickListener() {
 
@@ -81,6 +90,7 @@ public class CallBackUtils {
 
                 UIUtil.dismissSweetDialog();
 
+                listener.no();
             }
         }, new View.OnClickListener() {
 
@@ -98,11 +108,9 @@ public class CallBackUtils {
 
                         if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
 
-                            int position = SessionManager.getInstance().getPosts().indexOf(post);
-
-                            SessionManager.getInstance().getPosts().remove(position);
-
                             UIUtil.dismissSweetDialog();
+
+                            listener.yes(null);
 
                         }
                         else {
@@ -119,9 +127,65 @@ public class CallBackUtils {
 
     }
 
-    public static void processDeleteMenu(final Post post, final int offset, DialogInterface.OnDismissListener listener){
+    public static void processDeleteMenu(final Post post,int offset){
 
-        CallBackUtils.showDeletePostMenu(post,listener);
+        CallBackUtils.showDeletePostMenu(post, new YesNoDialogListener() {
+
+            @Override
+            public void yes(Object result) {
+
+                List<PostFactory> postFactoryList = post.getPostList();
+
+                if(postFactoryList == null){
+
+                    FragmentManager.popCurrentVisibleFragment();
+
+                    return;
+
+                }
+
+                int index = -1;
+
+                for(int i =0; i< postFactoryList.size(); i ++){
+
+                    if(post.getId() == ((Post)postFactoryList.get(i)).getId()){
+
+                        index = i;
+
+                        break;
+
+                    }
+
+                }
+
+                if(index != -1) {
+
+                    postFactoryList.remove(index);
+
+                    if(post.getRecyclerView().getAdapter() instanceof PostListAdapter){
+
+                        ((PostListAdapter)post.getRecyclerView().getAdapter()).setPostFactories(postFactoryList);
+
+                        post.getRecyclerView().getAdapter().notifyItemRemoved(index + 1);
+
+                    }
+                    else if(post.getRecyclerView().getAdapter() instanceof GroupStreamListAdapter){
+
+                        ((GroupStreamListAdapter)post.getRecyclerView().getAdapter()).setPosts(postFactoryList);
+
+                        post.getRecyclerView().getAdapter().notifyItemRemoved(index + 2);
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void no() {
+
+            }
+
+        });
 
     }
 

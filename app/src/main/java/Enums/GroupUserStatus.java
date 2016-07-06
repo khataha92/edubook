@@ -5,7 +5,7 @@ package Enums;
  */
 public enum GroupUserStatus {
 
-    READ_ONLY(1),MEMBER(0);
+    READ_ONLY(3),MEMBER(2);
 
     private int status;
 
@@ -17,6 +17,14 @@ public enum GroupUserStatus {
     public int getStatus() {
 
         return status;
+
+    }
+
+    public static GroupUserStatus getStatusWithCode(int code){
+
+        if(code == 2) return MEMBER;
+
+        return READ_ONLY;
 
     }
 }

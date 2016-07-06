@@ -3,6 +3,7 @@ package ViewHolders.PostViewHolders;
 import android.view.View;
 import android.widget.TextView;
 
+import CustomComponent.FlexibleTextView;
 import DataModels.Post;
 import DataModels.PostDataContainer;
 import UserUtils.FontUtil;
@@ -18,6 +19,7 @@ public class NoteViewHolder extends GenericPostViewHolder {
     public NoteViewHolder(View itemView, PostDataContainer container) {
 
         super(itemView,container);
+
     }
 
     @Override
@@ -27,9 +29,9 @@ public class NoteViewHolder extends GenericPostViewHolder {
 
         final Post note = (Post) container.getValue();
 
-        ((TextView) itemView.findViewById(R.id.description)).setText(note.getNote().getDescription());
+        FlexibleTextView description = (FlexibleTextView) itemView.findViewById(R.id.description);
 
-        ((TextView) itemView.findViewById(R.id.description)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
+        description.setText(note.getNote().getDescription());
 
     }
 }

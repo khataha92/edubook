@@ -2,6 +2,8 @@ package UserUtils;
 
 import android.util.Log;
 import org.json.JSONObject;
+
+import DataModels.Group;
 import DataModels.RecieversModel;
 import Enums.ErrorType;
 import Enums.GroupUserStatus;
@@ -19,6 +21,34 @@ public class WebserviceRequestUtil {
         final WebService ws = getLoginWebService(name,password,listener);
 
         ws.start();
+
+    }
+
+    public static void changeGroupDescription(Group group, String description,OnWebserviceFinishListener listener){
+
+        WebService webService = postWebService(listener);
+
+        webService.addParams("_method","put");
+
+        webService.addParams("name",group.getName());
+
+        webService.setService(String.format(RequestServices.EDIT_GROUP_DESCRIPTION.getValue(),group.getId()));
+
+        webService.addParams("description",description);
+
+        webService.addParams("institute_id",group.getInstitute());
+
+        webService.start();
+
+    }
+
+    public static void getGroupMembers(String groupId,OnWebserviceFinishListener listener){
+
+        WebService webService = getWebService(listener);
+
+        webService.setService(String.format(RequestServices.GET_GROUP_MEMBERS.getValue(),groupId));
+
+        webService.start();
 
     }
 
@@ -75,6 +105,16 @@ public class WebserviceRequestUtil {
         webService.setService(String.format(RequestServices.GET_PARENT_ACCESS_KEY.getValue(),userId));
 
         webService.start();
+    }
+
+    public static void removeUserFromGroup(String userId, String groupId, OnWebserviceFinishListener listener){
+
+        WebService webService = deleteWebService(listener);
+
+        webService.setService(String.format(RequestServices.REMOVE_USER_FROM_GROUP.getValue(),groupId,userId));
+
+        webService.start();
+
     }
 
     public static void removeProfileImage(String userId,OnWebserviceFinishListener listener){
@@ -188,7 +228,7 @@ public class WebserviceRequestUtil {
 
         WebService webService = getWebService(listener);
 
-        String service = String.format(RequestServices.CHANGE_GROUP_MEMBER_STATUS.getValue(),groupId,status.getStatus());
+        String service = String.format(RequestServices.CHANGE_GROUP_MEMBER_STATUS.getValue(),groupId,status.getStatus()-2);
 
         webService.setService(service);
 
@@ -234,7 +274,7 @@ public class WebserviceRequestUtil {
 
                 for(int i=0; i < model.getRecipientList().size() ; i++){
 
-                    webService.addParams("receivers["+type.getValue()+"]",model.getRecipientList().get(i).getId());
+                    webService.addParams("receivers["+type.getValue()+"][]",model.getRecipientList().get(i).getId());
 
                 }
 
@@ -323,6 +363,16 @@ public class WebserviceRequestUtil {
         WebService webService = getWebService(listener);
 
         webService.setService(RequestServices.GET_LIBRARY.getValue());
+
+        webService.start();
+
+    }
+
+    public static void getGroupLibrary(String groupId,OnWebserviceFinishListener listener){
+
+        WebService webService = getWebService(listener);
+
+        webService.setService(String.format(RequestServices.GET_GROUP_LIBRARY.getValue(),groupId));
 
         webService.start();
 

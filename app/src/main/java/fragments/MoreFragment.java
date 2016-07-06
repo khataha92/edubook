@@ -14,8 +14,11 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import Adapters.GroupListAdapter;
+import Interfaces.FunctionCaller;
+import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
 import UserUtils.UIUtil;
+import UserUtils.WebserviceRequestUtil;
 import activities.Login;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -54,7 +57,17 @@ public class MoreFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
 
-                FragmentManager.showLibraryFragment(null);
+                FragmentManager.showLibraryFragment(null, new FunctionCaller() {
+
+                    @Override
+                    public void callFunction(Object object) {
+
+                        OnWebserviceFinishListener listener = (OnWebserviceFinishListener)object;
+
+                        WebserviceRequestUtil.getLibrary(listener);
+
+                    }
+                });
 
             }
         });

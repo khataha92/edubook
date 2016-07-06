@@ -38,7 +38,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_below="@+id/linearLayout11"
-            android:id="@+id/role">
+            android:id="@+id/roles">
             <RadioButton
                 android:layout_width="20dp"
                 android:id="@+id/readOnly"
@@ -60,9 +60,9 @@
                 android:orientation="vertical"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_alignTop="@+id/role"
-                android:layout_toRightOf="@+id/role"
-                android:layout_toEndOf="@+id/role">
+                android:layout_alignTop="@+id/roles"
+                android:layout_toRightOf="@+id/roles"
+                android:layout_toEndOf="@+id/roles">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:text="@string/Save"
             android:id="@+id/save"
-            android:layout_below="@+id/role"
+            android:layout_below="@+id/roles"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
@@ -111,7 +111,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/close"
+            android:id="@+id/back"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -140,7 +140,7 @@
         android:layout_weight="2"
         android:layout_height="wrap_content"
         android:text="@string/ParentCode"
-        android:id="@+id/button"
+        android:id="@+id/parentCode"
         android:layout_below="@+id/relativeLayout10"
         android:layout_alignLeft="@+id/relativeLayout10"
         android:layout_alignStart="@+id/relativeLayout10"
@@ -159,11 +159,11 @@
         android:layout_height="wrap_content"
         android:text="@string/RemoveProfilePicture"
         android:id="@+id/removeProfilePic"
-        android:layout_below="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_below="@+id/parentCode"
+        android:layout_alignLeft="@+id/parentCode"
+        android:layout_alignStart="@+id/parentCode"
+        android:layout_alignRight="@+id/parentCode"
+        android:layout_alignEnd="@+id/parentCode" />
 
     <Button
         android:layout_width="match_parent"

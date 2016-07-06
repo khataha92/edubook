@@ -3,6 +3,7 @@ package ViewHolders.PostViewHolders;
 import android.view.View;
 import android.widget.TextView;
 
+import CustomComponent.FlexibleTextView;
 import DataModels.Post;
 import DataModels.PostDataContainer;
 import UserUtils.FontUtil;
@@ -27,9 +28,7 @@ public class EventViewHolder extends GenericPostViewHolder {
 
         ((TextView) itemView.findViewById(R.id.title)).setTypeface(FontUtil.getFont(FontsType.REGULAR));
 
-        ((TextView) itemView.findViewById(R.id.description)).setText(event.getEvent().getDescription());
-
-        ((TextView) itemView.findViewById(R.id.description)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
+        ((FlexibleTextView) itemView.findViewById(R.id.description)).setText(event.getEvent().getDescription());
 
         ((TextView) itemView.findViewById(R.id.from_date)).setText(event.getEvent().getStartDate());
 
