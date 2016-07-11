@@ -1,33 +1,21 @@
 package ViewHolders.GroupViewHolders;
 
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import DataModels.AddNewPostDataModel;
 import DataModels.Group;
-import DataModels.Post;
-import DataModels.PostDataContainer;
-import Enums.ResponseCode;
+import DataModels.GenericViewHolderDataContainer;
 import Fragments.GroupFragment;
-import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
-import UserUtils.Application;
-import UserUtils.FontUtil;
-import UserUtils.FontsType;
 import UserUtils.UIUtil;
-import UserUtils.WebService;
-import UserUtils.WebserviceRequestUtil;
 import ViewHolders.GenericViewHolder;
-import ViewHolders.PostViewHolders.GenericPostViewHolder;
 import edubook.edubook.R;
 
 
 public class GroupHeaderViewHolder extends GenericViewHolder {
 
-    public GroupHeaderViewHolder(View itemView, PostDataContainer container) {
+    public GroupHeaderViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
     }

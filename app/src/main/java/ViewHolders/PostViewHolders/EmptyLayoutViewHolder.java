@@ -2,7 +2,7 @@ package ViewHolders.PostViewHolders;
 
 import android.view.View;
 
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import ViewHolders.GenericViewHolder;
 
 /**
@@ -10,7 +10,7 @@ import ViewHolders.GenericViewHolder;
  */
 public class EmptyLayoutViewHolder extends GenericViewHolder {
 
-    PostDataContainer container;
+    GenericViewHolderDataContainer container;
 
     public EmptyLayoutViewHolder(View itemView) {
 

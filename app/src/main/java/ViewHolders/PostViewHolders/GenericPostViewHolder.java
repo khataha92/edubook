@@ -1,15 +1,12 @@
 package ViewHolders.PostViewHolders;
-import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import CustomComponent.ToggleLike;
 import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Interfaces.PostFactory;
 import Managers.FragmentManager;
 import UserUtils.Application;
@@ -17,7 +14,6 @@ import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
-import UserUtils.UserDefaultUtil;
 import ViewHolders.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -35,7 +31,7 @@ public class GenericPostViewHolder extends GenericViewHolder {
 
     }
 
-    public GenericPostViewHolder(View itemView, PostDataContainer container) {
+    public GenericPostViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView, container);
 

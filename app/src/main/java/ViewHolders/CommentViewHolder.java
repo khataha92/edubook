@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import DataModels.Comment;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -13,7 +13,7 @@ import edubook.edubook.R;
 
 public class CommentViewHolder extends GenericViewHolder {
 
-    public CommentViewHolder(View itemView, PostDataContainer container) {
+    public CommentViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView, container);
 

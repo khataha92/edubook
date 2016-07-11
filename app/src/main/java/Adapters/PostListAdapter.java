@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import DataModels.AddNewPostDataModel;
-import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Enums.HolderType;
 import ViewHolders.GenericViewHolder;
 import Interfaces.PostFactory;
@@ -38,7 +37,7 @@ public class PostListAdapter extends RecyclerView.Adapter<GenericViewHolder> {
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        PostDataContainer container = new PostDataContainer();
+        GenericViewHolderDataContainer container = new GenericViewHolderDataContainer();
 
         switch (viewType){
 

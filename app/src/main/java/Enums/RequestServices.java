@@ -33,7 +33,8 @@ public enum RequestServices {
     GET_GROUP_LIBRARY("group/%s/library"),
     EDIT_GROUP_DESCRIPTION("group/%s"),
     GET_GROUP_MEMBERS("group/%s/member"),
-    REMOVE_USER_FROM_GROUP("group/%s/member/%s")
+    REMOVE_USER_FROM_GROUP("group/%s/member/%s"),
+    GET_STUDENT_PROGRESS("progress")
     ;
 
     private String value;

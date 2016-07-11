@@ -36,6 +36,16 @@ public class MoreFragment extends BaseFragment {
 
     private void prepareFragment(){
 
+        rootView.findViewById(R.id.showProfile).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.showProgressFragment("");
+
+            }
+        });
+
         rootView.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
 
             @Override
