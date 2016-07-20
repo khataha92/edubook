@@ -15,6 +15,7 @@ import ViewHolders.PostViewHolders.EventViewHolder;
 import ViewHolders.PostViewHolders.NoteViewHolder;
 import ViewHolders.PostViewHolders.PollViewHolder;
 import ViewHolders.ProgressViewHolders.ProgressHeaderViewHolder;
+import ViewHolders.ProgressViewHolders.ProgressLineViewHolder;
 import ViewHolders.ProgressViewHolders.ProgressStickyViewHolder;
 import edubook.edubook.R;
 
@@ -42,6 +43,12 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
         View view;
 
         switch (container.getType()){
+
+            case PROGRESS:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.timeline_view,parent,false);
+
+                return new ProgressLineViewHolder(view,container);
 
             case PROGRESS_HEADER:
 
@@ -107,7 +114,7 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
 
                 view = LayoutInflater.from(Application.getContext()).inflate(R.layout.empty_layout,parent,false);
 
-                return new EmptyLayoutViewHolder(view);
+                return new EmptyLayoutViewHolder(view,container);
 
         }
 

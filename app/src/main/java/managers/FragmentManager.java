@@ -188,9 +188,11 @@ public class FragmentManager {
 
     }
 
-    public static void showProgressFragment(String profileId){
+    public static void showProgressFragment(User user){
 
         ProgressFragment fragment = new ProgressFragment();
+
+        fragment.setUser(user);
 
         addFragment(fragment,true);
 

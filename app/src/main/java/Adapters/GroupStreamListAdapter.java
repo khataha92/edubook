@@ -73,7 +73,7 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
 
                 container.setType(HolderType.EMPTY);
 
-                container.setValue(null);
+                container.setValue(0);
 
                 break;
 

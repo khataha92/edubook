@@ -62,6 +62,20 @@ public class GenericPostViewHolder extends GenericViewHolder {
 
     private void initComponents(){
 
+        View.OnClickListener viewProgress = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.showProgressFragment(post.getCreator());
+
+            }
+        };
+
+        itemView.findViewById(R.id.profile_image).setOnClickListener(viewProgress);
+
+        itemView.findViewById(R.id.name).setOnClickListener(viewProgress);
+
         ((TextView) itemView.findViewById(R.id.name)).setText(post.getCreator().getName());
 
         ((TextView) itemView.findViewById(R.id.name)).setTypeface(FontUtil.getFont(FontsType.REGULAR));

@@ -248,11 +248,11 @@ public class WebserviceRequestUtil {
 
     }
 
-    public static void getStudentProgress(OnWebserviceFinishListener listener){
+    public static void getStudentProgress(String studentId,OnWebserviceFinishListener listener){
 
         WebService webService = getWebService(listener);
 
-        webService.setService(RequestServices.GET_STUDENT_PROGRESS.getValue());
+        webService.setService(String.format(RequestServices.GET_STUDENT_PROGRESS.getValue(),studentId));
 
         webService.start();
 

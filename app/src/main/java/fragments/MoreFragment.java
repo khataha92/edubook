@@ -41,7 +41,7 @@ public class MoreFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
 
-                FragmentManager.showProgressFragment("");
+                FragmentManager.showProgressFragment(SessionManager.getInstance().getCurrentUser());
 
             }
         });
