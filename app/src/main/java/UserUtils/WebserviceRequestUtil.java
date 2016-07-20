@@ -248,6 +248,16 @@ public class WebserviceRequestUtil {
 
     }
 
+    public static void getStudentProgress(String studentId,OnWebserviceFinishListener listener){
+
+        WebService webService = getWebService(listener);
+
+        webService.setService(String.format(RequestServices.GET_STUDENT_PROGRESS.getValue(),studentId));
+
+        webService.start();
+
+    }
+
     private static void addRecievers(WebService webService, RecieversModel model){
 
         RecieverType type = model.getType();

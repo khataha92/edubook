@@ -3,14 +3,10 @@ package Adapters;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import java.util.List;
-
-import DataModels.Comment;
 import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Enums.HolderType;
 import UserUtils.UserDefaultUtil;
-import ViewHolders.CommentViewHolder;
 import ViewHolders.GenericViewHolder;
 
 public class PostViewAdapter extends RecyclerView.Adapter<GenericViewHolder> {
@@ -26,7 +22,7 @@ public class PostViewAdapter extends RecyclerView.Adapter<GenericViewHolder> {
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        PostDataContainer container = new PostDataContainer();
+        GenericViewHolderDataContainer container = new GenericViewHolderDataContainer();
 
         switch (viewType){
 

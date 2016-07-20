@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout12"
+        android:background="@drawable/profile_circle_container"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout13">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/profile_circles_bg"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/library_items"
+                android:text=""
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/background"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="@string/LibraryItems"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/profile_circles_bg"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/background"
+                android:textSize="20sp"
+                android:id="@+id/groups_count"
+                android:textStyle="bold"
+                android:text=""
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/background"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="@string/Groups"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

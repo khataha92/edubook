@@ -34,6 +34,8 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
 
     private int responseCode ;
 
+    String token="";
+
     private HttpPost httppost;
 
     private HttpGet httpGet;
@@ -131,6 +133,8 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
         String url = server + ":" + port + "/api/" + version + "/" + service;
 
         Log.d("server", url);
+
+        Log.d("token",token);
         HttpDelete delete = new HttpDelete(url);
 
         try {
@@ -170,6 +174,12 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
 
     public void addHeader(final String key, final String val){
 
+        if(key.equalsIgnoreCase("Authorization")){
+
+            token = val.substring(val.indexOf(' ') + 1);
+
+        }
+
         client.addRequestInterceptor(new HttpRequestInterceptor() {
 
             public void process(final HttpRequest request, final HttpContext context) throws HttpException,
@@ -194,6 +204,8 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
         String url = server + ":" + port + "/api/" + version + "/" + service;
 
         Log.d("server", url);
+
+        Log.d("token",token);
 
         httppost = new HttpPost(url);
 
@@ -231,6 +243,8 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
         String url = server + ":" + port + "/api/" + version + "/" + service;
 
         Log.d("server", url);
+
+        Log.d("token",token);
 
         httpGet = new HttpGet(url);
 

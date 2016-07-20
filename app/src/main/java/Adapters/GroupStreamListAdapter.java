@@ -9,8 +9,7 @@ import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 import java.util.List;
 
 import DataModels.AddNewPostDataModel;
-import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Enums.HolderType;
 import Fragments.BaseFragment;
 import Fragments.GroupFragment;
@@ -50,7 +49,7 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        PostDataContainer container = new PostDataContainer();
+        GenericViewHolderDataContainer container = new GenericViewHolderDataContainer();
 
         switch (viewType){
 
@@ -74,7 +73,7 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
 
                 container.setType(HolderType.EMPTY);
 
-                container.setValue(null);
+                container.setValue(0);
 
                 break;
 
@@ -126,7 +125,7 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
     @Override
     public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
 
-        PostDataContainer container = new PostDataContainer();
+        GenericViewHolderDataContainer container = new GenericViewHolderDataContainer();
 
         container.setType(HolderType.GROUP_STICKY);
 

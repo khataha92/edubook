@@ -189,9 +189,9 @@ public class Post implements PostFactory{
     }
 
     @Override
-    public PostDataContainer getPostFactory() {
+    public GenericViewHolderDataContainer getPostFactory() {
 
-        PostDataContainer container = new PostDataContainer();
+        GenericViewHolderDataContainer container = new GenericViewHolderDataContainer();
 
         if(poll != null){
 

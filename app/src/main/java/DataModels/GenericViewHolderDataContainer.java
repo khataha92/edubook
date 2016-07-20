@@ -1,13 +1,11 @@
 package DataModels;
 
-import java.util.Objects;
-
 import Enums.HolderType;
 
 /**
  * Created by lap on 6/12/16.
  */
-public class PostDataContainer {
+public class GenericViewHolderDataContainer {
 
     private HolderType type;
 
@@ -19,7 +17,7 @@ public class PostDataContainer {
 
     }
 
-    public PostDataContainer setType(HolderType type) {
+    public GenericViewHolderDataContainer setType(HolderType type) {
 
         this.type = type;
 

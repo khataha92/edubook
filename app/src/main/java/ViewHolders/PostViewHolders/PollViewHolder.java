@@ -8,9 +8,8 @@ import CustomComponent.PollLayout;
 import DataModels.Poll;
 import DataModels.PollVote;
 import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Interfaces.AbstractCallback;
-import ViewHolders.PostViewHolders.GenericPostViewHolder;
 import edubook.edubook.R;
 
 
@@ -20,7 +19,7 @@ public class PollViewHolder extends GenericPostViewHolder {
 
     PollLayout pollLayout;
 
-    public PollViewHolder(View itemView, PostDataContainer container) {
+    public PollViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
 

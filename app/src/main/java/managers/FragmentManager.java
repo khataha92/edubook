@@ -27,6 +27,7 @@ import Fragments.NewGroupEventFragment;
 import Fragments.NewGroupNoteFragment;
 import Fragments.NewNoteFragment;
 import Fragments.PostViewFragment;
+import Fragments.ProgressFragment;
 import Interfaces.AbstractCallback;
 import Interfaces.FunctionCaller;
 import Interfaces.OnWebserviceFinishListener;
@@ -182,6 +183,16 @@ public class FragmentManager {
         fragment.setGroup(group);
 
         fragment.setGroupMembers(groupMembers);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showProgressFragment(User user){
+
+        ProgressFragment fragment = new ProgressFragment();
+
+        fragment.setUser(user);
 
         addFragment(fragment,true);
 

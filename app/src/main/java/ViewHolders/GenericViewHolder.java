@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import UserUtils.Application;
 import ViewHolders.GroupViewHolders.GroupHeaderViewHolder;
 import ViewHolders.GroupViewHolders.GroupStickyViewHolder;
@@ -14,18 +14,19 @@ import ViewHolders.PostViewHolders.EmptyLayoutViewHolder;
 import ViewHolders.PostViewHolders.EventViewHolder;
 import ViewHolders.PostViewHolders.NoteViewHolder;
 import ViewHolders.PostViewHolders.PollViewHolder;
+import ViewHolders.ProgressViewHolders.ProgressHeaderViewHolder;
+import ViewHolders.ProgressViewHolders.ProgressLineViewHolder;
+import ViewHolders.ProgressViewHolders.ProgressStickyViewHolder;
 import edubook.edubook.R;
 
-/**
- * Created by lap on 6/12/16.
- */
+
 public class GenericViewHolder extends RecyclerView.ViewHolder {
 
     public View itemView;
 
-    public PostDataContainer container;
+    public GenericViewHolderDataContainer container;
 
-    public GenericViewHolder(View itemView,PostDataContainer container) {
+    public GenericViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView);
 
@@ -37,11 +38,29 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public static GenericViewHolder getViewHolder(ViewGroup parent, PostDataContainer container){
+    public static GenericViewHolder getViewHolder(ViewGroup parent, GenericViewHolderDataContainer container){
 
         View view;
 
         switch (container.getType()){
+
+            case PROGRESS:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.timeline_view,parent,false);
+
+                return new ProgressLineViewHolder(view,container);
+
+            case PROGRESS_HEADER:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.progress_header,parent,false);
+
+                return new ProgressHeaderViewHolder(view,container);
+
+            case PROGRESS_STICKY:
+
+                view = LayoutInflater.from(Application.getContext()).inflate(R.layout.progress_sticky,parent,false);
+
+                return new ProgressStickyViewHolder(view,container);
 
             case COMMENT:
 
@@ -95,7 +114,7 @@ public class GenericViewHolder extends RecyclerView.ViewHolder {
 
                 view = LayoutInflater.from(Application.getContext()).inflate(R.layout.empty_layout,parent,false);
 
-                return new EmptyLayoutViewHolder(view);
+                return new EmptyLayoutViewHolder(view,container);
 
         }
 

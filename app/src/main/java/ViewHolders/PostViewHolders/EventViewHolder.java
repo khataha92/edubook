@@ -5,14 +5,14 @@ import android.widget.TextView;
 
 import CustomComponent.FlexibleTextView;
 import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import edubook.edubook.R;
 
 public class EventViewHolder extends GenericPostViewHolder {
 
-    public EventViewHolder(View itemView, PostDataContainer container) {
+    public EventViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
     }

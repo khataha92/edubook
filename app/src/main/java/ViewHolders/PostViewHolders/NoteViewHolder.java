@@ -1,14 +1,10 @@
 package ViewHolders.PostViewHolders;
 
 import android.view.View;
-import android.widget.TextView;
 
 import CustomComponent.FlexibleTextView;
 import DataModels.Post;
-import DataModels.PostDataContainer;
-import UserUtils.FontUtil;
-import UserUtils.FontsType;
-import ViewHolders.PostViewHolders.GenericPostViewHolder;
+import DataModels.GenericViewHolderDataContainer;
 import edubook.edubook.R;
 
 /**
@@ -16,7 +12,7 @@ import edubook.edubook.R;
  */
 public class NoteViewHolder extends GenericPostViewHolder {
 
-    public NoteViewHolder(View itemView, PostDataContainer container) {
+    public NoteViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
 

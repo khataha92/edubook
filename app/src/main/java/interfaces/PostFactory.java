@@ -1,12 +1,12 @@
 package Interfaces;
 
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 
 /**
  * Created by lap on 6/12/16.
  */
 public interface PostFactory {
 
-    PostDataContainer getPostFactory();
+    GenericViewHolderDataContainer getPostFactory();
 
 }

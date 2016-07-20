@@ -4,12 +4,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import CustomComponent.FlexibleTextView;
 import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
@@ -20,7 +17,7 @@ import edubook.edubook.R;
  */
 public class AssignmentViewHolder extends GenericPostViewHolder {
 
-    public AssignmentViewHolder(View itemView, PostDataContainer container) {
+    public AssignmentViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
     }

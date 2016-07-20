@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.Button;
 
 import DataModels.Group;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Interfaces.FunctionCaller;
 import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
@@ -17,7 +17,7 @@ import edubook.edubook.R;
  */
 public class GroupStickyViewHolder extends GenericViewHolder {
 
-    public GroupStickyViewHolder(View itemView, PostDataContainer container) {
+    public GroupStickyViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
     }

@@ -1,23 +1,20 @@
 package ViewHolders;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import DataModels.AddNewPostDataModel;
 import DataModels.Post;
-import DataModels.PostDataContainer;
+import DataModels.GenericViewHolderDataContainer;
 import Enums.ResponseCode;
 import Interfaces.OnWebserviceFinishListener;
 import Interfaces.PostFactory;
 import Managers.FragmentManager;
-import UserUtils.Application;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
@@ -78,7 +75,7 @@ public class NewNoteViewHolder extends GenericViewHolder {
         }
     };
 
-    public NewNoteViewHolder(View itemView, PostDataContainer container) {
+    public NewNoteViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView,container);
     }
