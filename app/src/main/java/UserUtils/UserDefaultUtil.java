@@ -1,16 +1,24 @@
 package UserUtils;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.view.View;
 
 
 import com.google.gson.internal.LinkedTreeMap;
+import com.ruily.crop.FileUtils;
 
+import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import DataModels.Group;
 import DataModels.Post;
@@ -25,29 +33,7 @@ import edubook.edubook.R;
  * This is the user default util that will handle saving and getting user values
  */
 
-enum UserDefaultKeys {
 
-    DEVICE_LANGUAGE ("DEVICE_LANGUAGE"), UUID ("UUID"), POPULAR_CITIES_LAST_UPDATE_DATE("POPULAR_CITIES_LAST_UPDATE_DATE"), CURRENCY_LAST_UPDATE_DATE("CURRENCY_LAST_UPDATE_DATE"), POPULAR_CITIES_LAST_UPDATE_LANGUAGE("POPULAR_CITIES_LAST_UPDATE_LANGUAGE"), CURRENCY_LAST_UPDATE_LANGUAGE("CURRENCY_LAST_UPDATE_LANGUAGE"), COUNTRIES_CITIES_LAST_UPDATE_LANGUAGE ("CURRENCY_LAST_UPDATE_LANGUAGE"), GUEST_INFO("GUEST_INFO"), COUNTRIES_AND_CITIES_LAST_UPDATE_DATE("COUNTRIES_AND_CITIES_LAST_UPDATE_DATE"),
-    COUNTRIES_AND_CITIES("COUNTRIES_AND_CITIES"), POPULAR_CITIES("POPULAR_CITIES"), VERIFIED_PHONE_NUMBER("VERIFIED_PHONE_NUMBER"), VERIFIED_PHONE_NUMBERS("VERIFIED_PHONE_NUMBERS"), DEFAULT_COUNTRY_CODE("DEFAULT_COUNTRY_CODE"), CURRENCIES("CURRENCIES"), HOLIDAYS("HOLIDAYS"), USER_CURRENCY("USER_CURRENCY"), MY_ORDERS("MY_ORDERS"), OFFLINE_NUMBERS("OFFLINE_NUMBERS"), RECENT_SEARCH("RECENT_SEARCH"), DEVICE_GEO_INFO("DEVICE_GEO_INFO"), PUSH_NOTIFICATION_SUBSCRIBED ("PUSH_NOTIFICATION_SUBSCRIBED")
-    , TREND_SEARCH("TREND_SEARCH");
-
-    private String value;
-
-    UserDefaultKeys(final String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-
-        return this.getValue();
-    }
-
-}
 
 
 public class UserDefaultUtil {
@@ -56,7 +42,57 @@ public class UserDefaultUtil {
 
     private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Application.getContext());
 
+    static Map<String,View.OnClickListener> listeners = new HashMap<>();
+
+    public static Map<String, View.OnClickListener> getListeners() {
+
+        return listeners;
+
+    }
+
     // Saves string value to shared preference
+
+    public static void startGalleryIntent() {
+
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+
+        intent.setType("image/*");
+
+        Application.getCurrentActivity().startActivityForResult(intent, Constants.REQUEST_GALLERY);
+
+    }
+
+    public static View.OnClickListener getChangeImageListener(){
+
+        return listeners.get(SessionManager.getInstance().getCurrentUser().getId());
+
+    }
+
+    public static String dispatchTakePictureIntent() {
+
+        String mCurrentPhotoPath = "";
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if (takePictureIntent.resolveActivity(Application.getContext().getPackageManager()) != null) {
+
+            File photoFile;
+
+            photoFile = FileUtils.getOutputMediaFileUri();
+
+            mCurrentPhotoPath = "file:" + photoFile.getAbsolutePath();
+
+            if (photoFile != null) {
+
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+
+                Application.getCurrentActivity().startActivityForResult(takePictureIntent, Constants.REQUEST_CAMERA);
+
+            }
+        }
+
+        return mCurrentPhotoPath;
+    }
 
     public static int getRecieverIcon(RecieverType type){
 
@@ -336,6 +372,30 @@ public class UserDefaultUtil {
     public static boolean deviceLanguageIsRTL() {
 
         return "ar".equalsIgnoreCase(getUserLanguage());
+
+    }
+
+    enum UserDefaultKeys {
+
+        DEVICE_LANGUAGE ("DEVICE_LANGUAGE"), UUID ("UUID"), POPULAR_CITIES_LAST_UPDATE_DATE("POPULAR_CITIES_LAST_UPDATE_DATE"), CURRENCY_LAST_UPDATE_DATE("CURRENCY_LAST_UPDATE_DATE"), POPULAR_CITIES_LAST_UPDATE_LANGUAGE("POPULAR_CITIES_LAST_UPDATE_LANGUAGE"), CURRENCY_LAST_UPDATE_LANGUAGE("CURRENCY_LAST_UPDATE_LANGUAGE"), COUNTRIES_CITIES_LAST_UPDATE_LANGUAGE ("CURRENCY_LAST_UPDATE_LANGUAGE"), GUEST_INFO("GUEST_INFO"), COUNTRIES_AND_CITIES_LAST_UPDATE_DATE("COUNTRIES_AND_CITIES_LAST_UPDATE_DATE"),
+        COUNTRIES_AND_CITIES("COUNTRIES_AND_CITIES"), POPULAR_CITIES("POPULAR_CITIES"), VERIFIED_PHONE_NUMBER("VERIFIED_PHONE_NUMBER"), VERIFIED_PHONE_NUMBERS("VERIFIED_PHONE_NUMBERS"), DEFAULT_COUNTRY_CODE("DEFAULT_COUNTRY_CODE"), CURRENCIES("CURRENCIES"), HOLIDAYS("HOLIDAYS"), USER_CURRENCY("USER_CURRENCY"), MY_ORDERS("MY_ORDERS"), OFFLINE_NUMBERS("OFFLINE_NUMBERS"), RECENT_SEARCH("RECENT_SEARCH"), DEVICE_GEO_INFO("DEVICE_GEO_INFO"), PUSH_NOTIFICATION_SUBSCRIBED ("PUSH_NOTIFICATION_SUBSCRIBED")
+        , TREND_SEARCH("TREND_SEARCH");
+
+        private String value;
+
+        UserDefaultKeys(final String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+
+            return this.getValue();
+        }
 
     }
 

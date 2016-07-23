@@ -7,6 +7,7 @@ import Adapters.ProgressHeaderViewPagerAdapter;
 import DataModels.GenericViewHolderDataContainer;
 import DataModels.User;
 import Managers.FragmentManager;
+import UserUtils.UserDefaultUtil;
 import ViewHolders.GenericViewHolder;
 import edubook.edubook.R;
 
@@ -15,9 +16,17 @@ import edubook.edubook.R;
  */
 public class ProgressHeaderViewHolder extends GenericViewHolder {
 
+    ViewPager viewPager;
+
     public ProgressHeaderViewHolder(View itemView, GenericViewHolderDataContainer container) {
 
         super(itemView, container);
+
+    }
+
+    public ViewPager getViewPager() {
+
+        return viewPager;
 
     }
 
@@ -36,7 +45,7 @@ public class ProgressHeaderViewHolder extends GenericViewHolder {
             }
         });
 
-        ViewPager viewPager = (ViewPager) itemView.findViewById(R.id.viewpager);
+        viewPager = (ViewPager) itemView.findViewById(R.id.viewpager);
 
         viewPager.setAdapter(new ProgressHeaderViewPagerAdapter((User)container.getValue()));
 
