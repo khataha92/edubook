@@ -1,14 +1,28 @@
 package activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import DataModels.Progress;
 import Fragments.BaseFragment;
+import Fragments.ProgressFragment;
+import Interfaces.OnWebserviceFinishListener;
+import Managers.SessionManager;
 import UserUtils.Application;
+import UserUtils.Constants;
+import UserUtils.ImageUploader;
 import UserUtils.UIUtil;
+import UserUtils.WebService;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 import Fragments.HomeFragment;
 import Fragments.MoreFragment;
@@ -82,15 +96,29 @@ public class Home extends FragmentActivity
     }
 
     @Override
-    public void onBackPressed() {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        FragmentManager.popCurrentVisibleFragment();
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.REQUEST_CAMERA && resultCode == RESULT_OK) {
+
+            ((ProgressFragment)FragmentManager.getCurrentVisibleFragment()).goCrop(Uri.parse(SessionManager.getInstance().getImagePath()));
+
+        } else if (requestCode == Constants.REQUEST_GALLERY && resultCode == RESULT_OK) {
+
+            ((ProgressFragment)FragmentManager.getCurrentVisibleFragment()).goCrop(data.getData());
+
+        } else if (requestCode == Constants.REQUEST_CROP && resultCode == RESULT_OK) {
+
+            ((ProgressFragment)FragmentManager.getCurrentVisibleFragment()).uploadImage(data);
+
+        }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onBackPressed() {
 
-        super.onActivityResult(requestCode,resultCode,data);
+        FragmentManager.popCurrentVisibleFragment();
     }
 
 
