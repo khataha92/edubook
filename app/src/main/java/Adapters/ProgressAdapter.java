@@ -10,6 +10,7 @@ import DataModels.Progress;
 import DataModels.User;
 import Enums.HolderType;
 import ViewHolders.GenericViewHolder;
+import ViewHolders.ProgressViewHolders.ProgressHeaderViewHolder;
 
 /**
  * Created by mac on 7/11/16.
@@ -20,11 +21,19 @@ public class ProgressAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
     User user ;
 
+    ProgressHeaderViewHolder header;
+
     public ProgressAdapter(List<Progress> progresses,User user){
 
         progress = progresses;
 
         this.user = user;
+
+    }
+
+    public ProgressHeaderViewHolder getHeader() {
+
+        return header;
 
     }
 
@@ -43,7 +52,7 @@ public class ProgressAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
                 container.setValue(user);
 
-                return GenericViewHolder.getViewHolder(parent,container);
+                return header = (ProgressHeaderViewHolder) GenericViewHolder.getViewHolder(parent,container);
 
             case 1:
 

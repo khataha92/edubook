@@ -16,6 +16,12 @@ public class Constants {
 
     public static String port = "8080";
 
+    public static final int REQUEST_GALLERY = 21;
+
+    public static final int REQUEST_CAMERA = 20;
+
+    public static final int REQUEST_CROP = 22;
+
     private static RecieverType[] recieverTypesArray = new RecieverType[]
             {
                 RecieverType.USERS,

@@ -252,4 +252,11 @@
 
     <string name="removed_successfully">Removed Successfully!</string>
 
+    <string name="camera">Camera</string>
+
+    <string name="galary">Galary</string>
+
+    <string name="cancel">Cancel</string>
+
+
 </resources>

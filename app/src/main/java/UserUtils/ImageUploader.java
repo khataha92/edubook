@@ -11,6 +11,7 @@ import java.io.File;
 
 import Interfaces.OnWebserviceFinishListener;
 import Managers.SessionManager;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class ImageUploader extends AsyncTask<Object,Object,Object> {
@@ -34,6 +35,23 @@ public class ImageUploader extends AsyncTask<Object,Object,Object> {
 
         this.execute();
 
+    }
+
+    @Override
+    protected void onPreExecute() {
+
+        super.onPreExecute();
+
+        UIUtil.showSweetLoadingView();
+
+    }
+
+    @Override
+    protected void onPostExecute(Object o) {
+
+        super.onPostExecute(o);
+
+        UIUtil.hideSweetLoadingView();
     }
 
     public void setImagePath(String imagePath) {

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="timelineview-1.0.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/com.github.vipulasri/timelineview/1.0.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/com.github.vipulasri/timelineview/1.0.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.vipulasri/timelineview/1.0.0/cf8ce3e5e5be1f08fd4f14c7c3a414b87f893056/timelineview-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

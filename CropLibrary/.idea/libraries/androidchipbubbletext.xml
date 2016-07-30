@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="androidchipbubbletext">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../app/libs/androidchipbubbletext.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

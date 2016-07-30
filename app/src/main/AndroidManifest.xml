@@ -43,6 +43,17 @@
             android:windowTranslucentNavigation="true"
             android:windowTranslucentStatus="true" />
 
+        <activity
+            android:name="activities.CropActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:statusBarColor="@color/background"
+            android:theme="@style/AppTheme.ActionBar.Transparent"
+            android:windowSoftInputMode="stateHidden"
+            android:windowTranslucentNavigation="true"
+            android:windowTranslucentStatus="true" />
+
 
         <meta-data
             android:name="io.fabric.ApiKey"
