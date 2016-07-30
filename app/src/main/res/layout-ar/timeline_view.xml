@@ -8,8 +8,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:id="@+id/timeline"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/date"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/date"
         android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/description"
         android:layout_height="match_parent" >
@@ -18,7 +18,7 @@
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
             android:background="@android:color/black" />
 
         <ImageView
@@ -27,6 +27,7 @@
             android:layout_height="20dp"
             android:background="@color/common_signin_btn_dark_text_default"
             android:layout_alignParentTop="true"
+
             android:src="@drawable/assignment" />
     </RelativeLayout>
 
@@ -35,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jan 15"
-        android:layout_marginLeft="10dp"
-        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -45,8 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Absence"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/timeline"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/timeline"
         android:layout_alignParentTop="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -55,7 +56,7 @@
         android:layout_below="@+id/type"
         android:text="description"
         android:id="@+id/description"
-        android:layout_alignLeft="@+id/type"
+        android:layout_alignRight="@+id/type"
         android:paddingBottom="10dp"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content"

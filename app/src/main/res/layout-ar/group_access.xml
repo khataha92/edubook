@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_below="@+id/linearLayout11"
             android:id="@+id/roles">
             <RadioButton
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_alignTop="@+id/roles"
                 android:layout_toRightOf="@+id/roles"
                 android:layout_toEndOf="@+id/roles">
@@ -113,6 +113,7 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:id="@+id/back"
+            android:rotation="180"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -133,8 +134,8 @@
         android:layout_width="match_parent"
         android:layout_marginTop="40dp"
         android:textColor="#000000"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="15dp"
+        android:gravity="right|center_vertical"
+        android:paddingRight="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="@drawable/settings_box_bg"
@@ -151,8 +152,8 @@
     <Button
         android:layout_width="match_parent"
         android:textColor="#000000"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="15dp"
+        android:gravity="right|center_vertical"
+        android:paddingRight="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="@drawable/settings_box_bg"
@@ -169,8 +170,8 @@
     <Button
         android:layout_width="match_parent"
         android:textColor="#000000"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="15dp"
+        android:gravity="right|center_vertical"
+        android:paddingRight="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="@drawable/settings_box_bg"

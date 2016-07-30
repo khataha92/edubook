@@ -21,6 +21,7 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:id="@+id/imageView8"
+            android:rotation="180"
             android:layout_alignParentTop="true"
             android:onClick="finishActivity"
             android:layout_alignParentLeft="true"

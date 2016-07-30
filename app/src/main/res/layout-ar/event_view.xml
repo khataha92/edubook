@@ -155,7 +155,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:src="@drawable/calendar_grey"
                 android:layout_below="@+id/line"
                 android:id="@+id/imageView26" />
@@ -164,9 +164,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Starts:"
+                android:text="@string/Starts"
                 android:textStyle="bold"
-                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:id="@+id/textView39"
                 android:layout_alignTop="@+id/imageView26"
                 android:layout_toRightOf="@+id/imageView26"
@@ -179,16 +179,14 @@
                 android:text="26 January 2016"
                 android:id="@+id/from_date"
                 android:layout_alignTop="@+id/textView39"
-                android:layout_toRightOf="@+id/textView39"
-                android:layout_toEndOf="@+id/textView39"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp" />
+                android:layout_toLeftOf="@+id/textView39"
+                android:layout_marginRight="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Ends:"
+                android:text="@string/Ends"
                 android:textStyle="bold"
                 android:id="@+id/textView41"
                 android:layout_alignBottom="@+id/imageView26"
@@ -201,9 +199,9 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="3 February 2016"
                 android:id="@+id/to_date"
-                android:layout_alignTop="@+id/textView41"
-                android:layout_alignLeft="@+id/from_date"
-                android:layout_alignStart="@+id/from_date" />
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/textView41"
+                android:layout_alignTop="@+id/textView41" />
         </RelativeLayout>
 
         <ImageView
@@ -243,17 +241,18 @@
             android:orientation="horizontal"
             android:gravity="center_vertical|center_horizontal"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/comment"
-                android:layout_marginRight="5dp"
-                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/comment"
                 android:text="@string/Comment"
+                />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/comment"
+                android:layout_marginRight="5dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -262,17 +261,17 @@
             android:orientation="horizontal"
             android:gravity="center_vertical|center_horizontal"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/share"
-                android:layout_marginRight="5dp"
-                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/share"
                 android:text="@string/share"
+                />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/share"
+                android:layout_marginRight="5dp"
                 />
         </LinearLayout>
     </LinearLayout>

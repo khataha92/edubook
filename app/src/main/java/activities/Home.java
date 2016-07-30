@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import DataModels.Progress;
+import Enums.Lang;
 import Fragments.BaseFragment;
 import Fragments.ProgressFragment;
 import Interfaces.OnWebserviceFinishListener;
@@ -21,6 +22,7 @@ import UserUtils.Application;
 import UserUtils.Constants;
 import UserUtils.ImageUploader;
 import UserUtils.UIUtil;
+import UserUtils.UserDefaultUtil;
 import UserUtils.WebService;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
@@ -56,6 +58,8 @@ public class Home extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        UserDefaultUtil.setLanguage(Lang.getValueOf(SessionManager.getInstance().getUserLanguage()));
 
         setContentView(R.layout.activity_home);
 

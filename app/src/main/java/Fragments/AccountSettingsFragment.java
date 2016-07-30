@@ -76,9 +76,7 @@ public class AccountSettingsFragment extends BaseFragment {
 
                             UserDefaultUtil.setLanguage(language);
 
-                            FragmentManager.popToHome();
-
-                            FragmentManager.reloadCurrentFragment();
+                            FragmentManager.restartActivity();
 
                         }
 
