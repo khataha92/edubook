@@ -17,6 +17,7 @@ import Interfaces.AbstractCallback;
 import Managers.FragmentManager;
 import Managers.SessionManager;
 import UserUtils.UIUtil;
+import UserUtils.UserDefaultUtil;
 import activities.Home;
 import activities.Login;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -72,6 +73,12 @@ public class AccountSettingsFragment extends BaseFragment {
                             Lang language = (Lang)result;
 
                             SessionManager.getInstance().setCurrentLanguage(language);
+
+                            UserDefaultUtil.setLanguage(language);
+
+                            FragmentManager.popToHome();
+
+                            FragmentManager.reloadCurrentFragment();
 
                         }
 

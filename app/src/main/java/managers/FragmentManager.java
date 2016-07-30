@@ -205,6 +205,24 @@ public class FragmentManager {
 
     }
 
+    public static void reloadCurrentFragment(){
+
+        int index = currentFragments.size() - 1;
+
+        if(index < 0) return;;
+
+        BaseFragment fragment = currentFragments.get(index);
+
+        final FragmentTransaction ft = Application.getCurrentActivity().getSupportFragmentManager().beginTransaction();
+
+        ft.detach(fragment);
+
+        ft.attach(fragment);
+
+        ft.commit();
+
+    }
+
     public static void popToHome(){
 
         if (Application.getCurrentActivity() instanceof Home) {
