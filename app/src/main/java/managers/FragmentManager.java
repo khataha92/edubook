@@ -1,6 +1,7 @@
 package Managers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,20 @@ public class FragmentManager {
     public static void clear(){
 
         currentFragments.clear();
+    }
+
+    public static void restartActivity(){
+
+        Intent intent = Application.getCurrentActivity().getIntent();
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+        currentFragments.clear();
+
+        Application.getCurrentActivity().finish();
+
+        Application.getCurrentActivity().startActivity(intent);
+
     }
 
     public static void showNewAssignmentFragment(OnWebserviceFinishListener listener){

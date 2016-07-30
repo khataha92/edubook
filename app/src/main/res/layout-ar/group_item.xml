@@ -27,7 +27,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Math"
         android:textColor="#737476"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/group_name"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/textView6"

@@ -53,7 +53,7 @@
         android:text="@string/LockAfterDueDate"
         android:textColor="#58595b"
         android:layout_toRightOf="@+id/lock_after_duedate"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/textView18" />
     </LinearLayout>
     <LinearLayout
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:text="@string/AddToMarkBook"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textColor="#58595b"
         android:layout_alignBottom="@+id/add_to_markbook"
         android:layout_alignLeft="@+id/textView18"
