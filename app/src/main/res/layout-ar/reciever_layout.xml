@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout5"
+        android:layout_alignStart="@+id/relativeLayout5"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/to"
+        android:textColor="#58595B"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:layout_width="55dp"
+        android:gravity="center_vertical"
+        android:id="@+id/recipient"
+        android:dropDownWidth="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/textView9"
+        android:layout_alignTop="@+id/recipient_input"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true" />
+
+    <CustomComponent.BoundedLinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:layout_above="@+id/title"
+        android:layout_toEndOf="@+id/recipient"
+        android:fadeScrollbars="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_toRightOf="@+id/textView9"
+        android:background="@null"
+        android:foregroundGravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:bounded_width="200dp"
+        android:layout_alignTop="@+id/recipient_input">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:overScrollMode="never"
+            android:orientation="horizontal"
+            >
+            <CustomComponent.RightAlignedHorizontalScrollView
+                android:id="@+id/tags_view"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="50dp"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:fillViewport="false">
+                <LinearLayout
+                    android:id="@+id/tags_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:orientation="horizontal">
+                </LinearLayout>
+            </CustomComponent.RightAlignedHorizontalScrollView>
+        </LinearLayout>
+    </CustomComponent.BoundedLinearLayout>
+
+    <AutoCompleteTextView
+        android:id="@+id/recipient_input"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_toEndOf="@+id/linearLayout12"
+        android:layout_toRightOf="@+id/linearLayout12"
+
+        android:background="@color/new_note_bg"
+        android:lines="1"
+        android:minWidth="100dp"
+        android:singleLine="true" />
+
+</RelativeLayout>

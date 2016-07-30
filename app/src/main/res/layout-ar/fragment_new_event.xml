@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/new_note_bg"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context="activities.Home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/background"
+        android:layout_gravity="left|top"
+        android:id="@+id/relativeLayout5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:onClick="closeActivity"
+            android:id="@+id/close"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/x" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Event"
+            android:id="@+id/textView3"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            style="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/Post"
+            android:padding="5dp"
+            android:background="@color/background"
+            android:id="@+id/post"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+   <CustomComponent.RecieverLayout
+       android:layout_width="match_parent"
+       android:id="@+id/reciever_layout"
+       android:layout_below="@+id/relativeLayout5"
+       android:layout_height="55dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/note_bg"
+        android:inputType="textPersonName"
+        android:hint="@string/EventTitle"
+        android:ems="10"
+        android:id="@+id/title"
+        android:layout_below="@+id/reciever_layout"
+        android:layout_alignRight="@+id/reciever_layout"
+        android:layout_alignEnd="@+id/reciever_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout2">
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/due_date"
+            android:layout_height="30dp"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/calendar_grey"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/note_bg"
+        android:id="@+id/relativeLayout6"
+        android:layout_below="@+id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linearLayout2">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:gravity="top"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="10"
+            android:ems="10"
+            android:hint="@string/EventDescription"
+            android:background="#ffffff"
+            android:id="@+id/description"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,215 @@
+<resources>
+    <string name="app_name">Edubook</string>
+    <string name="title_activity_home">الصفحة الرئيسية</string>
+    <string name="large_text">
+    </string>
+    <string name="action_settings">الاعدادات</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="remove_user_from_group">هل انت متأكد من إزالة هذا المستخدم من المجموعة؟</string>
+
+    <string name="delete_confirmation">هل أنت متأكد من إزالة هذا المنشور؟</string>
+
+    <string name="no_profile_img">لا يوجد صورة شخصية لهذا المستخدم</string>
+
+    <string name="yes">نعم</string>
+
+    <string name="like">إعجاب</string>
+
+    <string name="actionIcon">actionIcon</string>
+
+    <string name="unlike">إلغاء الإعجاب</string>
+
+    <string name="Comment">تعليق</string>
+
+    <string name="share">مشاركة</string>
+
+    <string name="Arabic">ar</string>
+
+    <string name="English">en</string>
+
+    <string name="CurrentPassword">كلمة المرور الحالية</string>
+
+    <string name="NewPassword">كلمة المرور الجديدة</string>
+
+    <string name="ConfirmPassword">تأكيد كلمة المرور</string>
+
+    <string name="Connections">جهات الاتصال</string>
+
+    <string name="Done">تم</string>
+
+    <string name="Starts">يبدأ في:</string>
+
+    <string name="Ends">ينتهي في:</string>
+
+    <string name="AllPosts">كل المنشورات</string>
+
+    <string name="Polls">التصويتات</string>
+
+    <string name="LibraryItems">عناصر المكتبة</string>
+
+    <string name="Groups">المجموعات</string>
+
+    <string name="AccountSettings">اعدادات الحساب</string>
+
+    <string name="Language">اللغة</string>
+
+    <string name="Edit">تحرير</string>
+
+    <string name="EmailAddress">البريد الالكتروني</string>
+
+    <string name="AccessCode">كود الوصول</string>
+
+    <string name="Next">التالي</string>
+
+    <string name="PasswordConfirmation">تأكيد كلمة المرور</string>
+
+    <string name="Submit">موافق</string>
+
+    <string name="no">لا</string>
+
+    <string name="Contributor">مشارك</string>
+
+    <string name="Contributors">مشاركون</string>
+
+    <string name="messages">رسالة</string>
+
+    <string name="WriteYourNoteHere">اكتب ملاحظتك هنا</string>
+
+    <string name="Notifications">اشعارات</string>
+
+    <string name="LockAfterDueDate">القفل بعد انتهاء المدة</string>
+
+    <string name="AddToMarkBook">اضافة لدفتر العلامات</string>
+
+    <string name="Gradebook">دفتر العلامات</string>
+
+    <string name="AddToLibrary">اضافة للمكتبة</string>
+
+    <string name="DeletePost">حذف المنشور</string>
+
+    <string name="ParentCode">كود الوالد</string>
+
+    <string name="RemoveProfilePicture">إزالة الصورة الشخصية</string>
+
+    <string name="RemoveFromGroup">إزالة من المجموعة</string>
+
+    <string name="MemberOptions">خيارات الأعضاء</string>
+
+    <string name="SetAllMembersTo">تحويل كل المستخدمين لـ:</string>
+
+    <string name="Archived">مؤرشفة</string>
+
+    <string name="Active">فعالة</string>
+
+    <string name="Post">منشور</string>
+
+    <string name="Library">المكتبة</string>
+
+    <string name="Members">الأعضاء</string>
+
+    <string name="Settings">الاعدادات</string>
+
+    <string name="GroupSettings">اعدادات المجموعة</string>
+
+    <string name="GroupName">اسم المجموعة</string>
+
+    <string name="DescribeGroup">اضافة وصف للمجموعة</string>
+
+    <string name="Save">حفظ</string>
+
+    <string name="SearchLibrary">البحث في المكتبة</string>
+
+    <string name="Name">الاسم</string>
+
+    <string name="username">اسم المستخدم</string>
+
+    <string name="Password">كلمة المرور</string>
+
+    <string name="login">تسجيل دخول</string>
+
+    <string name="ForgotPassword">نسيت كلمة المرور؟</string>
+
+    <string name="signup">تسجيل مستخدم جديد</string>
+
+    <string name="Assignment">وظيفة</string>
+
+    <string name="Assignments">وظائف</string>
+
+    <string name="Courses">المجموعات</string>
+
+    <string name="Logout">تسجيل خروج</string>
+
+    <string name="Manage">إدارة</string>
+
+    <string name="Access">الوصول</string>
+
+    <string name="ReadOnly">القراءة فقط</string>
+
+    <string name="to">الى:</string>
+
+    <string name="AssignmentTitle">عنوان الوظيفة</string>
+
+    <string name="AssignmentDesc">وصف الوظيفة</string>
+
+    <string name="Event">حدث</string>
+
+    <string name="Events">احداث</string>
+
+    <string name="EventTitle">عنوان الحدث</string>
+
+    <string name="EventDescription">وصف الحدث</string>
+
+    <string name="Note">ملاحظة</string>
+
+    <string name="Cancel">الغاء</string>
+
+    <string name="Students">طلاب</string>
+
+    <string name="likes">الاعجابات</string>
+
+    <string name="comments">التعليقات</string>
+
+    <string name="no_internet">لا يوجد اتصال بالانترنت</string>
+
+    <string name="SOMETHING_WENT_WRONG">حدث خطأ ما!</string>
+
+    <string name="loading">جاري التحميل...</string>
+
+    <string name="total_votes">مجموع التصويتات: </string>
+
+    <string name="all_groups">كل المجموعات</string>
+
+    <string name="users">المستخدمون</string>
+
+    <string name="groups">المجموعات</string>
+
+    <string name="only_me">أنا فقط</string>
+
+    <string name="students">الطلاب</string>
+
+    <string name="nill"></string>
+
+    <string name="old_password_equals_new">كلمة المرور القديمة نفس الجديدة</string>
+
+    <string name="new_password_not_equal_confirmation">كلمة المرور وتأكيدها غير متطابقتين</string>
+
+    <string name="password_length">طول كلمة المرور يجب أن يكون أكثر من ٦ احرف</string>
+
+    <string name="wrong_current_password">كلمة المرور الحالية خاطئة!</string>
+
+    <string name="SHOW_MORE">عرض المزيد</string>
+
+    <string name="SHOW_LESS">عرض أقل</string>
+
+    <string name="saved_successfully">تم الحفظ بنجاح</string>
+
+    <string name="copied_to_clipboard">تم النسخ للذاكرة</string>
+
+    <string name="removed_successfully">تمت الازالة بنجاح!</string>
+
+</resources>
