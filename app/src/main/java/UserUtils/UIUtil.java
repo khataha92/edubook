@@ -1143,6 +1143,18 @@ public class UIUtil {
 
         final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
 
+        String lang = SessionManager.getInstance().getUserLanguage();
+
+        if(lang.equalsIgnoreCase("ar")){
+
+            radioGroup.check(R.id.ar);
+
+        }
+        else{
+
+            radioGroup.check(R.id.en);
+        }
+
         dialog.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
 
             @Override

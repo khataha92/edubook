@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/timeline"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/date"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/description"
+        android:layout_height="match_parent" >
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp"
+            android:background="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@color/common_signin_btn_dark_text_default"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/assignment" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jan 15"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Absence"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/timeline"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/type"
+        android:text="description"
+        android:id="@+id/description"
+        android:layout_alignLeft="@+id/type"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        />
+
+</RelativeLayout>

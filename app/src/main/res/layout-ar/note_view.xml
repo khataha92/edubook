@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="10dp"
+    android:layoutDirection="rtl"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:background="@color/sweet_dialog_bg_color"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/topShadow"
+        android:background="@drawable/shadow_top"
+        />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:orientation="vertical"
+        android:layout_below="@+id/topShadow"
+        android:id="@+id/post_details"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/chat_input">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:background="@drawable/home_box_bg"
+            android:paddingLeft="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/post_id"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/userId"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout19">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/male_profile_image"
+                    app:civ_border_width="0dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Lily Collins"
+                        android:textColor="@color/background"
+                        android:id="@+id/name"
+                        android:layout_alignTop="@+id/profile_image"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:layout_toEndOf="@+id/profile_image" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/time_color"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="11 hours ago"
+                        android:id="@+id/age" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <CustomComponent.FlexibleTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="I was wondering if anyone has lesson plans for Microsoft Word, Excel and Power Point that will last at least 9 weeks that you are willing to share. Thanks in advance."
+                android:textColor="@color/post_color"
+                android:id="@+id/description"
+                android:layout_below="@+id/linearLayout19"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/description"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8 Likes"
+                    android:id="@+id/likes"
+                    android:textColor="@color/likes_color"
+                    android:textSize="13sp"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 Comment"
+                    android:id="@+id/comments"
+                    android:textColor="@color/comments_color"
+                    android:textSize="13sp"
+                    />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:id="@+id/postMenu"
+                android:src="@drawable/menu_tick"
+                android:layout_alignTop="@+id/linearLayout19"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/comment_box_bg"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:id="@+id/linearLayout6"
+            android:layout_below="@+id/assignment_post"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <CustomComponent.ToggleLike
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/toggleLike"
+                android:layout_height="match_parent">
+
+            </CustomComponent.ToggleLike>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/comment"
+                    android:layout_marginRight="5dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/comment"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Comment"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/share"
+                    android:layout_marginRight="5dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/share"
+                    android:text="@string/share"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/shadow_bottom"
+            />
+    </LinearLayout>
+</RelativeLayout>

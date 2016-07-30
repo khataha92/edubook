@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/from_to_date"
+    android:padding="10dp"
+    android:layout_height="wrap_content"
+        android:orientation="horizontal"
+    android:weightSum="4"
+    android:gravity="center_vertical"
+        android:id="@+id/linearLayout17"
+        android:layout_below="@+id/relativeLayout18"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="@string/Starts"
+        android:layout_margin="10dp"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:id="@+id/textView35"
+        android:layout_below="@+id/relativeLayout17"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <EditText
+        android:layout_width="0dp"
+        android:editable="false"
+        android:focusable="false"
+        android:background="@null"
+        android:id="@+id/startDate"
+        android:textColor="#000000"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/from_to_date"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/linearLayout17"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout18">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/Ends"
+            android:layout_margin="10dp"
+            android:id="@+id/textView36"
+            android:layout_below="@+id/relativeLayout17"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:background="@null"
+            android:editable="false"
+            android:id="@+id/endDate"
+            android:focusable="false"
+            android:textColor="#000000"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/background"
+        android:layout_gravity="left|top"
+        android:id="@+id/relativeLayout18"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:onClick="closeActivity"
+            android:id="@+id/close"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/x" />
+
+        <TextView
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Event"
+            android:id="@+id/textView37"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/Done"
+            android:gravity="center"
+            android:background="@color/background"
+            android:id="@+id/done"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/close" />
+    </RelativeLayout>
+</RelativeLayout>

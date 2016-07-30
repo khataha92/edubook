@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:layoutDirection="rtl"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:id="@+id/course"
+    android:padding="4dp"
+    android:layout_height="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="-"
+        android:id="@+id/textView6"
+        android:textColor="#737476"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Math"
+        android:textColor="#737476"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/group_name"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6" />
+</RelativeLayout>

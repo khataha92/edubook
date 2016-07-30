@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_box_bg"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:padding="10dp"
+        android:layout_gravity="left|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bottom_tabs">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_container"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/home"
+                android:src="@drawable/home"
+                 />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/notificaion_container"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="10sp"
+                android:layout_marginLeft="-5dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/notifications_number"
+                android:id="@+id/notif_number"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/notification"
+                android:layout_toEndOf="@+id/notification" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/notification"
+                android:src="@drawable/notification"
+                android:layout_gravity="left|center_vertical"
+                 />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/messages_container"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:layout_marginLeft="-5dp"
+                android:paddingLeft="3dp"
+                android:textSize="10sp"
+                android:paddingRight="3dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/notifications_number"
+                android:id="@+id/messages_number"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/messages"
+                android:layout_toEndOf="@+id/messages" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/messages"
+                android:src="@drawable/message"
+                android:layout_gravity="right|center_vertical"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/more_container"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/more"
+                android:src="@drawable/menu"
+                android:layout_gravity="center_vertical"
+                 />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:background="@color/home_bg"
+        android:layout_width="match_parent"
+        android:name="com.edubook.edubook.HomeFragment"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/bottom_tabs"
+        android:layout_alignParentTop="true">
+
+    </FrameLayout>
+
+
+</RelativeLayout>

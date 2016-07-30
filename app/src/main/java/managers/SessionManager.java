@@ -12,6 +12,7 @@ import DataModels.Group;
 import DataModels.LibraryFile;
 import DataModels.Recipient;
 import DataModels.User;
+import Enums.Lang;
 import UserUtils.Application;
 import UserUtils.ImageLoader;
 import Interfaces.PostFactory;
@@ -121,6 +122,26 @@ public class SessionManager {
     public String getUsername(){
 
         return getInstance().getString("username");
+
+    }
+
+    public void setCurrentLanguage(Lang language){
+
+        switch (language){
+
+            case Arabic:
+
+                sharedPreferences.edit().putString("lang","ar").commit();
+
+                break;
+
+            case English:
+
+                sharedPreferences.edit().putString("lang","en").commit();
+
+                break;
+
+        }
 
     }
 

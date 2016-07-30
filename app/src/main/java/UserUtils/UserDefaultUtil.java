@@ -2,6 +2,7 @@ package UserUtils;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.preference.PreferenceManager;
@@ -18,12 +19,14 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import DataModels.Group;
 import DataModels.Post;
 import Enums.ErrorType;
 import Enums.HolderType;
+import Enums.Lang;
 import Enums.RecieverType;
 import Managers.SessionManager;
 import edubook.edubook.R;
@@ -59,6 +62,20 @@ public class UserDefaultUtil {
         intent.setType("image/*");
 
         Application.getCurrentActivity().startActivityForResult(intent, Constants.REQUEST_GALLERY);
+
+    }
+
+    public static void setLanguage(Lang language){
+
+        Locale locale = new Locale(language.getValue());
+
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration();
+
+        config.locale = locale;
+
+        Application.getContext().getResources().updateConfiguration(config,Application.getContext().getResources().getDisplayMetrics());
 
     }
 

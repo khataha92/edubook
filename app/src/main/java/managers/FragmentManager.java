@@ -46,19 +46,6 @@ public class FragmentManager {
 
     private static ArrayList<BaseFragment> currentFragments = new ArrayList<>();
 
-    public static void popFragmentsArray() {
-
-        int index = getFragmentCount() - 1;
-
-        if (index < 1) {
-
-            return;
-
-        }
-
-        currentFragments.remove(index);
-    }
-
     public static void clear(){
 
         currentFragments.clear();
@@ -97,20 +84,6 @@ public class FragmentManager {
         fragment.setGroupName(groupName);
 
         addFragment(fragment,true);
-
-    }
-
-    public static void reloadCurrentFragment(){
-
-        BaseFragment fragment = currentFragments.get(currentFragments.size()-1);
-
-        final FragmentTransaction ft = Application.getCurrentActivity().getSupportFragmentManager().beginTransaction();
-
-        ft.detach(fragment);
-
-        ft.attach(fragment);
-
-        ft.commit();
 
     }
 
@@ -229,6 +202,24 @@ public class FragmentManager {
         fragment.setWebserviceFinishListener(listener);
 
         addFragment(fragment,true);
+
+    }
+
+    public static void reloadCurrentFragment(){
+
+        int index = currentFragments.size() - 1;
+
+        if(index < 0) return;;
+
+        BaseFragment fragment = currentFragments.get(index);
+
+        final FragmentTransaction ft = Application.getCurrentActivity().getSupportFragmentManager().beginTransaction();
+
+        ft.detach(fragment);
+
+        ft.attach(fragment);
+
+        ft.commit();
 
     }
 
@@ -402,37 +393,6 @@ public class FragmentManager {
 
     }
 
-    public static void popCurrentVisibleAndBeforeCurrentVisibleFragment() {
-
-        int index = currentFragments.size() - 1;
-
-        if (index < 1) {
-
-            return;
-
-        }
-
-        currentFragments.remove(index);
-
-        index = currentFragments.size() - 1;
-
-        if (index < 1) {
-
-            return;
-
-        }
-
-        currentFragments.remove(index);
-
-        UIUtil.hideSoftKeyboard();
-
-        if (Application.getCurrentActivity() instanceof Home) {
-
-            ((Home) Application.getCurrentActivity()).getSupportFragmentManager().popBackStack();
-
-        }
-    }
-
     public static void popCurrentVisibleFragment(AbstractCallback callback) {
 
         if (callback != null) {
@@ -442,38 +402,6 @@ public class FragmentManager {
         }
 
         popCurrentVisibleFragment();
-
-    }
-    private static void replaceFragment(final BaseFragment newFragment, boolean enableBack) {
-
-        if (Application.getCurrentActivity() instanceof Home) {
-
-            // Hide soft keyboard if it is visible
-            InputMethodManager inputManager = (InputMethodManager) Application.getCurrentActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-            Home activity = (Home) Application.getCurrentActivity();
-
-            View v = activity.getCurrentFocus();
-
-            if (v != null) {
-
-                inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-            }
-
-            FragmentTransaction tr = activity.getSupportFragmentManager().beginTransaction();
-
-            tr.replace(R.id.content_frame, newFragment);
-
-            tr.addToBackStack(newFragment.getCustomTag());
-
-            if (!activity.isFinishing()) {
-
-                tr.commitAllowingStateLoss();
-
-            }
-
-        }
 
     }
 
@@ -543,30 +471,5 @@ public class FragmentManager {
         return currentFragments.size();
     }
 
-    public static BaseFragment getFragmentWithTag(String tag) {
-
-        for (BaseFragment baseFragment : currentFragments) {
-
-            if (baseFragment.getCustomTag().equals(tag)) {
-                return baseFragment;
-            }
-        }
-        return null;
-    }
-
-    public static int numberOfFragmentsWithTag(String tag) {
-
-        int count = 0;
-
-        for (BaseFragment baseFragment : currentFragments) {
-
-            if (baseFragment.getCustomTag().equals(tag)) {
-
-                count++;
-            }
-        }
-
-        return count;
-    }
 
 }

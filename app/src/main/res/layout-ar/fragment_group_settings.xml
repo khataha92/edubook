@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/common_signin_btn_dark_text_default"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="activities.Home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/background"
+        android:layout_gravity="left|top"
+        android:id="@+id/relativeLayout15"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/back"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Settings"
+            android:id="@+id/textView17"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <com.nirhart.parallaxscroll.views.ParallaxScrollView
+        android:layout_width="match_parent"
+        android:nestedScrollingEnabled="true"
+        android:fadeScrollbars="true"
+        app:parallax_factor="1.9"
+        android:layout_below="@+id/relativeLayout15"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/settings_box_bg"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:id="@+id/relativeLayout16">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="40dp"
+            android:hint="@string/GroupName"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@+id/years"
+            android:paddingLeft="10dp"
+            android:background="@drawable/settings_box_bg"
+            android:id="@+id/groupName"
+            android:layout_below="@+id/linearLayout15"
+            android:layout_alignRight="@+id/linearLayout16"
+            android:layout_alignEnd="@+id/linearLayout16"
+            android:layout_alignLeft="@+id/linearLayout16"
+            android:layout_alignStart="@+id/linearLayout16" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"
+            android:enabled="false"
+            android:imeOptions="actionDone"
+
+            android:paddingLeft="10dp"
+            android:background="@drawable/spinner_bg"
+            android:id="@+id/years"
+            android:layout_alignRight="@+id/groupName"
+            android:layout_alignEnd="@+id/groupName"
+            android:layout_below="@+id/groupName"
+            android:layout_alignLeft="@+id/linearLayout16"
+            android:layout_alignStart="@+id/linearLayout16" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="40dp"
+            android:hint="@string/DescribeGroup"
+            android:paddingRight="10dp"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@+id/years"
+            android:paddingLeft="10dp"
+            android:background="@drawable/settings_box_bg"
+            android:id="@+id/description"
+            android:layout_below="@+id/years"
+            android:layout_alignRight="@+id/linearLayout16"
+            android:layout_alignEnd="@+id/linearLayout16"
+            android:layout_alignLeft="@+id/linearLayout16"
+            android:layout_alignStart="@+id/linearLayout16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/settings_header_bg"
+            android:padding="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout15" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/GroupSettings"
+                android:textColor="@color/background"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center_vertical"
+            android:weightSum="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/linearLayout16"
+            android:layout_below="@id/description">
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="#ffffff"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:background="@drawable/save_btn"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/Save"
+                android:id="@+id/save"
+                android:layout_alignTop="@+id/button5"
+                android:layout_alignRight="@+id/years"
+                android:layout_alignEnd="@+id/years" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    </LinearLayout>
+    </com.nirhart.parallaxscroll.views.ParallaxScrollView>
+</RelativeLayout>

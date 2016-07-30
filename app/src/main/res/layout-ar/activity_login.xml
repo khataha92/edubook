@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.edubook.Login.Login">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/edittext_bg"
+        android:id="@+id/relativeLayout"
+        android:padding="4dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <EditText
+            android:layout_width="match_parent"
+            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/background"
+            android:layout_toRightOf="@+id/imgUsername"
+            android:layout_toEndOf="@+id/imgUsername"
+            android:inputType="textPersonName"
+            android:id="@+id/username"
+            android:hint="@string/username"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/username"
+            android:id="@+id/imgUsername"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/username"
+            android:layout_alignBottom="@+id/username" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout"
+        android:background="@drawable/edittext_bg"
+        android:padding="4dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <EditText
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView"
+            android:padding="13dp"
+            android:inputType="textPassword"
+            android:background="@color/background"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:id="@+id/password"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
+            android:hint="@string/Password" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pass"
+            android:id="@+id/imageView"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/password"
+            android:layout_alignBottom="@+id/password" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/edubook_logo"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_btn"
+        android:layout_marginTop="10dp"
+        android:text="@string/login"
+        android:onClick="doLogin"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:textColor="@color/background"
+        android:id="@+id/login_btn"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true">
+
+
+    </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ForgotPassword"
+        android:onClick="forgotPassword"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        style="@android:style/TextAppearance.Medium"
+        android:id="@+id/textView19"
+        android:layout_below="@+id/login_btn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="signup"
+        android:text="@string/signup"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView32"
+        android:layout_alignTop="@+id/textView19"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Edubook"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        android:id="@+id/bellow_logo_text"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
