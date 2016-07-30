@@ -5,7 +5,7 @@ package Enums;
  */
 public enum  Lang {
 
-    English("English"),Arabic("Arabic");
+    English("en"),Arabic("ar");
 
     private String value;
 

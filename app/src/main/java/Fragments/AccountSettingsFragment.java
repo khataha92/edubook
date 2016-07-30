@@ -69,6 +69,10 @@ public class AccountSettingsFragment extends BaseFragment {
 
                             language.setText(((Lang) result).getValue());
 
+                            Lang language = (Lang)result;
+
+                            SessionManager.getInstance().setCurrentLanguage(language);
+
                         }
 
                     }
