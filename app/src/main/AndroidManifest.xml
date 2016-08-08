@@ -58,6 +58,15 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e478115d90a000d130db37dfce88c292b408d277" />
+
+        <service
+            android:name="com.edubook.GcmMessageHandler"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
