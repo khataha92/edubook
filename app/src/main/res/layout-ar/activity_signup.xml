@@ -145,7 +145,7 @@
         android:textStyle="bold"
         android:padding="18dp"
         android:textColor="@color/background"
-        android:id="@+id/login_btn"
+        android:id="@+id/next"
         android:layout_below="@+id/code"
         android:layout_centerHorizontal="true">
 

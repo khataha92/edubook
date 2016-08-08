@@ -44,6 +44,16 @@
             android:windowTranslucentStatus="true" />
 
         <activity
+            android:name="activities.Signup"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:statusBarColor="@color/background"
+            android:theme="@style/AppTheme.ActionBar.Transparent"
+            android:windowSoftInputMode="stateHidden"
+            android:windowTranslucentNavigation="true"
+            android:windowTranslucentStatus="true" />
+
+        <activity
             android:name="activities.CropActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home"

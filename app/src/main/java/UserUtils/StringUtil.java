@@ -13,9 +13,37 @@ public class StringUtil {
     /**
      * Check if the specified string is english
      *
-     * @param input The string to test
      * @return If the string is english
      */
+
+    public static boolean isNullOrEmpty(String str){
+
+        return str == null || str.trim().length()==0;
+
+    }
+
+    public static boolean isEmail(String str){
+
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+
+        CharSequence inputStr = str;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = pattern.matcher(inputStr);
+
+        if (matcher.matches()) {
+
+            isValid = true;
+
+        }
+
+        return isValid;
+
+    }
+
     public static boolean isStringEnglish(String input) {
 
         if (input == null) {

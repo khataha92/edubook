@@ -138,6 +138,8 @@ public class Login extends AppCompatActivity {
 
     public void signup(View v) {
 
+        startActivity(new Intent(this,Signup.class));
+
     }
 
     public void setLocale(String lang) {

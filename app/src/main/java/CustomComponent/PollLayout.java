@@ -248,31 +248,35 @@ public class PollLayout extends LinearLayout{
 
         }
 
-        pollItem.setSelected(true);
+        if(pollItem != null) {
 
-        selectedPollItem = pollItem;
+            pollItem.setSelected(true);
 
-        for(int i=0;i<votes.size();i++){
+            selectedPollItem = pollItem;
 
-            if(votes.get(i).getOptionId().equalsIgnoreCase(selectedOptionId)){
+            for(int i=0;i<votes.size();i++){
 
-                int vote = votes.get(i).getVotes()-1;
+                if(votes.get(i).getOptionId().equalsIgnoreCase(selectedOptionId)){
 
-                votes.get(i).setVotes(String.valueOf(vote));
+                    int vote = votes.get(i).getVotes()-1;
 
+                    votes.get(i).setVotes(String.valueOf(vote));
+
+                }
+                if(votes.get(i).getOptionId().equalsIgnoreCase(String.valueOf(selectedPollItem.getOptionId()))){
+
+                    int vote = votes.get(i).getVotes()+1;
+
+                    votes.get(i).setVotes(String.valueOf(vote));
+
+                }
             }
-            if(votes.get(i).getOptionId().equalsIgnoreCase(String.valueOf(selectedPollItem.getOptionId()))){
 
-                int vote = votes.get(i).getVotes()+1;
+            selectedOptionId = String.valueOf(selectedPollItem.getOptionId());
 
-                votes.get(i).setVotes(String.valueOf(vote));
+            processPollProgress();
 
-            }
         }
-
-        selectedOptionId = String.valueOf(selectedPollItem.getOptionId());
-
-        processPollProgress();
     }
 
     private void initializeLayout(){

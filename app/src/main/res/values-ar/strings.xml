@@ -178,6 +178,8 @@
 
     <string name="SOMETHING_WENT_WRONG">حدث خطأ ما!</string>
 
+    <string name="check_inputs">يرجى فحص المدخلات، اسم المستخدم يجب ان يكون ٦ احرف او اكثر</string>
+
     <string name="loading">جاري التحميل...</string>
 
     <string name="total_votes">مجموع التصويتات: </string>
