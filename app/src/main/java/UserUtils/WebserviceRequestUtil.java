@@ -16,9 +16,13 @@ public class WebserviceRequestUtil {
 
     private static String TAG = WebserviceRequestUtil.class.getSimpleName();
 
-    public static void login(final String name, final String password,OnWebserviceFinishListener listener){
+    public static void login(final String name, final String password,final  String regId,OnWebserviceFinishListener listener){
 
         final WebService ws = getLoginWebService(name,password,listener);
+
+        ws.addParams("device[device_id]",regId);
+
+        ws.addParams("device[type]","1");
 
         ws.start();
 
