@@ -16,6 +16,8 @@ public class Constants {
 
     public static String port = "8080";
 
+    public static final String SENDER_ID = "952306397303";
+
     public static final int REQUEST_GALLERY = 21;
 
     public static final int REQUEST_CAMERA = 20;
