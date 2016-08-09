@@ -94,8 +94,6 @@ public class GenericPostViewHolder extends GenericViewHolder {
 
         ((TextView) itemView.findViewById(R.id.comment)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
 
-        ((TextView) itemView.findViewById(R.id.share)).setTypeface(FontUtil.getFont(FontsType.LIGHT));
-
         CircleImageView imageView = (CircleImageView) itemView.findViewById(R.id.profile_image);
 
         UIUtil.loadImageFromUrl(imageView,post.getCreator().getThumb());

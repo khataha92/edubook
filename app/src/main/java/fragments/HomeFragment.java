@@ -125,16 +125,6 @@ public class HomeFragment extends BaseFragment {
 
         RelativeLayout messagesLayout = (RelativeLayout) getActivity().findViewById(R.id.messages_container);
 
-        messagesLayout.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                FragmentManager.showMessagesFragment();
-
-            }
-        });
-
         rootView.findViewById(R.id.addPost).setOnClickListener(new View.OnClickListener() {
 
             @Override
