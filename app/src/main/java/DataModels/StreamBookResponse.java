@@ -20,6 +20,12 @@ public class StreamBookResponse {
 
     public String getNextPageNumber(){
 
+        if(nextPageURL == null || nextPageURL.trim().equalsIgnoreCase("null")){
+
+            return "1";
+
+        }
+
         String number = nextPageURL.substring(nextPageURL.lastIndexOf("=")+1);
 
         return number;

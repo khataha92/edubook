@@ -28,9 +28,9 @@
 
     <string name="share">share</string>
 
-    <string name="Arabic">ar</string>
+    <string name="Arabic">العربية</string>
 
-    <string name="English">en</string>
+    <string name="English">English</string>
 
     <string name="CurrentPassword">Current Password</string>
 
@@ -259,5 +259,7 @@
     <string name="galary">Galary</string>
 
     <string name="cancel">Cancel</string>
+
+    <string name="ALL_GROUPS">All groups</string>
 
 </resources>

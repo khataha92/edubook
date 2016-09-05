@@ -24,6 +24,7 @@ import Enums.ResponseCode;
 import Interfaces.AbstractCallback;
 import Interfaces.OnWebserviceFinishListener;
 import Interfaces.PostFactory;
+import Managers.FragmentManager;
 import UserUtils.UIUtil;
 import UserUtils.UserDefaultUtil;
 import UserUtils.WebService;
@@ -93,6 +94,16 @@ public class PostViewFragment extends BaseFragment {
     private void initializeComponents(){
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.postItems);
+
+        rootView.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentManager.popCurrentVisibleFragment();
+
+            }
+        });
 
         commentText = (EditText) rootView.findViewById(R.id.comment_text);
 

@@ -16,6 +16,7 @@ import DataModels.Progress;
 import Enums.Lang;
 import Fragments.BaseFragment;
 import Fragments.ProgressFragment;
+import Interfaces.AbstractCallback;
 import Interfaces.OnWebserviceFinishListener;
 import Managers.SessionManager;
 import UserUtils.Application;
@@ -69,9 +70,41 @@ public class Home extends FragmentActivity
 
         Application.setCurrentActivity(this);
 
+        String postId = "";
+
+        Bundle bundle = getIntent().getExtras();
+
         prepareActivity();
 
-        FragmentManager.showHomeFragment();
+        if(bundle != null){
+
+            postId = bundle.getString("postId");
+
+            if(postId != null && postId.length() > 0){
+
+                FragmentManager.showPostViewFragment(postId, new AbstractCallback() {
+
+                    @Override
+                    public void onResult(boolean isSuccess, Object result) {
+
+                        FragmentManager.showHomeFragment();
+
+                    }
+                });
+
+            }
+            else{
+
+                FragmentManager.showHomeFragment();
+
+            }
+
+        }
+        else{
+
+            FragmentManager.showHomeFragment();
+
+        }
 
     }
 

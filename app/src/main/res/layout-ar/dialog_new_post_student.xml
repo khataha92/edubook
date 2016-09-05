@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context="activities.Home">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_above="@+id/cancel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:paddingTop="10dp"
+            android:id="@+id/new_note"
+            android:layout_height="wrap_content"
+            android:background="@drawable/up_right_only"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="30dp"
+                android:clickable="false"
+                android:layout_height="30dp"
+                android:src="@drawable/event"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:layout_height="wrap_content"
+                android:text="@string/Note"
+                android:layout_margin="1dp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/up_right_only"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/newEvent"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="30dp"
+                android:clickable="false"
+                android:layout_height="30dp"
+                android:src="@drawable/event"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:layout_margin="1dp"
+                android:text="@string/Event"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Cancel"
+        android:textColor="#939598"
+        android:background="@drawable/upper_border_only"
+        android:id="@+id/cancel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

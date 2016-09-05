@@ -20,13 +20,13 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     useLibrary  'org.apache.http.legacy'
-
     defaultConfig {
         applicationId "edubook.edubook"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.2"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -59,7 +59,7 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile files('libs/androidchipbubbletext.jar')
     compile 'io.jsonwebtoken:jjwt:0.6.0'
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+
     compile 'jp.wasabeef:recyclerview-animators:2.2.1'
     compile files('libs/android-async-http-1.4.9.jar')
     compile files('libs/httpclient-4.3.6.jar')

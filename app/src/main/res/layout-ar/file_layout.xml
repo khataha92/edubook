@@ -26,7 +26,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Projects"
+            android:ellipsize="end"
+            android:textDirection="anyRtl"
+            android:maxLines="1"
+            android:text="اسم الملف"
             android:textColor="#000"
             android:textSize="16sp"
             android:id="@+id/name" />

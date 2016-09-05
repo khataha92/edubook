@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import DataModels.Comment;
 import DataModels.GenericViewHolderDataContainer;
+import Managers.FragmentManager;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -24,7 +25,7 @@ public class CommentViewHolder extends GenericViewHolder {
 
         super.initializeView();
 
-        Comment cmnt = (Comment) container.getValue();
+        final Comment cmnt = (Comment) container.getValue();
 
         CircleImageView imageView = (CircleImageView) itemView.findViewById(R.id.profile_image);
 
@@ -39,6 +40,16 @@ public class CommentViewHolder extends GenericViewHolder {
         Picasso.with(Application.getContext()).load(cmnt.getCreator().getThumb()).error(defaultDrawable).into(imageView);
 
         name.setText(cmnt.getCreator().getName());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentManager.showProgressFragment(cmnt.getCreator());
+
+            }
+        });
 
         age.setText(cmnt.getAge());
 

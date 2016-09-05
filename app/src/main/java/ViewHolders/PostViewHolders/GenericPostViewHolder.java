@@ -9,6 +9,7 @@ import DataModels.Post;
 import DataModels.GenericViewHolderDataContainer;
 import Interfaces.PostFactory;
 import Managers.FragmentManager;
+import Managers.SessionManager;
 import UserUtils.Application;
 import UserUtils.CallBackUtils;
 import UserUtils.FontUtil;
@@ -76,7 +77,7 @@ public class GenericPostViewHolder extends GenericViewHolder {
 
         itemView.findViewById(R.id.name).setOnClickListener(viewProgress);
 
-        ((TextView) itemView.findViewById(R.id.name)).setText(post.getCreator().getName());
+        ((TextView) itemView.findViewById(R.id.name)).setText(post.getCreator().getDisplayName());
 
         ((TextView) itemView.findViewById(R.id.name)).setTypeface(FontUtil.getFont(FontsType.REGULAR));
 
@@ -160,7 +161,11 @@ public class GenericPostViewHolder extends GenericViewHolder {
             @Override
             public void onClick(View v) {
 
-                CallBackUtils.processDeleteMenu(post,1);
+            if(SessionManager.getInstance().getCurrentUser().getId().equalsIgnoreCase(post.getCreator().getId())) {
+
+                CallBackUtils.processDeleteMenu(post);
+
+            }
 
             }
         });

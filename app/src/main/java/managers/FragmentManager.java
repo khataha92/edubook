@@ -26,6 +26,7 @@ import Fragments.NewGroupAssignmentFragment;
 import Fragments.NewGroupEventFragment;
 import Fragments.NewGroupNoteFragment;
 import Fragments.NewNoteFragment;
+import Fragments.ParentHomeFragment;
 import Fragments.PostViewFragment;
 import Fragments.ProgressFragment;
 import Interfaces.AbstractCallback;
@@ -109,6 +110,14 @@ public class FragmentManager {
         fragment.setPostListener(callback);
 
         fragment.setPostId(postId);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showParentHomeFragment(){
+
+        ParentHomeFragment fragment = new ParentHomeFragment();
 
         addFragment(fragment,true);
 

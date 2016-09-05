@@ -161,6 +161,8 @@ public class WebserviceRequestUtil {
 
         webService.addParams("event[end_date]",endDate);
 
+        webService.addParams("read_only","0");
+
         addRecievers(webService,model);
 
         webService.start();
@@ -284,16 +286,6 @@ public class WebserviceRequestUtil {
 
             case GROUPS:
 
-            case USERS:
-
-                for(int i=0; i < model.getRecipientList().size() ; i++){
-
-                    webService.addParams("receivers["+type.getValue()+"][]",model.getRecipientList().get(i).getId());
-
-                }
-
-                break;
-
             default:
 
                 webService.addParams("receivers["+type.getValue()+"][]", SessionManager.getInstance().getCurrentUser().getId() );
@@ -317,6 +309,8 @@ public class WebserviceRequestUtil {
 
         webService.addParams("assignment[lock]",""+(lockAfterDueDate?1:0));
 
+        webService.addParams("read_only","0");
+
         addRecievers(webService,model);
 
         webService.start();
@@ -331,6 +325,8 @@ public class WebserviceRequestUtil {
         webService.addParams("note[title]",title);
 
         webService.addParams("note[description]",description);
+
+        webService.addParams("read_only","0");
 
         addRecievers(webService,model);
 
@@ -512,11 +508,13 @@ public class WebserviceRequestUtil {
         webService.start();
     }
 
-    public static void getStreamBook(OnWebserviceFinishListener listener){
+    public static void getStreamBook(String page,OnWebserviceFinishListener listener){
 
         WebService webService = getWebService(listener);
 
-        webService.setService(RequestServices.GET_STREAM_BOOK.getValue());
+        String posts = String.format(RequestServices.GET_STREAM_BOOK.getValue(),page);
+
+        webService.setService(posts);
 
         webService.start();
     }

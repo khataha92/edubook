@@ -14,6 +14,7 @@ import java.util.List;
 import DataModels.Group;
 import DataModels.User;
 import Managers.FragmentManager;
+import Managers.SessionManager;
 import UserUtils.Application;
 import UserUtils.UIUtil;
 import UserUtils.UserDefaultUtil;
@@ -74,6 +75,10 @@ public class GroupMembersAdapter extends BaseAdapter {
         CircleImageView imageView = (CircleImageView)view.findViewById(R.id.profile_image);
 
         Picasso.with(Application.getContext()).load(groupMembers.get(i).getThumb()).error(defDrawable).into(imageView);
+
+        boolean isStudent = SessionManager.getInstance().getCurrentUser().getType().getName().equalsIgnoreCase("Student");
+
+        view.findViewById(R.id.member_settings).setVisibility(isStudent?View.GONE:View.VISIBLE);
 
         view.findViewById(R.id.member_settings).setOnClickListener(new View.OnClickListener() {
 

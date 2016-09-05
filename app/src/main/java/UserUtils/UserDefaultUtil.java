@@ -10,7 +10,9 @@ import android.provider.MediaStore;
 import android.view.View;
 
 
+import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 import com.ruily.crop.FileUtils;
 
 import java.io.File;
@@ -24,10 +26,16 @@ import java.util.Map;
 
 import DataModels.Group;
 import DataModels.Post;
+import DataModels.Recipient;
+import DataModels.RecipientsResponse;
+import DataModels.StreamBookResponse;
+import DataModels.User;
 import Enums.ErrorType;
 import Enums.HolderType;
 import Enums.Lang;
 import Enums.RecieverType;
+import Enums.ResponseCode;
+import Interfaces.OnWebserviceFinishListener;
 import Managers.SessionManager;
 import edubook.edubook.R;
 
@@ -53,6 +61,12 @@ public class UserDefaultUtil {
 
     }
 
+    public static boolean isStudent(){
+
+        return SessionManager.getInstance().getCurrentUser().getType().getName().equalsIgnoreCase("student");
+
+    }
+
     // Saves string value to shared preference
 
     public static void startGalleryIntent() {
@@ -65,7 +79,153 @@ public class UserDefaultUtil {
 
     }
 
+    public static void saveUserInfo(User user){
+
+        SessionManager.getInstance().saveUser(user);
+
+    }
+
+    public static void getUserRecipients(final OnWebserviceFinishListener finishListener){
+
+        OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
+
+            @Override
+            public void onFinish(WebService webService) {
+
+                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()) {
+
+                    StringBuffer strResponse = webService.getStrResponse();
+
+                    RecipientsResponse recipientsResponse = new Gson().fromJson(strResponse.toString(), RecipientsResponse.class);
+
+                    saveRecipients(recipientsResponse);
+
+                    getUserGroups(finishListener);
+
+                }
+
+            }
+        };
+
+        WebserviceRequestUtil.getUserRecipients(listener);
+
+    }
+
+    public static void saveRecipients(RecipientsResponse recipients){
+
+        for(int i=0 ; i < recipients.getGroups().size() ; i++){
+
+            String id = recipients.getGroups().get(i).getId();
+
+            String name = recipients.getGroups().get(i).getName();
+
+            Recipient recipient = new Recipient(Recipient.RecipientType.GROUP,id,name);
+
+            SessionManager.getInstance().addRecipient(recipient);
+
+        }
+
+        for(int i=0 ; i < recipients.getStudents().size() ; i++){
+
+            String id = recipients.getStudents().get(i).getId();
+
+            String name = recipients.getStudents().get(i).getName();
+
+            Recipient recipient = new Recipient(Recipient.RecipientType.STUDENT,id,name);
+
+            SessionManager.getInstance().addRecipient(recipient);
+
+        }
+
+        for(int i = 0 ; i < recipients.getContacts().size() ; i++){
+
+            String id = recipients.getContacts().get(i).getId();
+
+            String name = recipients.getContacts().get(i).getName();
+
+            Recipient recipient = new Recipient(Recipient.RecipientType.CONTACT,id,name);
+
+            SessionManager.getInstance().addRecipient(recipient);
+        }
+
+        Recipient onlyMe ;
+
+        String id = recipients.getOnlyme().get(0).getId();
+
+        String name = recipients.getOnlyme().get(0).getName();
+
+        onlyMe = new Recipient(Recipient.RecipientType.ONLY_ME,id,name);
+
+        SessionManager.getInstance().addRecipient(onlyMe);
+
+    }
+
+    public static void getStreamBook(OnWebserviceFinishListener finishListener){
+
+        WebserviceRequestUtil.getStreamBook("1",finishListener);
+
+    }
+
+    public static void getUserGroups(final OnWebserviceFinishListener finishListener){
+
+        OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
+            @Override
+            public void onFinish(WebService webService) {
+
+                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
+
+                    List<Group> groups = new Gson().fromJson(webService.getStrResponse().toString(),new TypeToken<List<Group>>(){}.getType());
+
+                    SessionManager.getInstance().saveUserGroups(groups);
+
+                    getStreamBook(finishListener);
+
+                }
+
+            }
+        };
+
+        WebserviceRequestUtil.getUserGroups(listener);
+    }
+
+    public static void getUserInfo(final OnWebserviceFinishListener finishListener){
+
+        OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
+
+            @Override
+            public void onFinish(WebService webService) {
+
+                String result = webService.getStrResponse().toString();
+
+                if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()) {
+
+                    try {
+
+                        User user = new Gson().fromJson(result, User.class);
+
+                        saveUserInfo(user);
+
+                        getUserRecipients(finishListener);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                else{
+
+                    WebserviceRequestUtil.processWebServiceError(webService);
+
+                }
+            }
+        };
+
+        WebserviceRequestUtil.getUserInfo(listener);
+    }
+
     public static void setLanguage(Lang language){
+
+
 
         Locale locale = new Locale(language.getValue());
 
@@ -115,9 +275,9 @@ public class UserDefaultUtil {
 
         switch (type){
 
-            case USERS:
+            case ALL_GROUPS:
 
-                return R.drawable.connections;
+                return R.drawable.groups;
 
             case ONLY_ME:
 
@@ -164,9 +324,9 @@ public class UserDefaultUtil {
 
         switch (type){
 
-            case USERS:
+            case ALL_GROUPS:
 
-                stringResourceId = R.string.users;
+                stringResourceId = R.string.ALL_GROUPS;
 
                 break;
 

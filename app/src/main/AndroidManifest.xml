@@ -9,8 +9,11 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="com.edubook.edubook.permission.C2D_MESSAGE" />
+    <permission android:name="edubook.edubook.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="edubook.edubook.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
 
     <application
         android:allowBackup="true"
@@ -64,6 +67,17 @@
             android:windowTranslucentNavigation="true"
             android:windowTranslucentStatus="true" />
 
+        <activity
+            android:name="activities.PostRetriever"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:statusBarColor="@color/background"
+            android:theme="@style/AppTheme.ActionBar.Transparent"
+            android:windowSoftInputMode="stateHidden"
+            android:windowTranslucentNavigation="true"
+            android:windowTranslucentStatus="true" />
+
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -84,7 +98,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="com.edubook" />
+                <category android:name=".broadcastReceivers" />
             </intent-filter>
         </receiver>
 

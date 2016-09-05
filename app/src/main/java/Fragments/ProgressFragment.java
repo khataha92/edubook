@@ -115,7 +115,7 @@ public class ProgressFragment extends BaseFragment {
 
                 if(webService.getResponseCode() == ResponseCode.SUCCESS.getCode()){
 
-                    dataModel = new Gson().fromJson(webService.getStrResponse().toString(), ProgressDataModel.class);
+                    dataModel = new Gson().fromJson(webService.getStrResponse().toString().trim(), ProgressDataModel.class);
 
                 }
                 else{

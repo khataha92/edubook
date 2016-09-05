@@ -26,7 +26,7 @@ public class Constants {
 
     private static RecieverType[] recieverTypesArray = new RecieverType[]
             {
-                RecieverType.USERS,
+                RecieverType.ALL_GROUPS,
                 RecieverType.ONLY_ME,
                 RecieverType.GROUPS,
                 RecieverType.STUDENTS

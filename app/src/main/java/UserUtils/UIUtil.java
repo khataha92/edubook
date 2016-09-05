@@ -260,7 +260,9 @@ public class UIUtil {
             errorMessage = errors[0];
         }
 
-        pDialog.setTitleText(errorMessage);
+        pDialog.setTitleText(Application.getContext().getString(R.string.SOMETHING_WENT_WRONG));
+
+        pDialog.setContentText(errorMessage);
 
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
 
@@ -547,7 +549,15 @@ public class UIUtil {
 
         newPostDialog.requestWindowFeature(Window.FEATURE_NO_TITLE|Window.FEATURE_SWIPE_TO_DISMISS);
 
-        newPostDialog.setContentView(R.layout.dialog_new_post);
+        int layout = R.layout.dialog_new_post;
+
+        if(UserDefaultUtil.isStudent()){
+
+            layout = R.layout.dialog_new_post_student;
+
+        }
+
+        newPostDialog.setContentView(layout);
 
         newPostDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -600,17 +610,21 @@ public class UIUtil {
             }
         };
 
-        newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
+        if(!UserDefaultUtil.isStudent()) {
 
-            @Override
-            public void onClick(View view) {
+            newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
 
-                Managers.FragmentManager.showNewAssignmentFragment(listener);
+                @Override
+                public void onClick(View view) {
 
-                newPostDialog.dismiss();
+                    Managers.FragmentManager.showNewAssignmentFragment(listener);
 
-            }
-        });
+                    newPostDialog.dismiss();
+
+                }
+            });
+
+        }
 
         newPostDialog.findViewById(R.id.newEvent).setOnClickListener(new View.OnClickListener() {
 

@@ -110,7 +110,7 @@ public class PostFragment extends BaseFragment {
 
         ArrayAdapter<Recipient> adapter;
 
-        adapter = new ArrayAdapter<Recipient>(getContext(),
+        adapter = new ArrayAdapter<>(getContext(),
 
                 android.R.layout.simple_list_item_1, selectableRecipients);
 
@@ -180,16 +180,17 @@ public class PostFragment extends BaseFragment {
 
                     break;
 
-                case USERS:
+                case ALL_GROUPS:
 
-                    for(int j = 0 ; j < array.size() ; j ++){
+                    recipientList.setEnabled(false);
 
-                        if(array.get(j).getType() == Recipient.RecipientType.CONTACT){
+                    id = "all_groups";
 
-                            selectableRecipients.add(array.get(j));
-                        }
+                    name = Application.getContext().getString(R.string.ALL_GROUPS);
 
-                    }
+                    recipient = new Recipient(Recipient.RecipientType.ONLY_ME,id,name);
+
+                    targetRecipients.add(recipient);
 
                     break;
 

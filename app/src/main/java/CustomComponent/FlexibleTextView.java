@@ -108,6 +108,8 @@ public class FlexibleTextView extends RelativeLayout {
 
     public void setText(String text) {
 
+        if(text == null) text = "";
+
         this.text = text.trim().replaceAll("\n","<br>").trim();
 
         String htmlText= Html.fromHtml(this.text).toString();

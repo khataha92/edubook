@@ -9,6 +9,7 @@ import DataModels.GenericViewHolderDataContainer;
 import Fragments.GroupFragment;
 import Managers.FragmentManager;
 import UserUtils.UIUtil;
+import UserUtils.UserDefaultUtil;
 import ViewHolders.GenericViewHolder;
 import edubook.edubook.R;
 
@@ -60,6 +61,8 @@ public class GroupHeaderViewHolder extends GenericViewHolder {
         String groupDescription = group.getDescription();
 
         ((TextView)itemView.findViewById(R.id.group_desc)).setText(groupDescription!=null ? groupDescription:"");
+
+        itemView.findViewById(R.id.settings).setVisibility(UserDefaultUtil.isStudent()?View.GONE:View.VISIBLE);
 
         itemView.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
 

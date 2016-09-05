@@ -234,7 +234,7 @@ public class Login extends AppCompatActivity {
 
                         if (gcm == null) {
 
-                            gcm = GoogleCloudMessaging.getInstance(getBaseContext());
+                            gcm = GoogleCloudMessaging.getInstance(Login.this);
 
                         }
 
