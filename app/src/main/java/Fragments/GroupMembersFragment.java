@@ -22,6 +22,7 @@ import Interfaces.OnWebserviceFinishListener;
 import Managers.FragmentManager;
 import UserUtils.Application;
 import UserUtils.UIUtil;
+import UserUtils.UserDefaultUtil;
 import UserUtils.WebService;
 import UserUtils.WebserviceRequestUtil;
 import edubook.edubook.R;
@@ -86,6 +87,8 @@ public class GroupMembersFragment extends BaseFragment {
 
             }
         });
+
+        rootView.findViewById(R.id.settings).setVisibility(UserDefaultUtil.isStudent()?View.GONE:View.VISIBLE);
 
         rootView.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
 

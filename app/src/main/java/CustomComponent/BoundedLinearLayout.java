@@ -6,6 +6,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.squareup.picasso.Cache;
+import com.squareup.picasso.Picasso;
+
+import UserUtils.Application;
 import edubook.edubook.R;
 
 /**
@@ -19,6 +23,8 @@ public class BoundedLinearLayout extends LinearLayout {
         super(context);
         mBoundedWidth = 0;
         mBoundedHeight = 0;
+        Picasso.Builder builder = new Picasso.Builder(Application.getContext());
+
     }
     public BoundedLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);

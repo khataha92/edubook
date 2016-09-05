@@ -30,14 +30,7 @@
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/controller" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/new_message"
-            android:id="@+id/controller"
-            android:layout_alignBottom="@+id/back"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+
 
     </RelativeLayout>
 </LinearLayout>

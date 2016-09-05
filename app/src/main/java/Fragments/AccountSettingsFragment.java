@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import Adapters.GroupListAdapter;
 import Enums.Lang;
 import Interfaces.AbstractCallback;
@@ -24,6 +27,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edubook.edubook.R;
 
 public class AccountSettingsFragment extends BaseFragment {
+
+    Map<String,String> language = new HashMap<>();
 
     public AccountSettingsFragment() {
 
@@ -42,11 +47,15 @@ public class AccountSettingsFragment extends BaseFragment {
             }
         });
 
+        language.put("ar",getString(R.string.Arabic));
+
+        language.put("en",getString(R.string.English));
+
         final TextView language = (TextView) rootView.findViewById(R.id.lang);
 
         final String lang = SessionManager.getInstance().getUserLanguage();
 
-        language.setText(lang);
+        language.setText(this.language.get(lang));
 
         final TextView emailAddress = (TextView) rootView.findViewById(R.id.email);
 

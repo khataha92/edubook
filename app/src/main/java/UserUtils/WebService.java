@@ -26,6 +26,7 @@ import Interfaces.OnWebserviceFinishListener;
 
 public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffer> {
 
+    private static final String TAG = WebService.class.getSimpleName();
     private String version = "v1";
 
     private StringBuffer strResponse =null;
@@ -122,6 +123,8 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
             res = processDeleteRequest();
 
         }
+
+        Log.e(TAG,res.toString());
 
         return res;
     }

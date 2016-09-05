@@ -20,6 +20,12 @@ public enum  Lang {
 
         map.put("en",English);
 
+        map.put("English",English);
+
+        map.put("Arabic",Arabic);
+
+        map.put("العربية",Arabic);
+
     }
 
     public static Lang getValueOf(String lang){

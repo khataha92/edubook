@@ -45,7 +45,7 @@ public class ProgressLineViewHolder extends GenericViewHolder {
 
         int year = Integer.valueOf(strYear);
 
-        String strDay = date.substring(date.lastIndexOf("-")+1);
+        String strDay = date.substring(date.lastIndexOf("-")+1,date.lastIndexOf("-")+3);
 
         int day = Integer.valueOf(strDay);
 

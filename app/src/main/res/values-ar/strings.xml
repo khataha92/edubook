@@ -28,9 +28,9 @@
 
     <string name="share">مشاركة</string>
 
-    <string name="Arabic">ar</string>
+    <string name="Arabic">االعربية</string>
 
-    <string name="English">en</string>
+    <string name="English">English</string>
 
     <string name="CurrentPassword">كلمة المرور الحالية</string>
 
@@ -178,6 +178,8 @@
 
     <string name="SOMETHING_WENT_WRONG">حدث خطأ ما!</string>
 
+    <string name="check_inputs">يرجى فحص المدخلات، اسم المستخدم يجب ان يكون ٦ احرف او اكثر</string>
+
     <string name="loading">جاري التحميل...</string>
 
     <string name="total_votes">مجموع التصويتات: </string>
@@ -211,5 +213,7 @@
     <string name="copied_to_clipboard">تم النسخ للذاكرة</string>
 
     <string name="removed_successfully">تمت الازالة بنجاح!</string>
+
+    <string name="ALL_GROUPS">كل المجموعات</string>
 
 </resources>

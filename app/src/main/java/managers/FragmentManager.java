@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +26,7 @@ import Fragments.NewGroupAssignmentFragment;
 import Fragments.NewGroupEventFragment;
 import Fragments.NewGroupNoteFragment;
 import Fragments.NewNoteFragment;
+import Fragments.ParentHomeFragment;
 import Fragments.PostViewFragment;
 import Fragments.ProgressFragment;
 import Interfaces.AbstractCallback;
@@ -37,7 +37,6 @@ import UserUtils.UIUtil;
 import edubook.edubook.R;
 import activities.Home;
 import Fragments.HomeFragment;
-import Fragments.Messages;
 import Fragments.MoreFragment;
 
 
@@ -111,6 +110,14 @@ public class FragmentManager {
         fragment.setPostListener(callback);
 
         fragment.setPostId(postId);
+
+        addFragment(fragment,true);
+
+    }
+
+    public static void showParentHomeFragment(){
+
+        ParentHomeFragment fragment = new ParentHomeFragment();
 
         addFragment(fragment,true);
 
@@ -288,30 +295,6 @@ public class FragmentManager {
         MoreFragment moreFragment = new MoreFragment();
 
         addFragment(moreFragment,true);
-
-    }
-
-    public static void showMessagesFragment(){
-
-        if(getFragmentPosition(Messages.class) != -1){
-
-            android.support.v4.app.FragmentManager manager = ((Home)Application.getCurrentActivity()).getSupportFragmentManager();
-
-            FragmentTransaction trans = manager.beginTransaction();
-
-            trans.remove(currentFragments.get(getFragmentPosition(Messages.class)));
-
-            trans.commit();
-
-            manager.popBackStack();
-
-            currentFragments.remove(getFragmentPosition(Messages.class));
-
-        }
-
-        Messages messages = new Messages();
-
-        addFragment(messages,true);
 
     }
 

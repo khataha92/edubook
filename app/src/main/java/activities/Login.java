@@ -5,10 +5,12 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,9 +20,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import UserUtils.Constants;
 import io.fabric.sdk.android.Fabric;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Locale;
 
 import Enums.ResponseCode;
@@ -36,7 +42,7 @@ import Interfaces.OnWebserviceFinishListener;
 public class Login extends AppCompatActivity {
     String logout = null;
 
-    String name,password;
+    String name,password,regId;
 
     public void doLogin(View btn) {
 
@@ -83,7 +89,7 @@ public class Login extends AppCompatActivity {
 
         disableInputs();
 
-        WebserviceRequestUtil.login(name,password,listener);
+        WebserviceRequestUtil.login(name,password,regId,listener);
 
     }
 
@@ -137,6 +143,8 @@ public class Login extends AppCompatActivity {
     }
 
     public void signup(View v) {
+
+        startActivity(new Intent(this,Signup.class));
 
     }
 
@@ -206,7 +214,60 @@ public class Login extends AppCompatActivity {
         }
 
 
+        registerGcm();
 
+    }
+
+    private void registerGcm(){
+
+        try {
+            new AsyncTask<Void, Void, String>() {
+
+                @Override
+                protected String doInBackground(Void... params) {
+
+                    String msg = "";
+
+                    GoogleCloudMessaging gcm=null;
+
+                    try {
+
+                        if (gcm == null) {
+
+                            gcm = GoogleCloudMessaging.getInstance(Login.this);
+
+                        }
+
+                        String regid = gcm.register(Constants.SENDER_ID);
+
+                        msg = "Device registered, registration ID=" + regid;
+
+                        Login.this.regId = regid;
+
+                    } catch (IOException ex) {
+
+                        msg = "Error :" + ex.getMessage();
+
+                    }
+
+                    return msg;
+
+                }
+
+                @Override
+                protected void onPostExecute(String msg) {
+
+                    Log.d("message",msg);
+
+                }
+
+            }.execute(null, null, null);
+
+        }catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
 
     }
 

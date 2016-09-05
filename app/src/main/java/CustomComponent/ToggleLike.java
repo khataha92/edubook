@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import DataModels.Post;
+import Managers.SessionManager;
 import UserUtils.FontUtil;
 import UserUtils.FontsType;
 import UserUtils.UIUtil;
@@ -75,7 +76,17 @@ public class ToggleLike extends LinearLayout{
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width,width);
 
-        params.setMargins(0,0,UIUtil.dpToPx(5),0);
+        if(SessionManager.getInstance().getUserLanguage().equalsIgnoreCase("en")) {
+
+            params.setMargins(0, 0, UIUtil.dpToPx(5), 0);
+
+        }
+
+        else{
+
+            params.setMargins(UIUtil.dpToPx(5), 0, 0, 0);
+
+        }
 
         icon.setLayoutParams(params);
 

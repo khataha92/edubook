@@ -7,6 +7,7 @@
         android:id="@+id/description"
         android:textColor="#ffffff"
         android:textSize="16sp"
+        android:gravity="center_horizontal"
         android:padding="10dp"
         android:text="this is the shosmo"
         android:layout_height="match_parent" />

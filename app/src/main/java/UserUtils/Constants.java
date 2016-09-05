@@ -16,6 +16,8 @@ public class Constants {
 
     public static String port = "8080";
 
+    public static final String SENDER_ID = "952306397303";
+
     public static final int REQUEST_GALLERY = 21;
 
     public static final int REQUEST_CAMERA = 20;
@@ -24,7 +26,7 @@ public class Constants {
 
     private static RecieverType[] recieverTypesArray = new RecieverType[]
             {
-                RecieverType.USERS,
+                RecieverType.ALL_GROUPS,
                 RecieverType.ONLY_ME,
                 RecieverType.GROUPS,
                 RecieverType.STUDENTS

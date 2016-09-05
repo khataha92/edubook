@@ -127,7 +127,7 @@ public class CallBackUtils {
 
     }
 
-    public static void processDeleteMenu(final Post post,int offset){
+    public static void processDeleteMenu(final Post post){
 
         CallBackUtils.showDeletePostMenu(post, new YesNoDialogListener() {
 

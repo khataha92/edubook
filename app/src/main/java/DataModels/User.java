@@ -1,5 +1,7 @@
 package DataModels;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 import Managers.SessionManager;
@@ -11,9 +13,27 @@ public class User implements Serializable{
 
     String id,name,thumb,email;
 
+    @SerializedName("firstname")
+    String firstName;
+
+    @SerializedName("secondname")
+    String secondName;
+
+    @SerializedName("thirdname")
+    String thirdName;
+
+    @SerializedName("lastname")
+    String lastName;
+
     UserType type;
 
     Role role;
+
+    public String getDisplayName() {
+
+        return firstName+" "+lastName;
+
+    }
 
     public void setRole(Role role) {
 

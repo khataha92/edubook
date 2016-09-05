@@ -153,8 +153,10 @@
                 android:layout_height="1dp">
             </LinearLayout>
             <ImageView
-                android:layout_width="50dp"
+                android:layout_width="30dp"
                 android:layout_height="50dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/calendar_grey"
                 android:layout_below="@+id/line"
@@ -166,7 +168,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/Starts"
                 android:textStyle="bold"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="14dp"
                 android:id="@+id/textView39"
                 android:layout_alignTop="@+id/imageView26"
                 android:layout_toRightOf="@+id/imageView26"
@@ -219,7 +221,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:orientation="horizontal"
-        android:weightSum="3"
+        android:weightSum="2"
         android:id="@+id/linearLayout6"
         android:background="@drawable/comment_box_bg"
         android:layout_below="@+id/assignment_post"
@@ -255,25 +257,7 @@
                 android:layout_marginRight="5dp"
                 />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/share"
-                android:text="@string/share"
-                />
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/share"
-                android:layout_marginRight="5dp"
-                />
-        </LinearLayout>
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"

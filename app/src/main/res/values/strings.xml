@@ -28,9 +28,9 @@
 
     <string name="share">share</string>
 
-    <string name="Arabic">ar</string>
+    <string name="Arabic">العربية</string>
 
-    <string name="English">en</string>
+    <string name="English">English</string>
 
     <string name="CurrentPassword">Current Password</string>
 
@@ -218,6 +218,8 @@
 
     <string name="SOMETHING_WENT_WRONG">Something went wrong!</string>
 
+    <string name="check_inputs">Please check inputs, inputs should be valid inputs, username should be 6 or more letters</string>
+
     <string name="loading">Loading...</string>
 
     <string name="total_votes">Total Votes: </string>
@@ -258,5 +260,6 @@
 
     <string name="cancel">Cancel</string>
 
+    <string name="ALL_GROUPS">All groups</string>
 
 </resources>

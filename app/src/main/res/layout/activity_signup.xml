@@ -139,12 +139,11 @@
         android:background="@drawable/login_btn"
         android:layout_marginTop="10dp"
         android:text="@string/Next"
-        android:onClick="next"
         android:textSize="18sp"
         android:textStyle="bold"
         android:padding="18dp"
         android:textColor="@color/background"
-        android:id="@+id/login_btn"
+        android:id="@+id/next"
         android:layout_below="@+id/code"
         android:layout_centerHorizontal="true">
 
