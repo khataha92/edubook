@@ -71,7 +71,7 @@ public class GcmMessageHandler extends GcmListenerService {
 
         Intent intent =new Intent(getApplicationContext(), Home.class).putExtra("postId",itemId);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_NO_CREATE);
 
         mBuilder.setContentIntent(pendingIntent);
 

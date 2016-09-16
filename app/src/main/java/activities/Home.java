@@ -55,6 +55,16 @@ public class Home extends FragmentActivity
         }
     };
 
+    private View.OnClickListener showNotificationFragment = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+
+            FragmentManager.showNotificationFragment();
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -114,6 +124,8 @@ public class Home extends FragmentActivity
         findViewById(R.id.more_container).setOnClickListener(showMoreFragment);
 
         findViewById(R.id.home_container).setOnClickListener(showHomeFragment);
+
+        findViewById(R.id.notificaion_container).setOnClickListener(showNotificationFragment);
     }
 
     public void replaceIcon(){

@@ -45,8 +45,6 @@ public class HomeFragment extends BaseFragment {
 
     boolean isGettingNextPage = false;
 
-    int position;
-
     OnWebserviceFinishListener listener = new OnWebserviceFinishListener() {
 
         @Override
