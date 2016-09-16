@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:background="@drawable/message_bg"
     android:padding="10dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Yesterday"
-        android:id="@+id/description"
+        android:id="@+id/age"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -20,8 +20,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/male_profile_image"
-        app:civ_border_width="1dp"
-        app:civ_border_color="#E9E9E9"/>
+        app:civ_border_width="0dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:textSize="16sp"
         android:text="Selena Gomez Replied to post: ''Thank you for sending us..''"
         android:id="@+id/name"
-        android:layout_below="@+id/description"
+        android:layout_below="@+id/age"
         android:layout_toRightOf="@+id/profile_image"
         android:layout_toEndOf="@+id/profile_image" />
 </RelativeLayout>

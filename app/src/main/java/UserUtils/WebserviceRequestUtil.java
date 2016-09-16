@@ -82,7 +82,7 @@ public class WebserviceRequestUtil {
 
     }
 
-    public static void getUserNotification(OnWebserviceFinishListener listener){
+    public static void getUserNotifications(OnWebserviceFinishListener listener){
 
         WebService webService = getWebService(listener);
 

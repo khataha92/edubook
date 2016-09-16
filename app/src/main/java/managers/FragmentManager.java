@@ -26,6 +26,7 @@ import Fragments.NewGroupAssignmentFragment;
 import Fragments.NewGroupEventFragment;
 import Fragments.NewGroupNoteFragment;
 import Fragments.NewNoteFragment;
+import Fragments.NotificationFragment;
 import Fragments.ParentHomeFragment;
 import Fragments.PostViewFragment;
 import Fragments.ProgressFragment;
@@ -49,6 +50,14 @@ public class FragmentManager {
     public static void clear(){
 
         currentFragments.clear();
+    }
+
+    public static void showNotificationFragment(){
+
+        NotificationFragment fragment = new NotificationFragment();
+
+        addFragment(fragment,true);
+
     }
 
     public static void restartActivity(){
