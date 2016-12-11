@@ -415,22 +415,6 @@ public class UIUtil {
 
         }
 
-        newPostDialog.requestWindowFeature(Window.FEATURE_NO_TITLE|Window.FEATURE_SWIPE_TO_DISMISS);
-
-        newPostDialog.setContentView(R.layout.dialog_new_post);
-
-        newPostDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        newPostDialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                newPostDialog.dismiss();
-
-            }
-        });
-
         final RecyclerView recyclerView = recycler;
 
         final List<PostFactory> postList = posts;
@@ -466,17 +450,44 @@ public class UIUtil {
             }
         };
 
-        newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
+        newPostDialog.requestWindowFeature(Window.FEATURE_NO_TITLE|Window.FEATURE_SWIPE_TO_DISMISS);
+
+        if(UserDefaultUtil.isStudent()){
+
+            newPostDialog.setContentView(R.layout.dialog_new_post_student);
+
+        }
+        else {
+
+            newPostDialog.setContentView(R.layout.dialog_new_post);
+
+            newPostDialog.findViewById(R.id.newAssignment).setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Managers.FragmentManager.showNewGroupAssignment(groupId,groupName,listener);
+
+                    newPostDialog.dismiss();
+
+                }
+            });
+
+        }
+
+        newPostDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        newPostDialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
-                Managers.FragmentManager.showNewGroupAssignment(groupId,groupName,listener);
 
                 newPostDialog.dismiss();
 
             }
         });
+
+
 
         newPostDialog.findViewById(R.id.newEvent).setOnClickListener(new View.OnClickListener() {
 

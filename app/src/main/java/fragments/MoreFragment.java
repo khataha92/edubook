@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import Adapters.GroupListAdapter;
 import Interfaces.FunctionCaller;
 import Interfaces.OnWebserviceFinishListener;
+import Interfaces.TabIcon;
 import Managers.FragmentManager;
 import UserUtils.UIUtil;
 import UserUtils.WebserviceRequestUtil;
@@ -25,7 +26,7 @@ import edubook.edubook.R;
 import activities.Home;
 import Managers.SessionManager;
 
-public class MoreFragment extends BaseFragment {
+public class MoreFragment extends BaseFragment implements TabIcon {
 
     RecyclerView groupList;
 
@@ -98,7 +99,7 @@ public class MoreFragment extends BaseFragment {
 
         UIUtil.loadImageFromUrl(profileImage,thumb);
 
-        ((TextView)rootView.findViewById(R.id.name)).setText(SessionManager.getInstance().getCurrentUser().getName());
+        ((TextView)rootView.findViewById(R.id.name)).setText(SessionManager.getInstance().getCurrentUser().getDisplayName());
 
         ((TextView)rootView.findViewById(R.id.type)).setText(SessionManager.getInstance().getCurrentUser().getType().getName());
 
@@ -121,9 +122,7 @@ public class MoreFragment extends BaseFragment {
 
         super.onResume();
 
-        ((ImageView)getActivity().findViewById(R.id.more)).setImageResource(R.drawable.menu_selected);
-
-        ((Home)getActivity()).replaceIcon();
+        ((Home)getActivity()).replaceIcon(R.id.more);
 
         UIUtil.showTabsView();
 
@@ -165,4 +164,17 @@ public class MoreFragment extends BaseFragment {
 
     }
 
+    @Override
+    public int getSelectedTabIdocn() {
+
+        return R.drawable.menu_selected;
+
+    }
+
+    @Override
+    public int getDeselectedTabIcon() {
+
+        return R.drawable.menu;
+
+    }
 }

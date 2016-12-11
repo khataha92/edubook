@@ -39,7 +39,7 @@ public class CommentViewHolder extends GenericViewHolder {
 
         Picasso.with(Application.getContext()).load(cmnt.getCreator().getThumb()).error(defaultDrawable).into(imageView);
 
-        name.setText(cmnt.getCreator().getName());
+        name.setText(cmnt.getCreator().getDisplayName());
 
         itemView.setOnClickListener(new View.OnClickListener() {
 

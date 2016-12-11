@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             style="@android:style/TextAppearance.Medium"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="13sp" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

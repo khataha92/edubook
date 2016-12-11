@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@drawable/home_box_bg"
         android:orientation="horizontal"
         android:weightSum="3"
@@ -27,7 +27,7 @@
             android:id="@+id/home_container"
             >
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/home"
                 android:src="@drawable/home"
@@ -55,7 +55,7 @@
                 android:layout_toRightOf="@+id/notification"
                 android:layout_toEndOf="@+id/notification" />
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/notification"
                 android:src="@drawable/notification"
@@ -72,7 +72,7 @@
             android:id="@+id/more_container"
             >
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/more"
                 android:src="@drawable/menu"

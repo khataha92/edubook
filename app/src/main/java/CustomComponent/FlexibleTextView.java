@@ -5,8 +5,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -43,6 +48,11 @@ public class FlexibleTextView extends RelativeLayout {
     public int getMaxLinesBeforeExpand(){
 
         return maxLinesBeforeExpand;
+    }
+
+    public void setMovementMethod(MovementMethod instance){
+
+        textView.setMovementMethod(instance);
     }
 
     int readMoreColor;
@@ -108,6 +118,8 @@ public class FlexibleTextView extends RelativeLayout {
 
     public void setText(String text) {
 
+        setMovementMethod(LinkMovementMethod.getInstance());
+
         if(text == null) text = "";
 
         this.text = text.trim().replaceAll("\n","<br>").trim();
@@ -148,6 +160,8 @@ public class FlexibleTextView extends RelativeLayout {
     }
 
     public void initLayout(){
+
+        if(isInEditMode()) return;
 
         textColor = getContext().getResources().getColor(R.color.ACCENT_COLOR_DARK_NAVY);
 

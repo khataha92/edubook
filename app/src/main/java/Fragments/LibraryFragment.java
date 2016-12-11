@@ -22,6 +22,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import Adapters.LibraryAdapter;
 import DataModels.LibraryFile;
@@ -257,7 +258,7 @@ public class LibraryFragment extends BaseFragment {
 
         for(int j = 0 ; j < files.size() ; j ++){
 
-            if(files.get(j).getName().contains(charSequence)){
+            if(Pattern.compile(Pattern.quote(charSequence.toString()), Pattern.CASE_INSENSITIVE).matcher(files.get(j).getName()).find()) {
 
                 resultFiles.add(files.get(j));
 

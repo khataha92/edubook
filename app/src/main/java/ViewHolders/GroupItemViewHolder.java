@@ -1,5 +1,6 @@
 package ViewHolders;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -46,6 +47,8 @@ public class GroupItemViewHolder extends RecyclerView.ViewHolder {
         }
 
         ((TextView) itemView.findViewById(R.id.group_name)).setText(label);
+
+        ((TextView) itemView.findViewById(R.id.group_name)).setTextColor(Color.parseColor("#1E9BF0"));
 
         itemView.setOnClickListener(new View.OnClickListener() {
 

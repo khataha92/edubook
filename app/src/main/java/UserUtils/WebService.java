@@ -243,7 +243,18 @@ public class WebService extends AsyncTask <StringBuffer,StringBuffer,StringBuffe
 
         StringBuffer res = null;
 
-        String url = server + ":" + port + "/api/" + version + "/" + service;
+        String url="";
+
+        if(version.length() == 0){
+
+            url = server;
+        }
+
+        else{
+
+            url = server + ":" + port + "/api/" + version + "/" + service;
+        }
+
 
         Log.d("server", url);
 

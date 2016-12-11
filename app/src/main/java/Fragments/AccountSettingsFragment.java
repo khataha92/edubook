@@ -51,6 +51,10 @@ public class AccountSettingsFragment extends BaseFragment {
 
         language.put("en",getString(R.string.English));
 
+        language.put(getString(R.string.English),getString(R.string.English));
+
+        language.put(getString(R.string.Arabic),getString(R.string.Arabic));
+
         final TextView language = (TextView) rootView.findViewById(R.id.lang);
 
         final String lang = SessionManager.getInstance().getUserLanguage();

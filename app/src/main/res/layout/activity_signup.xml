@@ -12,9 +12,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:background="@drawable/edittext_bg"
+
         android:id="@+id/relativeLayout"
         android:layout_marginTop="20dp"
         android:padding="4dp"
@@ -23,9 +24,10 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:padding="12dp"
+            android:padding="8dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:textSize="14sp"
             android:background="@color/background"
             android:layout_toRightOf="@+id/imgUsername"
             android:layout_toEndOf="@+id/imgUsername"
@@ -36,15 +38,14 @@
             android:textColor="#ffffff" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:src="@drawable/username"
-            android:id="@+id/imgUsername"
             android:layout_marginLeft="10dp"
+            android:id="@+id/imgUsername"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/username"
-            android:layout_alignBottom="@+id/username" />
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -60,9 +61,10 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:padding="12dp"
+            android:padding="8dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:textSize="14sp"
             android:background="@color/background"
             android:layout_toRightOf="@+id/imgEmail"
             android:layout_toEndOf="@+id/imgEmail"
@@ -73,7 +75,7 @@
             android:textColor="#ffffff" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:src="@drawable/email"
             android:id="@+id/imgEmail"
@@ -102,8 +104,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageView1"
-            android:padding="13dp"
+            android:padding="8dp"
             android:inputType="textVisiblePassword"
+            android:textSize="14sp"
             android:background="@color/background"
             android:imeOptions="actionDone"
             android:singleLine="true"
@@ -114,7 +117,7 @@
             android:hint="@string/AccessCode" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:src="@drawable/pass"
             android:id="@+id/imageView1"
@@ -125,8 +128,8 @@
             android:layout_alignParentStart="true" />
     </RelativeLayout>
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/imageView2"
         android:src="@drawable/edubook_logo"
         android:layout_marginTop="0dp"
@@ -139,9 +142,9 @@
         android:background="@drawable/login_btn"
         android:layout_marginTop="10dp"
         android:text="@string/Next"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        android:padding="18dp"
+        android:padding="8dp"
         android:textColor="@color/background"
         android:id="@+id/next"
         android:layout_below="@+id/code"

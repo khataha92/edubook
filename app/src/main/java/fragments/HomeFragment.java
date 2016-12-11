@@ -23,6 +23,7 @@ import DataModels.StreamBookResponse;
 import Enums.ResponseCode;
 import Interfaces.OnWebserviceFinishListener;
 import Interfaces.PostFactory;
+import Interfaces.TabIcon;
 import Managers.SessionManager;
 import UserUtils.UIUtil;
 import UserUtils.UserDefaultUtil;
@@ -33,7 +34,7 @@ import edubook.edubook.R;
 import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements TabIcon{
 
     PostListAdapter adapter;
 
@@ -93,9 +94,7 @@ public class HomeFragment extends BaseFragment {
 
         if(getActivity() != null) {
 
-            ((ImageView) getActivity().findViewById(R.id.home)).setImageResource(R.drawable.home);
-
-            ((Home) getActivity()).replaceIcon();
+            ((Home) getActivity()).replaceIcon(R.id.home);
 
             UIUtil.showTabsView();
 
@@ -346,4 +345,17 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+    @Override
+    public int getSelectedTabIdocn() {
+
+        return R.drawable.home;
+
+    }
+
+    @Override
+    public int getDeselectedTabIcon() {
+
+        return R.drawable.home_unselected;
+
+    }
 }

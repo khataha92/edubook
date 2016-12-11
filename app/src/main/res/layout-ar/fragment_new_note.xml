@@ -21,7 +21,7 @@
         android:layout_alignParentStart="true">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:id="@+id/close"
             android:layout_centerInParent="true"
@@ -39,13 +39,14 @@
             android:layout_centerHorizontal="true"
             style="@android:style/TextAppearance.Medium"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="13sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="@string/Post"
             android:onClick="post"
+            android:textSize="13sp"
             android:background="@color/background"
             android:id="@+id/post"
             android:layout_centerVertical="true"
@@ -62,19 +63,19 @@
         android:layout_marginRight="10dp"
         android:textColor="#58595B"
         android:text="@string/to"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:id="@+id/textView9"
         android:layout_below="@+id/relativeLayout5"
         android:layout_alignLeft="@+id/relativeLayout5"
         android:layout_alignStart="@+id/relativeLayout5" />
     <Spinner
-        android:layout_width="55dp"
+        android:layout_width="50dp"
         android:gravity="center_vertical"
         android:id="@+id/recipient"
         android:dropDownWidth="200dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="-5dp"
-        android:layout_toRightOf="@+id/textView9"
+        android:layout_toLeftOf="@+id/textView9"
         android:layout_alignTop="@+id/recipient_input"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/linearLayout12" />
@@ -96,26 +97,29 @@
         android:padding="10dp"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
+        android:textSize="11sp"
         android:minLines="10"
         android:ems="10"
+        android:layout_alignTop="@+id/profile_image"
         android:text=""
         android:background="#ffffff"
         android:id="@+id/description"
-        android:layout_toRightOf="@+id/profile_image"
+        android:layout_toLeftOf="@+id/profile_image"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true" />
+
+        />
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/profile_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/male_profile_image"
         app:civ_border_width="1dp"
-        android:layout_alignTop="@+id/description" />
+        android:layout_alignParentTop="true" />
     </RelativeLayout>
     <CustomComponent.BoundedLinearLayout
         android:layout_width="wrap_content"
@@ -125,7 +129,7 @@
 
         android:id="@+id/linearLayout12"
         android:layout_below="@+id/relativeLayout5"
-        android:layout_toRightOf="@+id/recipient">
+        android:layout_toLeftOf="@+id/recipient">
 
 
         <CustomComponent.RightAlignedHorizontalScrollView
@@ -153,6 +157,7 @@
     </CustomComponent.BoundedLinearLayout>
     <AutoCompleteTextView
         android:layout_width="60dp"
+        android:textSize="11sp"
         android:layout_height="50dp"
         android:id="@+id/recipient_input"
         android:lines="1"
@@ -161,7 +166,7 @@
         android:minWidth="150dp"
         android:inputType="textPersonName"
         android:layout_below="@+id/relativeLayout5"
-        android:layout_toRightOf="@+id/linearLayout12"
+        android:layout_toLeftOf="@+id/linearLayout12"
         android:layout_alignRight="@+id/relativeLayout5"
         android:layout_alignEnd="@+id/relativeLayout5" />
 </RelativeLayout>

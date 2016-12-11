@@ -156,19 +156,25 @@ public class GenericPostViewHolder extends GenericViewHolder {
             }
         });
 
-        itemView.findViewById(R.id.postMenu).setOnClickListener(new View.OnClickListener() {
+        if(SessionManager.getInstance().getCurrentUser().getId().equalsIgnoreCase(post.getCreator().getId())){
 
-            @Override
-            public void onClick(View v) {
+            itemView.findViewById(R.id.postMenu).setOnClickListener(new View.OnClickListener() {
 
-            if(SessionManager.getInstance().getCurrentUser().getId().equalsIgnoreCase(post.getCreator().getId())) {
+                @Override
+                public void onClick(View v) {
 
-                CallBackUtils.processDeleteMenu(post);
+                    CallBackUtils.processDeleteMenu(post);
 
-            }
+                }
+            });
 
-            }
-        });
+
+        }
+        else{
+
+            itemView.findViewById(R.id.postMenu).setVisibility(View.GONE);
+
+        }
 
         toggleLike.setOnClickListener(new View.OnClickListener() {
 

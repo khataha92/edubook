@@ -285,7 +285,7 @@ public class PollLayout extends LinearLayout{
 
         tvQuestion = new TextView(getContext());
 
-        tvQuestion.setTextSize(19);
+        tvQuestion.setTextSize(13);
 
         LinearLayout.LayoutParams questionParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -314,6 +314,8 @@ public class PollLayout extends LinearLayout{
         addView(answersLayout);
 
         totalTextView = new TextView(getContext());
+
+        totalTextView.setTextSize(12);
 
         totalTextView.setTypeface(FontUtil.getFont(FontsType.REGULAR));
 

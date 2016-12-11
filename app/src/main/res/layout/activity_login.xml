@@ -22,7 +22,8 @@
         android:layout_alignParentEnd="true">
         <EditText
             android:layout_width="match_parent"
-            android:padding="12dp"
+            android:padding="8dp"
+            android:textSize="14sp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:background="@color/background"
@@ -35,7 +36,7 @@
             android:textColor="#ffffff" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:src="@drawable/username"
             android:id="@+id/imgUsername"
@@ -63,7 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageView"
-            android:padding="13dp"
+            android:padding="8dp"
+            android:textSize="14sp"
             android:inputType="textPassword"
             android:background="@color/background"
             android:imeOptions="actionDone"
@@ -75,7 +77,7 @@
             android:hint="@string/Password" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:src="@drawable/pass"
             android:id="@+id/imageView"
@@ -102,9 +104,9 @@
         android:layout_marginTop="10dp"
         android:text="@string/login"
         android:onClick="doLogin"
-        android:textSize="18sp"
+        android:textSize="10sp"
         android:textStyle="bold"
-        android:padding="18dp"
+        android:padding="8dp"
         android:textColor="@color/background"
         android:id="@+id/login_btn"
         android:layout_below="@+id/linearLayout"
@@ -120,6 +122,7 @@
         android:onClick="forgotPassword"
         android:textColor="@android:color/white"
         android:layout_marginTop="10dp"
+        android:textSize="14sp"
         style="@android:style/TextAppearance.Medium"
         android:id="@+id/textView19"
         android:layout_below="@+id/login_btn"
@@ -132,6 +135,7 @@
         android:layout_height="wrap_content"
         android:onClick="signup"
         android:text="@string/signup"
+        android:textSize="14sp"
         android:textColor="@android:color/white"
         android:id="@+id/textView32"
         android:layout_alignTop="@+id/textView19"

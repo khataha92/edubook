@@ -145,7 +145,7 @@ public class PostFragment extends BaseFragment {
 
                     String id = SessionManager.getInstance().getCurrentUser().getId();
 
-                    String name = SessionManager.getInstance().getCurrentUser().getName();
+                    String name = SessionManager.getInstance().getCurrentUser().getDisplayName();
 
                     Recipient recipient = new Recipient(Recipient.RecipientType.ONLY_ME,id,name);
 

@@ -34,7 +34,8 @@ public enum RequestServices {
     EDIT_GROUP_DESCRIPTION("group/%s"),
     GET_GROUP_MEMBERS("group/%s/member"),
     REMOVE_USER_FROM_GROUP("group/%s/member/%s"),
-    GET_STUDENT_PROGRESS("student/%s/progress")
+    GET_STUDENT_PROGRESS("student/%s/progress"),
+    YOUTUBE_DETAILS("https://www.youtube.com/oembed?url=%s&format=json")
     ;
 
     private String value;

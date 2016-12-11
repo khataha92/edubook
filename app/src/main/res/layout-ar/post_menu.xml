@@ -13,18 +13,13 @@
     android:layout_alignParentBottom="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true">
+
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/home_box_bg"
-        android:text="@string/AddToLibrary"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:padding="10dp"
+        android:padding="5dp"
         android:layout_height="wrap_content"
         android:id="@+id/delete"
+        android:textSize="11sp"
         android:background="@drawable/home_box_bg"
         android:textColor="#ff0000"
         android:text="@string/DeletePost"
@@ -32,7 +27,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:padding="10dp"
+        android:padding="5dp"
+        android:textSize="11sp"
         android:id="@+id/button_cancel"
         android:onClick="dismissPostMenu"
         android:layout_height="wrap_content"

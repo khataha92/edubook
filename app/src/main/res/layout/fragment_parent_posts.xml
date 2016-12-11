@@ -20,7 +20,7 @@
 
         <ImageView
             android:id="@+id/settings"
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/Library"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
         
         <LinearLayout
@@ -48,24 +48,24 @@
             android:layout_height="20dp">
 
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
                 android:background="@drawable/point_selected"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 />
 
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
                 android:background="@drawable/point_unselected"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 />
 
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
                 android:background="@drawable/point_unselected"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"

@@ -179,6 +179,28 @@ public class WebserviceRequestUtil {
 
         webService.addParams("email",email);
 
+        webService.addParams("_method","put");
+
+        webService.start();
+
+    }
+
+    public static void getYoutubeLinkDetails(String url,OnWebserviceFinishListener listener){
+
+        String serviceUrl = String.format(RequestServices.YOUTUBE_DETAILS.getValue(),url);
+
+        WebService webService = new WebService(serviceUrl);
+
+        webService.setService("");
+
+        webService.setService("");
+
+        webService.setVersion("");
+
+        webService.setMethod("GET");
+
+        webService.setOnWebserviceFinishListener(listener);
+
         webService.start();
 
     }
@@ -284,7 +306,26 @@ public class WebserviceRequestUtil {
 
                 break;
 
+            case STUDENTS:
+
+                for(int i = 0 ; i < model.getRecipientList().size() ; i++){
+
+                    webService.addParams("receivers["+type.getValue()+"][]",model.getRecipientList().get(i).getId());
+
+                }
+
+                break;
+
+
             case GROUPS:
+
+                for(int i = 0 ; i < model.getRecipientList().size() ; i++){
+
+                    webService.addParams("receivers[groups][]", model.getRecipientList().get(i).getId() );
+
+                }
+
+                break;
 
             default:
 

@@ -12,14 +12,15 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Yesterday"
         android:id="@+id/age"
+        android:textSize="11sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/male_profile_image"
         app:civ_border_width="0dp"
         />
@@ -28,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:layout_marginLeft="10dp"
-        android:textSize="16sp"
+        android:layout_marginRight="10dp"
+        android:textSize="12sp"
         android:text="Selena Gomez Replied to post: ''Thank you for sending us..''"
         android:id="@+id/name"
         android:layout_below="@+id/age"

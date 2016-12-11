@@ -11,8 +11,8 @@
         android:id="@+id/relativeLayout12">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/back"
             android:rotation="180"
             android:id="@+id/back"
@@ -28,9 +28,9 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_toRightOf="@+id/back"
+            android:layout_toLeftOf="@+id/back"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/controller" />
+            android:layout_toRightOf="@+id/controller" />
 
 
 

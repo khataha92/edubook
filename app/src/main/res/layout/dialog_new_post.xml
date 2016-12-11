@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
             android:id="@+id/new_note"
             android:layout_height="wrap_content"
             android:background="@drawable/up_right_only"
@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:background="#ffffff"
                 android:clickable="false"
+                android:textSize="10sp"
                 android:layout_height="wrap_content"
                 android:text="@string/Note"
                 android:layout_margin="1dp"
@@ -43,7 +44,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
             android:layout_height="wrap_content"
             android:id="@+id/newAssignment"
             android:background="@drawable/up_right_only"
@@ -51,17 +52,19 @@
             android:gravity="center"
             android:layout_weight="1"
             >
+
             <ImageView
                 android:layout_marginTop="10dp"
                 android:layout_width="30dp"
                 android:clickable="false"
                 android:layout_height="30dp"
                 android:src="@drawable/assignment"
-                />
+                android:id="@+id/imageView5" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="10sp"
                 android:clickable="false"
                 android:layout_margin="1dp"
                 android:background="#ffffff"
@@ -70,7 +73,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
             android:layout_height="wrap_content"
             android:background="@drawable/up_right_only"
             android:orientation="vertical"
@@ -90,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
                 android:clickable="false"
+                android:textSize="10sp"
                 android:layout_margin="1dp"
                 android:text="@string/Event"
                 />
@@ -101,6 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Cancel"
+        android:textSize="10sp"
         android:textColor="#939598"
         android:background="@drawable/upper_border_only"
         android:id="@+id/cancel"

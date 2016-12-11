@@ -48,8 +48,8 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/male_profile_image"
                     app:civ_border_width="0dp"/>
                 <LinearLayout
@@ -60,6 +60,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Lily Collins"
@@ -72,6 +73,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="11sp"
                         android:textColor="@color/time_color"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="11 hours ago"
@@ -82,12 +84,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:layout_height="wrap_content"
                 android:text="I am Poem"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/title"
                 android:layout_below="@+id/linearLayout4"
                 android:layout_alignParentLeft="true"
@@ -110,8 +112,8 @@
     android:id="@+id/attachment_layout"
     android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/attachment_icon"
                 android:layout_marginTop="10dp"
 
@@ -124,6 +126,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="DOCX File"
+                android:layout_marginTop="-5dp"
+                android:textSize="13sp"
                 android:id="@+id/attachment_type"
                 android:layout_below="@+id/attachment_name"
                 android:layout_alignLeft="@+id/attachment_name"
@@ -132,11 +136,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:text="i_am_poem.docx"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="5dp"
                 android:textColor="@color/background"
                 android:id="@+id/attachment_name"
                 android:layout_alignTop="@+id/attachment_icon"
@@ -156,11 +159,11 @@
                 android:id="@+id/line" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:id="@+id/imageView9"
                 android:layout_below="@+id/line"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:src="@drawable/due" />
@@ -168,6 +171,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_marginRight="10dp"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Due 27 January, 2016"
@@ -189,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:text="8 Likes"
                     android:textColor="@color/likes_color"
-                    android:textSize="13sp"
+                    android:textSize="10sp"
                     android:layout_marginLeft="10dp"
                     android:id="@+id/likes" />
                 <TextView
@@ -197,15 +201,16 @@
                     android:layout_height="wrap_content"
                     android:text="1 Comment"
                     android:textColor="@color/comments_color"
-                    android:textSize="13sp"
+                    android:textSize="10sp"
                     android:id="@+id/comments" />
             </LinearLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="13dp"
                 android:id="@+id/postMenu"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="-5dp"
                 android:src="@drawable/menu_tick"
                 android:layout_alignParentTop="true"
                 android:layout_alignRight="@+id/description"
@@ -240,18 +245,19 @@
             android:gravity="center_vertical|center_horizontal"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/comment"
+                android:layout_marginLeft="5dp"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/comment"
+                android:textSize="11sp"
                 android:text="@string/Comment"
-                />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/comment"
-                android:layout_marginRight="5dp"
                 />
         </LinearLayout>
 
