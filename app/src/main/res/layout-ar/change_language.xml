@@ -19,7 +19,7 @@
                 android:layout_alignParentStart="true">
 
                 <ImageView
-                    android:layout_width="30dp"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/close"
                     android:rotation="180"
@@ -34,11 +34,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Language"
                     android:id="@+id/textView20"
-                    android:layout_centerVertical="true"
                     android:textStyle="bold"
-                    android:layout_centerHorizontal="true"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    android:textSize="14sp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
 
@@ -63,7 +63,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:text="@string/Language"
                         android:textColor="@color/background"
                         android:textStyle="bold" />
@@ -85,8 +85,9 @@
 
                     <Button
                         android:layout_width="0dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="10sp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/Cancel"
@@ -99,8 +100,9 @@
 
                     <Button
                         android:layout_width="0dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="10sp"
                         android:textColor="#ffffff"
                         android:background="@drawable/save_btn"
                         android:layout_weight="1"
@@ -125,8 +127,8 @@
 
                     <RadioButton
                         android:id="@+id/ar"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:background="@drawable/radio"
                         android:button="@android:color/transparent"
                         android:layout_alignParentTop="true"
@@ -136,12 +138,12 @@
 
                     <RadioButton
                         android:id="@+id/en"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:background="@drawable/radio"
                         android:button="@android:color/transparent"
                         android:checked="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:layout_below="@+id/linearLayout7"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" />
@@ -154,6 +156,7 @@
                     android:text="@string/Arabic"
                     android:textColor="#000"
                     android:layout_marginLeft="10dp"
+                    android:textSize="13sp"
                     android:id="@+id/textView48"
                     android:layout_alignTop="@+id/radioGroup"
                     android:layout_toRightOf="@+id/radioGroup"
@@ -165,6 +168,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/English"
                     android:textColor="#000"
+                    android:textSize="13sp"
                     android:id="@+id/textView49"
                     android:layout_alignBottom="@+id/radioGroup"
                     android:layout_alignLeft="@+id/textView48"

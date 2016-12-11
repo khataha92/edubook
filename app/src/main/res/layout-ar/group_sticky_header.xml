@@ -15,6 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/getGroupLibrary"
+            android:textSize="11sp"
             android:layout_weight="1"
             android:background="@drawable/cancel_btn"
             android:clickable="true"
@@ -23,6 +24,7 @@
             />
         <Button
             android:layout_width="0dp"
+            android:textSize="11sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/getGroupMembers"

@@ -16,10 +16,10 @@
         android:layout_marginTop="10dp"
         android:text="@string/to"
         android:textColor="#58595B"
-        android:textSize="18sp" />
+        android:textSize="11sp" />
 
     <Spinner
-        android:layout_width="55dp"
+        android:layout_width="50dp"
         android:gravity="center_vertical"
         android:id="@+id/recipient"
         android:dropDownWidth="200dp"

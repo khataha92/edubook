@@ -5,7 +5,7 @@ package Enums;
  */
 public enum RecieverType {
 
-    GROUPS("groups"),ALL_GROUPS("all_groups"),ONLY_ME("users"),ALL_USERS("all_users"),STUDENTS("students");
+    GROUPS("groups"),ALL_GROUPS("all_groups"),ONLY_ME("users"),ALL_USERS("all_users"),STUDENTS("users");
 
     private String value;
 

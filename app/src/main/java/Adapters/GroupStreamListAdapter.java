@@ -20,7 +20,7 @@ import edubook.edubook.R;
 /**
  * Created by lap on 6/12/16.
  */
-public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHolder> implements StickyRecyclerHeadersAdapter {
+public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHolder> /* implements StickyRecyclerHeadersAdapter */ {
 
     List<PostFactory> posts;
 
@@ -71,9 +71,9 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
 
             case 1:
 
-                container.setType(HolderType.EMPTY);
+                container.setType(HolderType.GROUP_STICKY);
 
-                container.setValue(0);
+                container.setValue(null);
 
                 break;
 
@@ -111,15 +111,17 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
         return position;
     }
 
+    /*
+
     @Override
     public long getHeaderId(int position) {
 
-        if(position == 0){
+        if(position >= 1){
 
-            return  -1;
+            return  999;
         }
 
-        return 999;
+        return -1;
     }
 
     @Override
@@ -139,6 +141,8 @@ public class GroupStreamListAdapter extends RecyclerView.Adapter<GenericViewHold
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
 
     }
+
+    */
 
     @Override
     public int getItemCount() {

@@ -129,7 +129,7 @@ public class UserDefaultUtil {
 
             String id = recipients.getStudents().get(i).getId();
 
-            String name = recipients.getStudents().get(i).getName();
+            String name = recipients.getStudents().get(i).getDisplayName();
 
             Recipient recipient = new Recipient(Recipient.RecipientType.STUDENT,id,name);
 
@@ -141,7 +141,7 @@ public class UserDefaultUtil {
 
             String id = recipients.getContacts().get(i).getId();
 
-            String name = recipients.getContacts().get(i).getName();
+            String name = recipients.getContacts().get(i).getDisplayName();
 
             Recipient recipient = new Recipient(Recipient.RecipientType.CONTACT,id,name);
 
@@ -152,7 +152,7 @@ public class UserDefaultUtil {
 
         String id = recipients.getOnlyme().get(0).getId();
 
-        String name = recipients.getOnlyme().get(0).getName();
+        String name = recipients.getOnlyme().get(0).getDisplayName();
 
         onlyMe = new Recipient(Recipient.RecipientType.ONLY_ME,id,name);
 
@@ -471,7 +471,7 @@ public class UserDefaultUtil {
 
         String deviceLanguage = SessionManager.getInstance().getString(UserDefaultKeys.DEVICE_LANGUAGE.toString());
 
-        if (deviceLanguage != null) {
+        if (deviceLanguage != null && deviceLanguage.length()>0) {
 
             return deviceLanguage;
         }

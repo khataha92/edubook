@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -107,6 +108,41 @@ public class GroupFragment extends BaseFragment {
 
         recyclerView.setItemAnimator(new SlideInRightAnimator());
 
+        Button getGroupLibrary = (Button) rootView.findViewById(R.id.getGroupLibrary);
+
+        Button getGroupMembers = (Button) rootView.findViewById(R.id.getGroupMembers);
+
+        getGroupLibrary.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager.showLibraryFragment(null, new FunctionCaller() {
+
+                    @Override
+                    public void callFunction(Object object) {
+
+                        OnWebserviceFinishListener listener = (OnWebserviceFinishListener)object;
+
+                        WebserviceRequestUtil.getGroupLibrary(group.getId(),listener);
+
+                    }
+                });
+
+            }
+
+        });
+
+        getGroupMembers.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentManager.showGroupMembersFragment(group);
+
+            }
+        });
+
         getGroupStream();
     }
 
@@ -197,6 +233,29 @@ public class GroupFragment extends BaseFragment {
 
         adapter.setRecyclerView(recyclerView);
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                if(linearLayoutManager.findFirstVisibleItemPosition() >= 1){
+
+                    rootView.findViewById(R.id.sticky).setVisibility(View.VISIBLE);
+
+                }
+                else {
+
+                    rootView.findViewById(R.id.sticky).setVisibility(View.GONE);
+
+                }
+
+            }
+        });
+
         adapter.setFragment(GroupFragment.this);
 
         for(int i=0; i<posts.size(); i++){
@@ -207,58 +266,83 @@ public class GroupFragment extends BaseFragment {
 
         }
 
-        headersDecor = new StickyRecyclerHeadersDecoration(adapter);
+//        headersDecor = new StickyRecyclerHeadersDecoration(adapter);
 
-        recyclerView.addItemDecoration(headersDecor);
+//        recyclerView.addItemDecoration(headersDecor);
 
-        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-
-            @Override public void onChanged() {
-
-                headersDecor.invalidateHeaders();
-            }
-        });
+//        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+//
+//            @Override public void onChanged() {
+//
+//                headersDecor.invalidateHeaders();
+//            }
+//        });
 
 
         adapter.setPosts(posts);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        final StickyRecyclerHeadersTouchListener touchListener = new StickyRecyclerHeadersTouchListener(recyclerView, headersDecor);
+//        final StickyRecyclerHeadersTouchListener touchListener = new StickyRecyclerHeadersTouchListener(recyclerView, headersDecor);
 
-        touchListener.setOnHeaderClickListener(new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
+//        touchListener.setOnHeaderClickListener(new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
+//
+//            @Override
+//            public void onHeaderClick(MotionEvent event,final View header, int position, long headerId) {
+//
+//                int screenWidth = UIUtil.getScreenSize().x;
+//
+//                if(UserDefaultUtil.getUserLanguage().equalsIgnoreCase("en")) {
+//
+//                    if (event.getX() < screenWidth / 2) {
+//
+//                        FragmentManager.showLibraryFragment(null, new FunctionCaller() {
+//
+//                            @Override
+//                            public void callFunction(Object object) {
+//
+//                                OnWebserviceFinishListener listener = (OnWebserviceFinishListener) object;
+//
+//                                WebserviceRequestUtil.getGroupLibrary(group.getId(), listener);
+//
+//                            }
+//                        });
+//
+//                    } else {
+//
+//                        FragmentManager.showGroupMembersFragment(group);
+//
+//                    }
+//
+//                }
+//                else{
+//                    if (event.getX() < screenWidth / 2) {
+//
+//                        FragmentManager.showGroupMembersFragment(group);
+//
+//                    } else {
+//
+//                        FragmentManager.showLibraryFragment(null, new FunctionCaller() {
+//
+//                            @Override
+//                            public void callFunction(Object object) {
+//
+//                                OnWebserviceFinishListener listener = (OnWebserviceFinishListener) object;
+//
+//                                WebserviceRequestUtil.getGroupLibrary(group.getId(), listener);
+//
+//                            }
+//                        });
+//
+//                    }
+//
+//
+//                }
+//
+//            }
+//        });
 
-            @Override
-            public void onHeaderClick(MotionEvent event,final View header, int position, long headerId) {
-
-                int screenWidth = UIUtil.getScreenSize().x;
-
-                if(event.getX() < screenWidth/2){
-
-                    FragmentManager.showLibraryFragment(null, new FunctionCaller() {
-
-                        @Override
-                        public void callFunction(Object object) {
-
-                            OnWebserviceFinishListener listener = (OnWebserviceFinishListener)object;
-
-                            WebserviceRequestUtil.getGroupLibrary(group.getId(),listener);
-
-                        }
-                    });
-
-                }
-
-                else{
-
-                    FragmentManager.showGroupMembersFragment(group);
-
-                }
-
-            }
-        });
-
-        recyclerView.addOnItemTouchListener(touchListener);
+//        recyclerView.addOnItemTouchListener(touchListener);
 
         recyclerView.setAdapter(adapter);
 

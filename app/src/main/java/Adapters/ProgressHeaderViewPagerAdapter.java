@@ -69,7 +69,7 @@ public class ProgressHeaderViewPagerAdapter extends PagerAdapter {
 
             view = LayoutInflater.from(Application.getContext()).inflate(R.layout.first_profile_page,container,false);
 
-            ((TextView)view.findViewById(R.id.name)).setText(user.getName());
+            ((TextView)view.findViewById(R.id.name)).setText(user.getDisplayName());
 
             ((TextView)view.findViewById(R.id.type)).setText(user.getType().getName());
 
@@ -86,7 +86,7 @@ public class ProgressHeaderViewPagerAdapter extends PagerAdapter {
 
             view = LayoutInflater.from(Application.getContext()).inflate(R.layout.second_profile_page,container,false);
 
-            String description = user.getName() + ": \n"+user.getType().getName();
+            String description = user.getDisplayName() + ": \n"+user.getType().getName();
 
             if(user.getRole() != null){
 

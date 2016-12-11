@@ -11,10 +11,10 @@
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/male_profile_image"
-        app:civ_border_width="1dp"/>
+        app:civ_border_width="0dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:gravity="center_vertical"
@@ -32,21 +32,21 @@
             android:text="Lily Collins"
             android:textColor="@color/background"
             android:textStyle="bold"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:id="@+id/name" />
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:textColor="#737476"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:layout_height="wrap_content"
             android:text="Teacher"
             android:id="@+id/type" />
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginRight="20dp"
         android:id="@+id/member_settings"
         android:src="@drawable/member_settings"

@@ -104,7 +104,7 @@ public class PollItem extends LinearLayout {
 
         setOrientation(HORIZONTAL);
 
-        int dp = UIUtil.dpToPx(20);
+        int dp = UIUtil.dpToPx(10);
 
         LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -146,7 +146,7 @@ public class PollItem extends LinearLayout {
 
         answerTextView.setText(answer);
 
-        answerTextView.setTextSize(19);
+        answerTextView.setTextSize(12);
 
         answerTextView.setTypeface(FontUtil.getFont(FontsType.LIGHT));
 

@@ -8,55 +8,7 @@
     android:clickable="true"
     tools:context="activities.Home">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="left|top"
-        android:background="@color/background"
-        android:padding="10dp">
-
-        <ImageView
-            android:id="@+id/close"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:onClick="closeActivity"
-            android:src="@drawable/x" />
-
-        <TextView
-            android:id="@+id/textView3"
-            style="@android:style/TextAppearance.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/Assignment"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/post"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:background="@color/background"
-            android:text="@string/Post"
-            android:padding="5dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-
-   <CustomComponent.RecieverLayout
+    <CustomComponent.RecieverLayout
        android:layout_below="@+id/relativeLayout5"
        android:id="@+id/reciever_layout"
        android:layout_width="match_parent"
@@ -65,8 +17,9 @@
     <EditText
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:layout_alignEnd="@+id/recipient_input"
+        android:textSize="11sp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/recipient_input"
@@ -86,8 +39,8 @@
         android:orientation="horizontal"
         android:padding="10dp">
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@null"
             android:id="@+id/due_date"
             android:scaleType="fitCenter"
@@ -98,17 +51,17 @@
             android:scaleType="fitCenter"
             android:background="@null"
             android:id="@+id/library"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginRight="25dp"
             android:src="@drawable/folder_grey"
             />
         <ImageButton
             android:scaleType="fitCenter"
             android:background="@null"
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:id="@+id/options"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:src="@drawable/options_grey"
             />
     </LinearLayout>
@@ -126,6 +79,7 @@
         <EditText
             android:id="@+id/description"
             android:layout_width="wrap_content"
+            android:textSize="11sp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
@@ -141,5 +95,54 @@
             android:minLines="10"
             android:padding="10dp" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:background="@color/background"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:onClick="closeActivity"
+            android:src="@drawable/x" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/Assignment"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@color/background"
+            android:textSize="13sp"
+            android:text="@string/Post"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 </RelativeLayout>

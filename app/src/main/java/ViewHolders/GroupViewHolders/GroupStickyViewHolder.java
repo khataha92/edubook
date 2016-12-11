@@ -54,6 +54,16 @@ public class GroupStickyViewHolder extends GenericViewHolder {
 
         });
 
+        getGroupMembers.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FragmentManager.showGroupMembersFragment(group);
+
+            }
+        });
+
     }
 
 

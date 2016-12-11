@@ -26,6 +26,7 @@ import DataModels.StreamBookResponse;
 import Enums.ResponseCode;
 import Interfaces.OnWebserviceFinishListener;
 import Interfaces.PostFactory;
+import Interfaces.TabIcon;
 import Managers.SessionManager;
 import UserUtils.UIUtil;
 import UserUtils.UserDefaultUtil;
@@ -36,7 +37,7 @@ import edubook.edubook.R;
 import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
 
-public class NotificationFragment extends BaseFragment {
+public class NotificationFragment extends BaseFragment implements TabIcon {
 
     private String TAG = getClass().getSimpleName();
 
@@ -51,6 +52,12 @@ public class NotificationFragment extends BaseFragment {
     public void onResume() {
 
         super.onResume();
+
+        ((Home)getActivity()).replaceIcon(R.id.notification);
+
+        TextView notificationCount = (TextView) getActivity().findViewById(R.id.notif_number);
+
+        notificationCount.setVisibility(View.GONE);
 
     }
 
@@ -134,4 +141,17 @@ public class NotificationFragment extends BaseFragment {
 
     }
 
+    @Override
+    public int getSelectedTabIdocn() {
+
+        return R.drawable.notification_selected;
+
+    }
+
+    @Override
+    public int getDeselectedTabIcon() {
+
+        return R.drawable.notification;
+
+    }
 }

@@ -8,9 +8,18 @@
     android:clickable="true"
     tools:context="activities.Home">
 
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/groupItemsList"
         android:layout_width="match_parent"
         android:background="@color/sweet_dialog_bg_color"
         android:layout_height="match_parent" />
+
+    <include layout="@layout/group_sticky_header"
+        android:id="@+id/sticky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
 </RelativeLayout>

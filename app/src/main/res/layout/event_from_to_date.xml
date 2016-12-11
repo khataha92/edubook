@@ -7,7 +7,7 @@
     <LinearLayout
     android:layout_width="match_parent"
     android:background="@drawable/from_to_date"
-    android:padding="10dp"
+    android:padding="5dp"
     android:layout_height="wrap_content"
         android:orientation="horizontal"
     android:weightSum="4"
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="@string/Starts"
         android:layout_margin="10dp"
+        android:textSize="13sp"
         style="@style/TextAppearance.AppCompat.Medium"
         android:id="@+id/textView35"
         android:layout_below="@+id/relativeLayout17"
@@ -31,6 +32,7 @@
         android:layout_width="0dp"
         android:editable="false"
         android:focusable="false"
+        android:textSize="13sp"
         android:background="@null"
         android:id="@+id/startDate"
         android:textColor="#000000"
@@ -42,7 +44,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:background="@drawable/from_to_date"
-        android:padding="10dp"
+        android:padding="5dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="4"
@@ -57,6 +59,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:textSize="13sp"
             android:text="@string/Ends"
             android:layout_margin="10dp"
             android:id="@+id/textView36"
@@ -69,6 +72,7 @@
             android:background="@null"
             android:editable="false"
             android:id="@+id/endDate"
+            android:textSize="13sp"
             android:focusable="false"
             android:textColor="#000000"
             android:layout_height="match_parent"
@@ -87,7 +91,7 @@
         android:layout_alignParentStart="true">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:onClick="closeActivity"
             android:id="@+id/close"
@@ -106,13 +110,14 @@
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/Done"
+            android:textSize="14sp"
             android:gravity="center"
             android:background="@color/background"
             android:id="@+id/done"

@@ -18,6 +18,7 @@ import Fragments.BaseFragment;
 import Fragments.ProgressFragment;
 import Interfaces.AbstractCallback;
 import Interfaces.OnWebserviceFinishListener;
+import Interfaces.TabIcon;
 import Managers.SessionManager;
 import UserUtils.Application;
 import UserUtils.Constants;
@@ -34,6 +35,8 @@ import Managers.FragmentManager;
 public class Home extends FragmentActivity
 {
     private static final String TAG = Home.class.getName();
+
+    private int currentTabId = R.id.home;
 
     private View.OnClickListener showMoreFragment = new View.OnClickListener() {
 
@@ -128,20 +131,30 @@ public class Home extends FragmentActivity
         findViewById(R.id.notificaion_container).setOnClickListener(showNotificationFragment);
     }
 
-    public void replaceIcon(){
+    public void replaceIcon(int newTab){
 
-        BaseFragment fragment = FragmentManager.getBeforeCurrentVisibleFragment();
+        if(FragmentManager.getCurrentVisibleFragment() instanceof TabIcon) {
 
-        if(fragment instanceof HomeFragment){
+            TabIcon fragment = (TabIcon) FragmentManager.getBeforeCurrentVisibleFragment();
 
-            ((ImageView)findViewById(R.id.home)).setImageResource(R.drawable.home_unselected);
+            int imageResource;
+
+            if(fragment != null){
+
+                imageResource = fragment.getDeselectedTabIcon();
+
+                ((ImageView) findViewById(currentTabId)).setImageResource(imageResource);
+
+            }
+
+            currentTabId = newTab;
+
+            fragment = (TabIcon) FragmentManager.getCurrentVisibleFragment();
+
+            ((ImageView) findViewById(currentTabId)).setImageResource(fragment.getSelectedTabIdocn());
 
         }
-        else if(fragment instanceof MoreFragment){
 
-            ((ImageView)findViewById(R.id.more)).setImageResource(R.drawable.menu);
-
-        }
     }
 
     @Override

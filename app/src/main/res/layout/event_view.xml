@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
@@ -42,13 +43,14 @@
             android:id="@+id/linearLayout4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
+
             <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/male_profile_image"
                 app:civ_border_width="0dp"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
@@ -57,6 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="13sp"
                     android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Lily Collins"
@@ -69,6 +72,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="11sp"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/time_color"
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -92,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="8 Likes"
                 android:textColor="@color/likes_color"
-                android:textSize="13sp"
+                android:textSize="10sp"
                 android:layout_marginRight="10dp"
                 android:id="@+id/likes" />
             <TextView
@@ -100,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="1 Comment"
                 android:textColor="@color/comments_color"
-                android:textSize="13sp"
+                android:textSize="10sp"
                 android:id="@+id/comments" />
         </LinearLayout>
 
@@ -108,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:id="@+id/event_box"
-            android:paddingBottom="20dp"
+            android:paddingBottom="10dp"
             android:background="@drawable/event_box"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout4"
@@ -117,11 +121,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Open Day"
                 android:textStyle="bold"
+                android:textSize="13sp"
                 android:textColor="#000"
                 android:id="@+id/title"
                 android:layout_alignParentTop="true"
@@ -132,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="#000"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Students will creatively use adjectives and literary devices to"
@@ -152,10 +157,9 @@
                 android:layout_height="1dp">
             </LinearLayout>
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="50dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:scaleType="fitStart"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/calendar_grey"
                 android:layout_below="@+id/line"
@@ -167,6 +171,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Starts:"
                 android:textStyle="bold"
+                android:textSize="13sp"
                 android:layout_marginLeft="14dp"
                 android:id="@+id/textView39"
                 android:layout_alignTop="@+id/imageView26"
@@ -179,6 +184,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="26 January 2016"
                 android:id="@+id/from_date"
+                android:textSize="13sp"
                 android:layout_alignTop="@+id/textView39"
                 android:layout_toRightOf="@+id/textView39"
                 android:layout_toEndOf="@+id/textView39"
@@ -190,6 +196,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Ends:"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 android:id="@+id/textView41"
                 android:layout_alignBottom="@+id/imageView26"
@@ -198,6 +205,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="3 February 2016"
@@ -208,10 +216,11 @@
         </RelativeLayout>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="13dp"
             android:id="@+id/postMenu"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="-5dp"
             android:src="@drawable/menu_tick"
             android:layout_alignRight="@+id/linearLayout20"
             android:layout_alignEnd="@+id/linearLayout20" />
@@ -245,8 +254,8 @@
             android:gravity="center_vertical|center_horizontal"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/comment"
                 android:layout_marginRight="5dp"
                 />
@@ -254,6 +263,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/comment"
+                android:textSize="11sp"
                 android:text="@string/Comment"
                 />
         </LinearLayout>

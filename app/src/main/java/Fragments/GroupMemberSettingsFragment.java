@@ -143,17 +143,17 @@ public class GroupMemberSettingsFragment extends BaseFragment {
             }
         });
 
-        rootView.findViewById(R.id.removeFromGroup).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                UIUtil.showSweetLoadingView();
-
-                WebserviceRequestUtil.removeUserFromGroup(user.getId(), group.getId(), removeUserFromGroup);
-
-            }
-        });
+//        rootView.findViewById(R.id.removeFromGroup).setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//                UIUtil.showSweetLoadingView();
+//
+//                WebserviceRequestUtil.removeUserFromGroup(user.getId(), group.getId(), removeUserFromGroup);
+//
+//            }
+//        });
 
         rootView.findViewById(R.id.parentCode).setOnClickListener(new View.OnClickListener() {
 
@@ -251,7 +251,7 @@ public class GroupMemberSettingsFragment extends BaseFragment {
 
                     UIUtil.showSweetLoadingView();
 
-                    String groupId = group.getId().substring(0,group.getId().indexOf("."));
+                    String groupId = group.getId()+"";
 
                     WebserviceRequestUtil.changeUserStatus(user.getId(), groupId, new OnWebserviceFinishListener() {
 

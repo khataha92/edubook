@@ -66,7 +66,7 @@ public class GroupMembersAdapter extends BaseAdapter {
 
         view = LayoutInflater.from(Application.getContext()).inflate(R.layout.member_layout,viewGroup,false);
 
-        ((TextView)view.findViewById(R.id.name)).setText(groupMembers.get(i).getName());
+        ((TextView)view.findViewById(R.id.name)).setText(groupMembers.get(i).getDisplayName());
 
         ((TextView)view.findViewById(R.id.type)).setText(groupMembers.get(i).getType().getName());
 

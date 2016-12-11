@@ -15,16 +15,19 @@
             android:layout_height="match_parent"
             android:id="@+id/getGroupLibrary"
             android:layout_weight="1"
+            android:textSize="11sp"
             android:background="@drawable/cancel_btn"
             android:clickable="true"
             android:text="@string/Library"
             android:textColor="@color/background"
             />
+
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/getGroupMembers"
+            android:textSize="11sp"
             android:background="@drawable/cancel_btn"
             android:text="@string/Members"
             android:textColor="@color/background"

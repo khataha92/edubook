@@ -14,7 +14,7 @@
         android:layout_alignParentStart="true">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:id="@+id/back"
             android:layout_centerVertical="true"
@@ -25,7 +25,7 @@
 
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:focusable="true"
             android:layout_height="wrap_content"
             android:id="@+id/controller"
@@ -36,7 +36,7 @@
             android:layout_alignParentEnd="true" />
 
         <ImageView
-            android:layout_width="35dp"
+            android:layout_width="20dp"
             android:focusable="true"
             android:layout_height="wrap_content"
             android:id="@+id/settings"
@@ -61,7 +61,7 @@
                 android:text="Math"
                 android:textStyle="bold"
                 android:textColor="#fff"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:id="@+id/group_name"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="28 Members"
                 android:textColor="#fff"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:id="@+id/group_desc"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />

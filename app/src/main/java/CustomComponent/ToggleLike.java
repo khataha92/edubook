@@ -66,13 +66,15 @@ public class ToggleLike extends LinearLayout{
 
     private void initializeView(){
 
+        if(isInEditMode()) return;
+
         setOrientation(HORIZONTAL);
 
         setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
 
         icon = new ImageView(getContext());
 
-        int width = UIUtil.dpToPx(20);
+        int width = UIUtil.dpToPx(15);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width,width);
 
@@ -92,7 +94,7 @@ public class ToggleLike extends LinearLayout{
 
         text = new TextView(getContext());
 
-        text.setTextSize(14);
+        text.setTextSize(10);
 
         text.setTypeface(FontUtil.getFont(FontsType.LIGHT));
 

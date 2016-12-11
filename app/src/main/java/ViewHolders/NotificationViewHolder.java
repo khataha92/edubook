@@ -47,7 +47,7 @@ public class NotificationViewHolder extends GenericViewHolder {
 
         text.setText(model.getNotificationText());
 
-        Picasso.with(Application.getContext()).load(model.getCreator().getThumb()).into(imageView);
+        Picasso.with(Application.getContext()).load(model.getCreator().getThumb()).error(UIUtil.getDefaultProfileImage()).into(imageView);
 
         age.setText(model.getAge());
 

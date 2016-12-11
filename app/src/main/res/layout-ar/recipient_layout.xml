@@ -23,6 +23,6 @@
         android:text="Students"
         android:id="@+id/name"
         android:textColor="#111111"
-        android:textSize="16sp"
+        android:textSize="13sp"
         />
 </LinearLayout>

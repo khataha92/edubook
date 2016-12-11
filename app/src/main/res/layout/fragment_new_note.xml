@@ -20,7 +20,7 @@
         android:layout_alignParentStart="true">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:id="@+id/close"
             android:layout_centerInParent="true"
@@ -38,13 +38,14 @@
             android:layout_centerHorizontal="true"
             style="@android:style/TextAppearance.Medium"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="13sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="@string/Post"
             android:onClick="post"
+            android:textSize="13sp"
             android:background="@color/background"
             android:id="@+id/post"
             android:layout_centerVertical="true"
@@ -61,13 +62,13 @@
         android:layout_marginLeft="10dp"
         android:textColor="#58595B"
         android:text="@string/to"
-        android:textSize="18sp"
+        android:textSize="13sp"
         android:id="@+id/textView9"
         android:layout_below="@+id/relativeLayout5"
         android:layout_alignLeft="@+id/relativeLayout5"
         android:layout_alignStart="@+id/relativeLayout5" />
     <Spinner
-        android:layout_width="65dp"
+        android:layout_width="50dp"
         android:gravity="center_vertical"
         android:id="@+id/recipient"
         android:dropDownWidth="200dp"
@@ -93,6 +94,7 @@
         android:layout_width="wrap_content"
         android:gravity="top"
         android:padding="10dp"
+        android:textSize="11sp"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:minLines="10"
@@ -110,14 +112,15 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/profile_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/male_profile_image"
         app:civ_border_width="1dp"
         android:layout_alignTop="@+id/description" />
     </RelativeLayout>
     <CustomComponent.BoundedLinearLayout
         android:layout_width="wrap_content"
+        android:textSize="11sp"
         android:orientation="horizontal"
         app:bounded_width="200dp"
         android:layout_height="50dp"
